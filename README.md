@@ -8,27 +8,40 @@ Personal frontend portfolio website built to present my projects, technical back
 
 ## About
 
-This website presents my frontend portfolio, GitHub projects and background in technical support for medical software.
+This website presents my frontend portfolio, projects and background in technical support for medical software.
 
 The goal of the project is to create a clean personal page that connects my real work experience with my frontend development direction.
 
-## Tech Stack
-
-* HTML
-* CSS
-* Vanilla JavaScript
-* GitHub Pages
-* GitHub REST API
-
 ## Features
 
-* Responsive layout
-* Dark / dim / light theme switcher
-* Terminal-style hero animation
-* GitHub API integration
-* Project cards
-* Reading progress bar
-* Smooth scroll animations
+- Responsive portfolio layout
+- Dark, dim and light themes
+- Terminal-style hero animation
+- Reading progress bar
+- Fade-up scroll animations
+- Floating AI Portfolio Assistant
+- Cloudflare Worker API integration
+- Workers AI integration
+- Custom domain deployment
+
+## Tech Stack
+
+- HTML
+- CSS
+- Vanilla JavaScript
+- Fetch API
+- GitHub Pages
+- Cloudflare Workers
+- Workers AI
+
+## AI Portfolio Assistant
+
+The portfolio includes a floating AI assistant that answers questions about my projects, skills, technical background and frontend development direction.
+
+The frontend sends requests to a Cloudflare Worker API.
+The AI logic runs on the backend side, so no API keys are exposed in the browser.
+
+**Stack:** Vanilla JavaScript, Fetch API, Cloudflare Workers, Workers AI
 
 ## Project Structure
 
