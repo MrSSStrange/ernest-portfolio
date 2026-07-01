@@ -14,8 +14,8 @@ The goal of the project is to create a clean personal page that connects my real
 
 ## Features
 
-- Responsive portfolio layout
-- Dark, dim and light themes
+- Responsive layout
+- Dark / dim / light theme switcher
 - Terminal-style hero animation
 - Reading progress bar
 - Fade-up scroll animations

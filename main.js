@@ -124,9 +124,7 @@ async function askPortfolio(question) {
 
   if (!response.ok) {
     throw new Error(
-      data.error ||
-        data.details ||
-        "AI assistant is temporarily unavailable.",
+      data.error || "AI assistant is temporarily unavailable.",
     );
   }
 
@@ -140,7 +138,7 @@ async function askPortfolio(question) {
 function getAiErrorMessage(error) {
   const message = error?.message || "AI assistant is temporarily unavailable.";
 
-  if (message.includes("Failed to fetch")) {
+  if (message === "Failed to fetch") {
     return "AI assistant is unavailable. Please try again later.";
   }
 
