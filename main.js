@@ -29,6 +29,102 @@ themeButtons.forEach((btn) => {
 // =====================================================
 const AI_ASSISTANT_ENDPOINT =
   "https://ernest-ai-assistant.ernestmuzafarov.workers.dev/ask";
+const AI_SAFE_RESPONSE =
+  "Я могу отвечать только на вопросы о портфолио Эрнеста.";
+const AI_TOO_LONG_RESPONSE =
+  "Слишком длинный запрос. Задайте короткий вопрос о портфолио Эрнеста.";
+const MAX_MESSAGE_LENGTH = 1000;
+
+const BLOCKED_INPUT_PATTERNS = [
+  /system prompt/i,
+  /developer prompt/i,
+  /system instructions/i,
+  /developer instructions/i,
+  /hidden instructions/i,
+  /hidden.*prompt/i,
+  /previous.*prompt/i,
+  /show.*instructions?/i,
+  /print.*instructions?/i,
+  /list.*instructions?/i,
+  /output.*instructions?/i,
+  /reveal.*instructions?/i,
+  /previous.*instructions?/i,
+  /скрыт(ые|ая|ой|ую|ых)?\s+инструкц/i,
+  /системн(ый|ого|ое|ые|ых)\s+(промпт|приглашени)/i,
+  /приглашение разработчика/i,
+  /выведи.*инструкц/i,
+  /вывести.*инструкц/i,
+  /покажи.*инструкц/i,
+  /какая инструкция/i,
+  /ignore previous/i,
+  /проигнорируй предыдущ/i,
+  /ты больше не/i,
+  /теперь ты/i,
+  /admin mode/i,
+  /system administrator/i,
+  /system role/i,
+  /developer role/i,
+  /роль системы/i,
+  /роль разработчика/i,
+  /repeat everything before/i,
+  /before this message verbatim/i,
+  /previous.*messages?/i,
+  /hidden.*messages?/i,
+  /предыдущ.*сообщ/i,
+  /скрыт.*сообщ/i,
+  /переменные среды/i,
+  /api.?key/i,
+  /api\s*ключ/i,
+  /секрет/i,
+  /environment variables/i,
+  /internal memory/i,
+  /внутренн(яя|ей)\s+память/i,
+  /backend implementation/i,
+  /backend.*details/i,
+  /детал.*backend/i,
+  /техническ.*backend/i,
+  /<\s*(script|img|iframe|svg|object|embed|link|style|meta|base)\b/i,
+  /on[a-z]+\s*=/i,
+  /javascript\s*:/i,
+];
+
+const BLOCKED_OUTPUT_PATTERNS = [
+  /отвечайте только/i,
+  /answer only questions/i,
+  /используйте только контекст/i,
+  /use only .*context/i,
+  /не выдумывайте/i,
+  /do not invent/i,
+  /never reveal/i,
+  /you are the ai portfolio assistant/i,
+  /если вопрос на русском/i,
+  /если вопрос на английском/i,
+  /system prompt/i,
+  /developer prompt/i,
+  /system instructions/i,
+  /developer instructions/i,
+  /hidden instructions/i,
+  /скрыт(ые|ая|ой|ую|ых)?\s+инструкц/i,
+  /internal context/i,
+  /внутренн(ий|его|ем|яя|ей)\s+контекст/i,
+  /environment variables/i,
+  /backend implementation details/i,
+  /api.?key/i,
+  /api\s*ключ/i,
+  /секрет/i,
+];
+
+function matchesAnyPattern(text, patterns) {
+  return patterns.some((pattern) => pattern.test(text));
+}
+
+function isBlockedAiInput(text) {
+  return matchesAnyPattern(String(text || ""), BLOCKED_INPUT_PATTERNS);
+}
+
+function isBlockedAiOutput(text) {
+  return matchesAnyPattern(String(text || ""), BLOCKED_OUTPUT_PATTERNS);
+}
 
 const aiChat = document.getElementById("aiChat");
 const aiChatToggle = document.getElementById("aiChatToggle");
@@ -123,26 +219,26 @@ async function askPortfolio(question) {
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    throw new Error(
-      data.error || "AI assistant is temporarily unavailable.",
-    );
+    throw new Error("AI assistant is temporarily unavailable.");
   }
 
-  if (!data.answer) {
-    throw new Error("Empty response from AI assistant.");
+  const answer = typeof data.answer === "string" ? data.answer.trim() : "";
+
+  if (!answer) {
+    throw new Error("AI assistant is temporarily unavailable.");
   }
 
-  return data.answer;
+  return isBlockedAiOutput(answer) ? AI_SAFE_RESPONSE : answer;
 }
 
 function getAiErrorMessage(error) {
-  const message = error?.message || "AI assistant is temporarily unavailable.";
+  const message = error?.message || "";
 
   if (message === "Failed to fetch") {
-    return "AI assistant is unavailable. Please try again later.";
+    return "AI assistant is temporarily unavailable.";
   }
 
-  return message;
+  return "AI assistant is temporarily unavailable.";
 }
 
 async function submitAiQuestion(question) {
@@ -155,12 +251,15 @@ async function submitAiQuestion(question) {
     return false;
   }
 
-  if (cleanQuestion.length > 500) {
-    appendAiMessage(
-      "error",
-      "Question is too long. Maximum length is 500 characters.",
-    );
+  if (cleanQuestion.length > MAX_MESSAGE_LENGTH) {
+    appendAiMessage("error", AI_TOO_LONG_RESPONSE);
     return false;
+  }
+
+  if (isBlockedAiInput(cleanQuestion)) {
+    appendAiMessage("user", cleanQuestion);
+    appendAiMessage("assistant", AI_SAFE_RESPONSE);
+    return true;
   }
 
   appendAiMessage("user", cleanQuestion);

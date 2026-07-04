@@ -49,6 +49,16 @@ The AI logic runs on the backend side, so no API keys are exposed in the browser
 index.html
 styles.css
 main.js
+worker/
+  src/index.mjs
+  wrangler.toml
+  test-guards.mjs
+```
+
+## Worker Guard Tests
+
+```bash
+node worker/test-guards.mjs
 ```
 
 ## Focus
