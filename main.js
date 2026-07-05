@@ -37,6 +37,110 @@ if (document.readyState === "complete") {
 }
 
 // =====================================================
+// Entry sound
+// =====================================================
+const ENTRY_SOUND_SESSION_KEY = "entrySoundPlayedV2";
+let entrySoundPlayed = false;
+
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function hasEntrySoundPlayed() {
+  try {
+    return sessionStorage.getItem(ENTRY_SOUND_SESSION_KEY) === "true";
+  } catch (error) {
+    return entrySoundPlayed;
+  }
+}
+
+function markEntrySoundPlayed() {
+  entrySoundPlayed = true;
+
+  try {
+    sessionStorage.setItem(ENTRY_SOUND_SESSION_KEY, "true");
+  } catch (error) {}
+}
+
+function playEntrySound() {
+  if (entrySoundPlayed || hasEntrySoundPlayed() || prefersReducedMotion()) {
+    return;
+  }
+
+  const AudioContextConstructor =
+    window.AudioContext || window.webkitAudioContext;
+
+  if (!AudioContextConstructor) return;
+
+  try {
+    entrySoundPlayed = true;
+    const audioContext = new AudioContextConstructor();
+
+    const play = () => {
+      const startAt = audioContext.currentTime + 0.02;
+      const masterGain = audioContext.createGain();
+
+      masterGain.gain.setValueAtTime(0.0001, startAt);
+      masterGain.gain.exponentialRampToValueAtTime(0.26, startAt + 0.05);
+      masterGain.gain.exponentialRampToValueAtTime(0.0001, startAt + 0.82);
+      masterGain.connect(audioContext.destination);
+
+      function tone(frequency, type, delay, duration, peakGain) {
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        const toneStart = startAt + delay;
+        const toneEnd = toneStart + duration;
+
+        oscillator.type = type;
+        oscillator.frequency.setValueAtTime(frequency, toneStart);
+        gain.gain.setValueAtTime(0.0001, toneStart);
+        gain.gain.exponentialRampToValueAtTime(peakGain, toneStart + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, toneEnd);
+
+        oscillator.connect(gain);
+        gain.connect(masterGain);
+        oscillator.start(toneStart);
+        oscillator.stop(toneEnd + 0.03);
+      }
+
+      markEntrySoundPlayed();
+
+      tone(146.83, "sawtooth", 0, 0.42, 0.16);
+      tone(73.42, "sine", 0.04, 0.56, 0.18);
+      tone(392, "triangle", 0.18, 0.28, 0.07);
+      tone(220, "square", 0.34, 0.22, 0.035);
+
+      window.setTimeout(() => {
+        audioContext.close().catch(() => {});
+      }, 1100);
+    };
+
+    if (audioContext.state === "suspended") {
+      audioContext
+        .resume()
+        .then(play)
+        .catch(() => {
+          entrySoundPlayed = false;
+        });
+    } else {
+      play();
+    }
+  } catch (error) {
+    entrySoundPlayed = false;
+  }
+}
+
+if (!hasEntrySoundPlayed() && !prefersReducedMotion()) {
+  ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
+    window.addEventListener(eventName, playEntrySound, {
+      once: true,
+      capture: true,
+      passive: true,
+    });
+  });
+}
+
+// =====================================================
 // CV preview modal
 // =====================================================
 const cvPreview = document.getElementById("cvPreview");
