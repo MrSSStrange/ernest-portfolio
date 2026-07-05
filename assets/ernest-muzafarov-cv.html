@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ernest Muzafarov CV</title>
+    <style>
+      :root {
+        --text: #141414;
+        --muted: #555;
+        --line: #ddd;
+        --accent: #86643f;
+        --bg: #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #f2f2f2;
+        color: var(--text);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      .page {
+        width: min(920px, calc(100% - 32px));
+        margin: 32px auto;
+        padding: 48px;
+        background: var(--bg);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.08);
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 32px;
+        padding-bottom: 28px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 40px;
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+      }
+
+      .role {
+        margin-top: 10px;
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .summary {
+        margin-top: 18px;
+        max-width: 680px;
+        color: var(--muted);
+      }
+
+      .contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 14px;
+        color: var(--muted);
+        text-align: right;
+      }
+
+      .contacts a {
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      section {
+        padding: 28px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      section:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      h2 {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent);
+        margin-bottom: 16px;
+      }
+
+      h3 {
+        font-size: 18px;
+        letter-spacing: -0.01em;
+      }
+
+      .item + .item {
+        margin-top: 22px;
+      }
+
+      .meta {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      ul {
+        margin: 12px 0 0;
+        padding-left: 20px;
+        color: var(--muted);
+      }
+
+      li + li {
+        margin-top: 6px;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tags span {
+        border: 1px solid var(--line);
+        padding: 6px 10px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .project-link {
+        display: inline-block;
+        margin-top: 8px;
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        .page {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          box-shadow: none;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          padding: 28px;
+        }
+
+        header {
+          grid-template-columns: 1fr;
+        }
+
+        .contacts {
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <div>
+          <h1>Ernest Muzafarov</h1>
+          <p class="role">Frontend Developer</p>
+          <p class="summary">
+            Frontend developer focused on clean interfaces, dashboards, forms
+            and internal tools. Background in technical support for medical
+            software helps connect UI decisions with real business workflows.
+          </p>
+        </div>
+        <address class="contacts">
+          <span>Kazan, Russia</span>
+          <a href="mailto:mega.ernest13@gmail.com">mega.ernest13@gmail.com</a>
+          <a href="https://github.com/MrSSStrange">github.com/MrSSStrange</a>
+          <a href="https://ernestmuzafarov.tech">ernestmuzafarov.tech</a>
+          <a href="https://www.linkedin.com/in/ernest-muzafarov-919a323a2/"
+            >LinkedIn</a
+          >
+        </address>
+      </header>
+
+      <section>
+        <h2>Experience</h2>
+        <div class="item">
+          <h3>Technical Support Lead - Medical Software</h3>
+          <p class="meta">Current</p>
+          <ul>
+            <li>
+              Work with medical information systems, clinic workflows,
+              integrations, reports and support tickets.
+            </li>
+            <li>
+              Translate user problems into clear interface and functionality
+              requirements.
+            </li>
+            <li>
+              Use real operational context to design practical dashboard and
+              internal tool flows.
+            </li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>Frontend Developer - Learning & Building</h3>
+          <p class="meta">2026 - now</p>
+          <ul>
+            <li>
+              Build frontend projects with JavaScript, React, TypeScript, HTML
+              and CSS.
+            </li>
+            <li>
+              Practice forms, filters, sorting, state logic, REST API workflows
+              and responsive layouts.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+        <div class="item">
+          <h3>Ernest SupportDesk</h3>
+          <p class="meta">React, TypeScript, localStorage, filters</p>
+          <p>
+            Support desk application for managing tickets, priorities, statuses
+            and internal support workflows.
+          </p>
+          <a
+            class="project-link"
+            href="https://github.com/MrSSStrange/ernest-supportdesk"
+            >Repository</a
+          >
+        </div>
+        <div class="item">
+          <h3>Clinic Appointments Dashboard</h3>
+          <p class="meta">React, TypeScript, dashboard, medical workflows</p>
+          <p>
+            Appointment dashboard with patient records, doctor schedules, status
+            tracking, filtering and simple analytics.
+          </p>
+          <a
+            class="project-link"
+            href="https://github.com/MrSSStrange/clinic-appointments-dashboard"
+            >Repository</a
+          >
+        </div>
+        <div class="item">
+          <h3>Clinic Patients</h3>
+          <p class="meta">JavaScript, DOM, forms, localStorage</p>
+          <p>
+            JavaScript app for patient cards, search, sorting, filtering and
+            browser-side persistence.
+          </p>
+          <a
+            class="project-link"
+            href="https://github.com/MrSSStrange/clinic-patients"
+            >Repository</a
+          >
+        </div>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <div class="tags">
+          <span>JavaScript</span>
+          <span>TypeScript</span>
+          <span>React</span>
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>Responsive UI</span>
+          <span>REST API</span>
+          <span>Fetch API</span>
+          <span>localStorage</span>
+          <span>Git</span>
+          <span>GitHub</span>
+          <span>Dashboards</span>
+          <span>Forms</span>
+          <span>Internal tools</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Current focus</h2>
+        <ul>
+          <li>React architecture and component structure.</li>
+          <li>TypeScript for API responses, component props and state.</li>
+          <li>Testing basics and backend fundamentals.</li>
+          <li>English for professional communication.</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,4 +1,91 @@
 // =====================================================
+// Branded page loader
+// =====================================================
+const siteLoader = document.getElementById("siteLoader");
+const loaderStartedAt =
+  typeof performance !== "undefined" ? performance.now() : Date.now();
+let siteLoaderHidden = false;
+
+function hideSiteLoader() {
+  if (siteLoaderHidden) return;
+  siteLoaderHidden = true;
+
+  const now = typeof performance !== "undefined" ? performance.now() : Date.now();
+  const remainingDelay = Math.max(0, 520 - (now - loaderStartedAt));
+
+  window.setTimeout(() => {
+    if (!siteLoader) {
+      document.documentElement.classList.remove("has-loader");
+      return;
+    }
+
+    siteLoader.classList.add("is-hidden");
+    siteLoader.setAttribute("aria-hidden", "true");
+
+    window.setTimeout(() => {
+      document.documentElement.classList.remove("has-loader");
+      siteLoader.remove();
+    }, 500);
+  }, remainingDelay);
+}
+
+if (document.readyState === "complete") {
+  hideSiteLoader();
+} else {
+  window.addEventListener("load", hideSiteLoader, { once: true });
+  window.setTimeout(hideSiteLoader, 1800);
+}
+
+// =====================================================
+// CV preview modal
+// =====================================================
+const cvPreview = document.getElementById("cvPreview");
+const cvPreviewFrame = document.getElementById("cvPreviewFrame");
+const cvPreviewClose = document.getElementById("cvPreviewClose");
+const cvPreviewLinks = document.querySelectorAll(".js-cv-preview");
+let cvPreviewLastFocus = null;
+
+function openCvPreview(event) {
+  if (!cvPreview || !cvPreviewFrame) return;
+
+  event.preventDefault();
+  cvPreviewLastFocus = document.activeElement;
+
+  if (!cvPreviewFrame.getAttribute("src")) {
+    cvPreviewFrame.setAttribute("src", cvPreviewFrame.dataset.src || "");
+  }
+
+  cvPreview.hidden = false;
+  cvPreview.setAttribute("aria-hidden", "false");
+  document.body.classList.add("cv-preview-open");
+
+  window.setTimeout(() => {
+    cvPreviewClose?.focus();
+  }, 50);
+}
+
+function closeCvPreview() {
+  if (!cvPreview || cvPreview.hidden) return;
+
+  cvPreview.hidden = true;
+  cvPreview.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("cv-preview-open");
+
+  if (cvPreviewLastFocus && typeof cvPreviewLastFocus.focus === "function") {
+    cvPreviewLastFocus.focus();
+  }
+}
+
+cvPreviewLinks.forEach((link) => {
+  link.addEventListener("click", openCvPreview);
+});
+
+cvPreviewClose?.addEventListener("click", closeCvPreview);
+document.querySelectorAll("[data-cv-close]").forEach((element) => {
+  element.addEventListener("click", closeCvPreview);
+});
+
+// =====================================================
 // 3-state theme toggle (dark / dim / light) with persistence
 // =====================================================
 const themes = ["dark", "dim", "light"];
@@ -327,6 +414,11 @@ aiChatSuggestions.forEach((button) => {
 });
 
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && cvPreview && !cvPreview.hidden) {
+    closeCvPreview();
+    return;
+  }
+
   if (event.key === "Escape" && aiChatPanel && !aiChatPanel.hidden) {
     closeAiChat();
   }

@@ -113,6 +113,10 @@ Projects:
 - Clinic Patients: JavaScript app for patient cards, search, sorting,
   filtering and localStorage persistence.
 
+Portfolio website:
+- Includes visual project previews and short case studies for each project.
+- Includes a downloadable HTML CV with experience, projects, skills and contact links.
+
 Contact:
 - Email: mega.ernest13@gmail.com
 - GitHub: https://github.com/MrSSStrange

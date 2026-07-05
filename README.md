@@ -16,9 +16,13 @@ The goal of the project is to create a clean personal page that connects my real
 
 - Responsive layout
 - Dark / dim / light theme switcher
+- Branded page loader
 - Terminal-style hero animation
 - Reading progress bar
 - Fade-up scroll animations
+- On-site CV preview
+- Project previews and short case studies
+- SEO / social preview metadata
 - Floating AI Portfolio Assistant
 - Cloudflare Worker API integration
 - Workers AI integration
@@ -49,6 +53,8 @@ The AI logic runs on the backend side, so no API keys are exposed in the browser
 index.html
 styles.css
 main.js
+assets/
+  ernest-muzafarov-cv.html
 worker/
   src/index.mjs
   wrangler.toml

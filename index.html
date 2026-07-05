@@ -8,8 +8,51 @@
       name="description"
       content="Frontend developer building clean interfaces for internal tools, dashboards and real business workflows."
     />
+    <link rel="canonical" href="https://ernestmuzafarov.tech/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ernestmuzafarov.tech/" />
+    <meta
+      property="og:title"
+      content="Ernest Muzafarov — Frontend Developer"
+    />
+    <meta
+      property="og:description"
+      content="Frontend portfolio with workflow-focused projects, case studies, AI assistant and downloadable CV."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Ernest Muzafarov — Frontend Developer"
+    />
+    <meta
+      name="twitter:description"
+      content="Frontend portfolio with workflow-focused projects, case studies, AI assistant and downloadable CV."
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ernest Muzafarov",
+        "jobTitle": "Frontend Developer",
+        "url": "https://ernestmuzafarov.tech/",
+        "email": "mailto:mega.ernest13@gmail.com",
+        "sameAs": [
+          "https://github.com/MrSSStrange",
+          "https://www.linkedin.com/in/ernest-muzafarov-919a323a2/"
+        ],
+        "knowsAbout": [
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Frontend development",
+          "Dashboards",
+          "Internal tools"
+        ]
+      }
+    </script>
     <script>
       (function () {
+        document.documentElement.classList.add("has-loader");
         try {
           var theme = localStorage.getItem("theme") || "dark";
           document.documentElement.setAttribute("data-theme", theme);
@@ -25,6 +68,15 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
+      <div class="site-loader-inner">
+        <span class="site-loader-mark">EM</span>
+        <span class="site-loader-logo">ernest.dev</span>
+        <span class="site-loader-text">loading portfolio</span>
+        <span class="site-loader-line" aria-hidden="true"></span>
+      </div>
+    </div>
+
     <!-- Reading progress bar -->
     <div class="progress-track" aria-hidden="true">
       <div class="progress-bar" id="progressBar"></div>
@@ -34,8 +86,8 @@
     <!-- Nav -->
     <nav class="nav">
       <div class="nav-inner">
-        <a href="#" class="logo">
-          <span class="logo-mark">▸</span>
+        <a href="#" class="logo" aria-label="Ernest Muzafarov portfolio home">
+          <span class="logo-mark">EM</span>
           <span class="logo-text">ernest.dev</span>
         </a>
         <ul class="nav-links">
@@ -153,6 +205,12 @@
             </a>
             <a href="#contact" class="btn btn-ghost">
               <span>contact</span>
+            </a>
+            <a
+              href="./assets/ernest-muzafarov-cv.html"
+              class="btn btn-ghost js-cv-preview"
+            >
+              <span>view cv</span>
             </a>
           </div>
         </div>
@@ -355,6 +413,23 @@
               <span class="card-tag">react app</span>
               <span class="card-arrow">↗</span>
             </div>
+            <div class="project-preview preview-support" aria-hidden="true">
+              <div class="preview-topbar">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="preview-ticket is-hot">
+                <span>critical</span>
+                <strong>Integration queue</strong>
+              </div>
+              <div class="preview-ticket">
+                <span>open</span>
+                <strong>Clinic workstation</strong>
+              </div>
+              <div class="preview-ticket is-done">
+                <span>done</span>
+                <strong>Report export</strong>
+              </div>
+            </div>
             <h3 class="card-title">Ernest SupportDesk</h3>
             <p class="card-desc">
               A frontend support desk application for managing tickets,
@@ -375,6 +450,20 @@
             <div class="card-head">
               <span class="card-tag">dashboard</span>
               <span class="card-arrow">↗</span>
+            </div>
+            <div class="project-preview preview-dashboard" aria-hidden="true">
+              <div class="preview-chart">
+                <span style="height: 44%"></span>
+                <span style="height: 72%"></span>
+                <span style="height: 56%"></span>
+                <span style="height: 88%"></span>
+                <span style="height: 64%"></span>
+              </div>
+              <div class="preview-schedule">
+                <span>09:30 cardiology</span>
+                <span>11:00 diagnostics</span>
+                <span>14:20 therapy</span>
+              </div>
             </div>
             <h3 class="card-title">Clinic Appointments Dashboard</h3>
             <p class="card-desc">
@@ -397,6 +486,21 @@
               <span class="card-tag">javascript app</span>
               <span class="card-arrow">↗</span>
             </div>
+            <div class="project-preview preview-patients" aria-hidden="true">
+              <div class="preview-search"></div>
+              <div class="preview-patient-row">
+                <span></span>
+                <strong>Patient card</strong>
+              </div>
+              <div class="preview-patient-row">
+                <span></span>
+                <strong>Visit history</strong>
+              </div>
+              <div class="preview-patient-row">
+                <span></span>
+                <strong>Local storage</strong>
+              </div>
+            </div>
             <h3 class="card-title">Clinic Patients</h3>
             <p class="card-desc">
               A JavaScript application for managing patient cards, search,
@@ -407,6 +511,125 @@
               ><span>localStorage</span>
             </div>
           </a>
+        </div>
+        <div class="case-study-grid">
+          <article class="case-study fade-up">
+            <div class="case-study-head">
+              <span class="case-study-index">01</span>
+              <h3>Ernest SupportDesk</h3>
+            </div>
+            <p>
+              Support desk interface for real support workflows: tickets,
+              priorities, statuses, filtering and persistence.
+            </p>
+            <dl class="case-study-list">
+              <div>
+                <dt>Problem</dt>
+                <dd>
+                  Support requests need a clear queue, visible priority and
+                  fast status updates.
+                </dd>
+              </div>
+              <div>
+                <dt>Built</dt>
+                <dd>
+                  Ticket cards, filters, status logic and localStorage-based
+                  persistence.
+                </dd>
+              </div>
+              <div>
+                <dt>Shows</dt>
+                <dd>
+                  React state thinking, UI structure and business workflow
+                  understanding.
+                </dd>
+              </div>
+            </dl>
+            <a
+              href="https://github.com/MrSSStrange/ernest-supportdesk"
+              target="_blank"
+              rel="noopener"
+              >open repository</a
+            >
+          </article>
+          <article class="case-study fade-up delay-1">
+            <div class="case-study-head">
+              <span class="case-study-index">02</span>
+              <h3>Clinic Appointments Dashboard</h3>
+            </div>
+            <p>
+              Dashboard for appointment planning with patient records, doctor
+              schedules, statuses and simple analytics.
+            </p>
+            <dl class="case-study-list">
+              <div>
+                <dt>Problem</dt>
+                <dd>
+                  Clinic workflows need compact data views that are easy to scan
+                  during the workday.
+                </dd>
+              </div>
+              <div>
+                <dt>Built</dt>
+                <dd>
+                  Schedule-focused dashboard, filtering, status tracking and
+                  patient context.
+                </dd>
+              </div>
+              <div>
+                <dt>Shows</dt>
+                <dd>
+                  Dashboard layout, domain modeling and TypeScript-oriented data
+                  structure.
+                </dd>
+              </div>
+            </dl>
+            <a
+              href="https://github.com/MrSSStrange/clinic-appointments-dashboard"
+              target="_blank"
+              rel="noopener"
+              >open repository</a
+            >
+          </article>
+          <article class="case-study fade-up delay-2">
+            <div class="case-study-head">
+              <span class="case-study-index">03</span>
+              <h3>Clinic Patients</h3>
+            </div>
+            <p>
+              Vanilla JavaScript app for patient cards, search, sorting,
+              filtering and browser-side persistence.
+            </p>
+            <dl class="case-study-list">
+              <div>
+                <dt>Problem</dt>
+                <dd>
+                  Patient data needs quick lookup and simple organization
+                  without a backend.
+                </dd>
+              </div>
+              <div>
+                <dt>Built</dt>
+                <dd>
+                  DOM rendering, form handling, sorting, filters and
+                  localStorage state.
+                </dd>
+              </div>
+              <div>
+                <dt>Shows</dt>
+                <dd>
+                  JavaScript fundamentals, data transformation and practical UI
+                  behavior.
+                </dd>
+              </div>
+            </dl>
+            <a
+              href="https://github.com/MrSSStrange/clinic-patients"
+              target="_blank"
+              rel="noopener"
+              >open repository</a
+            >
+          </article>
         </div>
       </div>
     </section>
@@ -488,6 +711,11 @@
               rel="noopener"
               >linkedin</a
             >
+            <a
+              href="./assets/ernest-muzafarov-cv.html"
+              class="js-cv-preview"
+              >cv</a
+            >
             <a href="#">portfolio</a>
           </div>
           <div class="link-group">
@@ -507,6 +735,43 @@
         >
       </div>
     </footer>
+
+    <div
+      class="cv-preview"
+      id="cvPreview"
+      aria-hidden="true"
+      hidden
+    >
+      <div class="cv-preview-backdrop" data-cv-close></div>
+      <section
+        class="cv-preview-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cvPreviewTitle"
+      >
+        <div class="cv-preview-header">
+          <div>
+            <span class="cv-preview-kicker">cv preview</span>
+            <h2 id="cvPreviewTitle">Ernest Muzafarov</h2>
+          </div>
+          <button
+            class="cv-preview-close"
+            id="cvPreviewClose"
+            type="button"
+            aria-label="Close CV preview"
+          >
+            ×
+          </button>
+        </div>
+        <div class="cv-preview-frame-wrap">
+          <iframe
+            id="cvPreviewFrame"
+            title="Ernest Muzafarov CV preview"
+            data-src="./assets/ernest-muzafarov-cv.html"
+          ></iframe>
+        </div>
+      </section>
+    </div>
 
     <div class="ai-chat" id="aiChat">
       <button
