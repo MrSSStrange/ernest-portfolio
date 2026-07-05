@@ -12,7 +12,7 @@ class_name = "RateLimiter"
 
 [[migrations]]
 tag = "v1"
-new_classes = ["RateLimiter"]
+new_sqlite_classes = ["RateLimiter"]
 
 [vars]
 AI_MODEL = "@cf/meta/llama-3.1-8b-instruct"
