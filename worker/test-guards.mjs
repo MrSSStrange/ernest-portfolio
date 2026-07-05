@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import {
+  LOCATION_RESPONSE,
   SAFE_RESPONSE,
   TOO_LONG_RESPONSE,
   RateLimiter,
@@ -134,6 +135,27 @@ async function testNormalAnswer() {
   });
 }
 
+async function testLocationAnswer() {
+  resetRateLimitStore();
+
+  let aiWasCalled = false;
+  const response = await handleRequest(
+    createRequest("Is Ernest open to remote work or relocation?"),
+    {
+      AI: {
+        run: async () => {
+          aiWasCalled = true;
+          return { response: "should not happen" };
+        },
+      },
+    },
+  );
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(await readJson(response), { answer: LOCATION_RESPONSE });
+  assert.equal(aiWasCalled, false);
+}
+
 async function testRateLimit() {
   resetRateLimitStore();
 
@@ -233,6 +255,7 @@ await testBlockedInputs();
 await testLongInput();
 await testOutputGuard();
 await testNormalAnswer();
+await testLocationAnswer();
 await testRateLimit();
 await testCors();
 await testErrorHiding();

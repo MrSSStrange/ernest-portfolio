@@ -138,6 +138,23 @@
         color: var(--muted);
       }
 
+      .skill-groups {
+        display: grid;
+        gap: 12px;
+      }
+
+      .skill-group {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 14px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .skill-group strong {
+        color: var(--text);
+      }
+
       .project-link {
         display: inline-block;
         margin-top: 8px;
@@ -171,6 +188,11 @@
         .contacts {
           text-align: left;
         }
+
+        .skill-group {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
       }
     </style>
   </head>
@@ -181,25 +203,24 @@
           <h1>Ernest Muzafarov</h1>
           <p class="role">Frontend Developer</p>
           <p class="summary">
-            Frontend developer focused on clean interfaces, dashboards, forms
-            and internal tools. Background in technical support for medical
-            software helps connect UI decisions with real business workflows.
+            Frontend Developer focused on React, TypeScript, internal tools,
+            dashboards and workflow-based interfaces. I have a technical support
+            background in medical software, where I worked with clinic
+            workflows, reports, integrations, support tickets and user requests.
+            This helps me build interfaces around real operational problems, not
+            only visual components.
           </p>
         </div>
         <address class="contacts">
-          <span>Kazan, Russia</span>
-          <a href="mailto:mega.ernest13@gmail.com">mega.ernest13@gmail.com</a>
+          <span>Remote · Open to relocation</span>
+          <a href="mailto:mega.ernest13@gmail.com"
+            >Email: mega.ernest13@gmail.com</a
+          >
           <a
             href="https://github.com/MrSSStrange"
             target="_blank"
             rel="noopener"
-            >github.com/MrSSStrange</a
-          >
-          <a
-            href="https://ernestmuzafarov.tech"
-            target="_blank"
-            rel="noopener"
-            >ernestmuzafarov.tech</a
+            >GitHub: github.com/MrSSStrange</a
           >
           <a
             href="https://www.linkedin.com/in/ernest-muzafarov-919a323a2/"
@@ -207,40 +228,37 @@
             rel="noopener"
             >LinkedIn</a
           >
+          <a
+            href="https://ernestmuzafarov.tech"
+            target="_blank"
+            rel="noopener"
+            >Portfolio: ernestmuzafarov.tech</a
+          >
         </address>
       </header>
 
       <section>
         <h2>Experience</h2>
         <div class="item">
-          <h3>Technical Support Lead - Medical Software</h3>
-          <p class="meta">Current</p>
+          <h3>Frontend Developer - Projects &amp; Practice</h3>
+          <p class="meta">2026 - now</p>
           <ul>
             <li>
-              Work with medical information systems, clinic workflows,
-              integrations, reports and support tickets.
-            </li>
-            <li>
-              Translate user problems into clear interface and functionality
-              requirements.
-            </li>
-            <li>
-              Use real operational context to design practical dashboard and
-              internal tool flows.
+              Building React and TypeScript projects focused on internal tools,
+              dashboards, forms, filters, status management, data tables and
+              workflow-based UI logic.
             </li>
           </ul>
         </div>
         <div class="item">
-          <h3>Frontend Developer - Learning & Building</h3>
-          <p class="meta">2026 - now</p>
+          <h3>Technical Support Lead - Medical Software</h3>
+          <p class="meta">Current</p>
           <ul>
             <li>
-              Build frontend projects with JavaScript, React, TypeScript, HTML
-              and CSS.
-            </li>
-            <li>
-              Practice forms, filters, sorting, state logic, REST API workflows
-              and responsive layouts.
+              Worked with medical information systems, clinic workflows,
+              integrations, reports, support tickets and user requests.
+              Translated unclear user problems into structured requirements for
+              forms, reports, interface logic and internal tools.
             </li>
           </ul>
         </div>
@@ -252,8 +270,8 @@
           <h3>Ernest SupportDesk</h3>
           <p class="meta">React, TypeScript, localStorage, filters</p>
           <p>
-            Support desk application for managing tickets, priorities, statuses
-            and internal support workflows.
+            Support desk interface for managing clinic support tickets,
+            priorities, statuses, filters and internal workflow queues.
           </p>
           <a
             class="project-link"
@@ -265,10 +283,10 @@
         </div>
         <div class="item">
           <h3>Clinic Appointments Dashboard</h3>
-          <p class="meta">React, TypeScript, dashboard, medical workflows</p>
+          <p class="meta">React, TypeScript, dashboard UI</p>
           <p>
-            Appointment dashboard with patient records, doctor schedules, status
-            tracking, filtering and simple analytics.
+            Dashboard for clinic appointment planning with patient context,
+            doctor schedules, visit statuses, filters and simple analytics.
           </p>
           <a
             class="project-link"
@@ -282,8 +300,8 @@
           <h3>Clinic Patients</h3>
           <p class="meta">JavaScript, DOM, forms, localStorage</p>
           <p>
-            JavaScript app for patient cards, search, sorting, filtering and
-            browser-side persistence.
+            Vanilla JavaScript app for managing patient cards, search, sorting,
+            filtering and browser-side data persistence.
           </p>
           <a
             class="project-link"
@@ -297,21 +315,33 @@
 
       <section>
         <h2>Skills</h2>
-        <div class="tags">
-          <span>JavaScript</span>
-          <span>TypeScript</span>
-          <span>React</span>
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>Responsive UI</span>
-          <span>REST API</span>
-          <span>Fetch API</span>
-          <span>localStorage</span>
-          <span>Git</span>
-          <span>GitHub</span>
-          <span>Dashboards</span>
-          <span>Forms</span>
-          <span>Internal tools</span>
+        <div class="skill-groups">
+          <div class="skill-group">
+            <strong>Frontend:</strong>
+            <span>JavaScript, TypeScript, React, HTML, CSS, Vite</span>
+          </div>
+          <div class="skill-group">
+            <strong>UI / Logic:</strong>
+            <span
+              >Forms, filters, tables, dashboards, status-based workflows,
+              responsive layouts</span
+            >
+          </div>
+          <div class="skill-group">
+            <strong>Data:</strong>
+            <span>REST API, fetch, async/await, localStorage, JSON</span>
+          </div>
+          <div class="skill-group">
+            <strong>Tools:</strong>
+            <span>Git, GitHub, VS Code, Figma basics</span>
+          </div>
+          <div class="skill-group">
+            <strong>Domain:</strong>
+            <span
+              >Medical software, support workflows, clinic processes, internal
+              tools</span
+            >
+          </div>
         </div>
       </section>
 

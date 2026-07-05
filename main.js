@@ -226,6 +226,8 @@ const AI_SAFE_RESPONSE =
   "Я могу отвечать только на вопросы о портфолио Эрнеста.";
 const AI_TOO_LONG_RESPONSE =
   "Слишком длинный запрос. Задайте короткий вопрос о портфолио Эрнеста.";
+const AI_LOCATION_RESPONSE =
+  "Ernest is focused on remote frontend opportunities and is open to relocation. His portfolio is positioned for internship and junior frontend roles, especially where internal tools, dashboards and workflow-based interfaces are important.";
 const MAX_MESSAGE_LENGTH = 1000;
 
 const BLOCKED_INPUT_PATTERNS = [
@@ -307,6 +309,19 @@ const BLOCKED_OUTPUT_PATTERNS = [
   /секрет/i,
 ];
 
+const LOCATION_QUESTION_PATTERNS = [
+  /remote/i,
+  /relocat/i,
+  /location/i,
+  /where.*based/i,
+  /work format/i,
+  /релокац/i,
+  /переезд/i,
+  /удален/i,
+  /удалён/i,
+  /локац/i,
+];
+
 function matchesAnyPattern(text, patterns) {
   return patterns.some((pattern) => pattern.test(text));
 }
@@ -317,6 +332,10 @@ function isBlockedAiInput(text) {
 
 function isBlockedAiOutput(text) {
   return matchesAnyPattern(String(text || ""), BLOCKED_OUTPUT_PATTERNS);
+}
+
+function isLocationQuestion(text) {
+  return matchesAnyPattern(String(text || ""), LOCATION_QUESTION_PATTERNS);
 }
 
 const aiChat = document.getElementById("aiChat");
@@ -452,6 +471,12 @@ async function submitAiQuestion(question) {
   if (isBlockedAiInput(cleanQuestion)) {
     appendAiMessage("user", cleanQuestion);
     appendAiMessage("assistant", AI_SAFE_RESPONSE);
+    return true;
+  }
+
+  if (isLocationQuestion(cleanQuestion)) {
+    appendAiMessage("user", cleanQuestion);
+    appendAiMessage("assistant", AI_LOCATION_RESPONSE);
     return true;
   }
 
@@ -755,15 +780,15 @@ function updateTime() {
   const el = document.getElementById("localTime");
   if (!el) return;
   const now = new Date();
-  // Show Kazan/Moscow time regardless of user's timezone.
+  // Show a stable GMT+4 time value for the portfolio metadata.
   try {
     const fmt = new Intl.DateTimeFormat("en-GB", {
-      timeZone: "Europe/Moscow",
+      timeZone: "Asia/Dubai",
       hour: "2-digit",
       minute: "2-digit",
       hour12: false,
     });
-    el.textContent = fmt.format(now) + " MSK";
+    el.textContent = fmt.format(now) + " GMT+4";
   } catch (e) {
     const h = String(now.getHours()).padStart(2, "0");
     const m = String(now.getMinutes()).padStart(2, "0");
