@@ -40,7 +40,7 @@ if (document.readyState === "complete") {
 // Entry sound
 // =====================================================
 const ENTRY_SOUND_SRC =
-  "https://raw.githubusercontent.com/MrSSStrange/ernest-portfolio/main/_assets/entry-sound.mp3";
+  "https://raw.githubusercontent.com/MrSSStrange/ernest-portfolio/f641a277350dbb68888ecc0eef9f93f8cf19f36f/_assets/entry-sound.mp3";
 const ENTRY_SOUND_SESSION_KEY = "entrySoundPlayedFileV1";
 let entrySoundPlayed = false;
 let entryAudio = null;
