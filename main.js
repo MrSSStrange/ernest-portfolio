@@ -39,12 +39,10 @@ if (document.readyState === "complete") {
 // =====================================================
 // Entry sound
 // =====================================================
-const ENTRY_SOUND_SESSION_KEY = "entrySoundPlayedV2";
+const ENTRY_SOUND_SRC = "./assets/entry-sound.mp3";
+const ENTRY_SOUND_SESSION_KEY = "entrySoundPlayedFileV1";
 let entrySoundPlayed = false;
-
-function prefersReducedMotion() {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
+let entryAudio = null;
 
 function hasEntrySoundPlayed() {
   try {
@@ -62,78 +60,59 @@ function markEntrySoundPlayed() {
   } catch (error) {}
 }
 
+function getEntryAudio() {
+  if (!entryAudio) {
+    entryAudio = new Audio(ENTRY_SOUND_SRC);
+    entryAudio.preload = "auto";
+    entryAudio.volume = 0.72;
+  }
+
+  return entryAudio;
+}
+
+function removeEntrySoundListeners() {
+  ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
+    window.removeEventListener(eventName, playEntrySound, { capture: true });
+  });
+}
+
 function playEntrySound() {
-  if (entrySoundPlayed || hasEntrySoundPlayed() || prefersReducedMotion()) {
+  if (entrySoundPlayed || hasEntrySoundPlayed()) {
+    removeEntrySoundListeners();
     return;
   }
 
-  const AudioContextConstructor =
-    window.AudioContext || window.webkitAudioContext;
-
-  if (!AudioContextConstructor) return;
-
   try {
     entrySoundPlayed = true;
-    const audioContext = new AudioContextConstructor();
+    const audio = getEntryAudio();
+    audio.currentTime = 0;
 
-    const play = () => {
-      const startAt = audioContext.currentTime + 0.02;
-      const masterGain = audioContext.createGain();
-
-      masterGain.gain.setValueAtTime(0.0001, startAt);
-      masterGain.gain.exponentialRampToValueAtTime(0.26, startAt + 0.05);
-      masterGain.gain.exponentialRampToValueAtTime(0.0001, startAt + 0.82);
-      masterGain.connect(audioContext.destination);
-
-      function tone(frequency, type, delay, duration, peakGain) {
-        const oscillator = audioContext.createOscillator();
-        const gain = audioContext.createGain();
-        const toneStart = startAt + delay;
-        const toneEnd = toneStart + duration;
-
-        oscillator.type = type;
-        oscillator.frequency.setValueAtTime(frequency, toneStart);
-        gain.gain.setValueAtTime(0.0001, toneStart);
-        gain.gain.exponentialRampToValueAtTime(peakGain, toneStart + 0.04);
-        gain.gain.exponentialRampToValueAtTime(0.0001, toneEnd);
-
-        oscillator.connect(gain);
-        gain.connect(masterGain);
-        oscillator.start(toneStart);
-        oscillator.stop(toneEnd + 0.03);
-      }
-
-      markEntrySoundPlayed();
-
-      tone(146.83, "sawtooth", 0, 0.42, 0.16);
-      tone(73.42, "sine", 0.04, 0.56, 0.18);
-      tone(392, "triangle", 0.18, 0.28, 0.07);
-      tone(220, "square", 0.34, 0.22, 0.035);
-
-      window.setTimeout(() => {
-        audioContext.close().catch(() => {});
-      }, 1100);
-    };
-
-    if (audioContext.state === "suspended") {
-      audioContext
-        .resume()
-        .then(play)
+    const playPromise = audio.play();
+    if (playPromise && typeof playPromise.then === "function") {
+      playPromise
+        .then(() => {
+          markEntrySoundPlayed();
+          removeEntrySoundListeners();
+        })
         .catch(() => {
           entrySoundPlayed = false;
         });
-    } else {
-      play();
+
+      return;
     }
+
+    markEntrySoundPlayed();
+    removeEntrySoundListeners();
   } catch (error) {
     entrySoundPlayed = false;
   }
 }
 
-if (!hasEntrySoundPlayed() && !prefersReducedMotion()) {
+if (!hasEntrySoundPlayed()) {
+  getEntryAudio();
+
   ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
     window.addEventListener(eventName, playEntrySound, {
-      once: true,
       capture: true,
       passive: true,
     });
