@@ -45,6 +45,31 @@ const cvPreviewClose = document.getElementById("cvPreviewClose");
 const cvPreviewLinks = document.querySelectorAll(".js-cv-preview");
 let cvPreviewLastFocus = null;
 
+function handleCvFrameLoad() {
+  let frameDocument = null;
+
+  try {
+    frameDocument = cvPreviewFrame?.contentDocument;
+  } catch (error) {
+    return;
+  }
+
+  if (!frameDocument) return;
+
+  frameDocument.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+
+    const href = link.getAttribute("href");
+    if (!href || href.startsWith("mailto:")) return;
+
+    event.preventDefault();
+    window.open(link.href, "_blank", "noopener");
+  });
+}
+
 function openCvPreview(event) {
   if (!cvPreview || !cvPreviewFrame) return;
 
@@ -81,6 +106,7 @@ cvPreviewLinks.forEach((link) => {
 });
 
 cvPreviewClose?.addEventListener("click", closeCvPreview);
+cvPreviewFrame?.addEventListener("load", handleCvFrameLoad);
 document.querySelectorAll("[data-cv-close]").forEach((element) => {
   element.addEventListener("click", closeCvPreview);
 });
