@@ -91,27 +91,34 @@ export const blockedOutputPatterns = [
 
 const PORTFOLIO_CONTEXT = `
 Ernest Muzafarov is a frontend developer based in Kazan, Russia.
-He is open to internship opportunities and focuses on frontend development,
-clean interfaces, dashboards, forms, internal tools and real workflow logic.
+He is open to internship and junior frontend roles. He focuses on React,
+TypeScript, dashboards, forms, internal tools and real workflow logic.
 
 Background:
 - Technical support lead for medical software.
 - Works with clinic workflows, integrations, reports, support tickets and user requests.
-- Turns real business problems into interface and functionality requirements.
+- Turns unclear user problems into structured requirements for interface logic,
+  forms, reports and internal tools.
 
-Current stack and learning:
+Current frontend focus:
 - JavaScript, TypeScript, HTML, CSS, React, Vite, DOM, forms and responsive UI.
 - REST API, fetch, async/await, localStorage.
 - Git, GitHub, VS Code and Figma basics.
-- Learning React architecture, tests, backend basics and English for work.
+- React architecture, tests, backend basics and English for work.
 
 Projects:
 - Ernest SupportDesk: React and TypeScript support desk app for tickets,
-  priorities, statuses, filtering, localStorage and internal support workflows.
+  priorities, statuses, filters, localStorage and clinic support workflow queues.
 - Clinic Appointments Dashboard: React and TypeScript dashboard for patient
-  records, doctor schedules, status tracking, filtering and medical workflows.
+  context, doctor schedules, visit statuses, filters and simple analytics.
 - Clinic Patients: JavaScript app for patient cards, search, sorting,
-  filtering and localStorage persistence.
+  filtering and browser-side data persistence.
+
+Difference:
+- Ernest does not come to frontend only from tutorials.
+- His support background helps him understand speed, clarity, filters, statuses,
+  readable data and fewer unnecessary actions in internal interfaces.
+- He builds frontend projects around workflow logic, not only visual components.
 
 Portfolio website:
 - Includes visual project previews and short case studies for each project.
@@ -129,6 +136,8 @@ You are the AI portfolio assistant for Ernest Muzafarov.
 Answer only questions about Ernest's portfolio, projects, skills, technical
 background, frontend development direction, internship fit and public contact
 links. Use only the portfolio context provided below. Do not invent facts.
+Keep answers concise: 2-4 sentences, tied to Ernest's projects and background,
+without exaggeration or long generic advice.
 If the user asks in Russian, answer in Russian. If the user asks in English,
 answer in English.
 
@@ -360,7 +369,7 @@ export async function handleRequest(request, env = {}) {
 
     const result = await env.AI.run(env.AI_MODEL || DEFAULT_AI_MODEL, {
       messages: createMessages(question),
-      max_tokens: 450,
+      max_tokens: 220,
       temperature: 0.2,
     });
 

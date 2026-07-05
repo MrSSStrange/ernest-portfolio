@@ -41,82 +41,78 @@ if (document.readyState === "complete") {
 // =====================================================
 const ENTRY_SOUND_SRC =
   "https://raw.githubusercontent.com/MrSSStrange/ernest-portfolio/f641a277350dbb68888ecc0eef9f93f8cf19f36f/_assets/entry-sound.mp3";
-const ENTRY_SOUND_SESSION_KEY = "entrySoundPlayedFileV1";
-let entrySoundPlayed = false;
+const ENTRY_SOUND_ENABLED_KEY = "entrySoundEnabled";
+const soundToggle = document.getElementById("soundToggle");
 let entryAudio = null;
 
-function hasEntrySoundPlayed() {
+function getSoundEnabled() {
   try {
-    return sessionStorage.getItem(ENTRY_SOUND_SESSION_KEY) === "true";
+    return localStorage.getItem(ENTRY_SOUND_ENABLED_KEY) === "true";
   } catch (error) {
-    return entrySoundPlayed;
+    return false;
   }
 }
 
-function markEntrySoundPlayed() {
-  entrySoundPlayed = true;
-
+function setSoundEnabled(isEnabled) {
   try {
-    sessionStorage.setItem(ENTRY_SOUND_SESSION_KEY, "true");
+    localStorage.setItem(ENTRY_SOUND_ENABLED_KEY, String(isEnabled));
   } catch (error) {}
 }
 
 function getEntryAudio() {
   if (!entryAudio) {
     entryAudio = new Audio(ENTRY_SOUND_SRC);
-    entryAudio.preload = "auto";
-    entryAudio.volume = 0.72;
+    entryAudio.preload = "none";
+    entryAudio.volume = 0.28;
   }
 
   return entryAudio;
 }
 
-function removeEntrySoundListeners() {
-  ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
-    window.removeEventListener(eventName, playEntrySound, { capture: true });
-  });
+function updateSoundToggle(isEnabled) {
+  if (!soundToggle) return;
+
+  const label = isEnabled ? "Sound on" : "Sound off";
+  const text = soundToggle.querySelector(".sound-toggle-text");
+
+  soundToggle.setAttribute("aria-label", label);
+  soundToggle.setAttribute("aria-pressed", String(isEnabled));
+  soundToggle.setAttribute("title", label);
+
+  if (text) {
+    text.textContent = label.toLowerCase();
+  }
 }
 
-function playEntrySound() {
-  if (entrySoundPlayed || hasEntrySoundPlayed()) {
-    removeEntrySoundListeners();
-    return;
-  }
-
+async function playEntrySound() {
   try {
-    entrySoundPlayed = true;
     const audio = getEntryAudio();
     audio.currentTime = 0;
-
-    const playPromise = audio.play();
-    if (playPromise && typeof playPromise.then === "function") {
-      playPromise
-        .then(() => {
-          markEntrySoundPlayed();
-          removeEntrySoundListeners();
-        })
-        .catch(() => {
-          entrySoundPlayed = false;
-        });
-
-      return;
-    }
-
-    markEntrySoundPlayed();
-    removeEntrySoundListeners();
-  } catch (error) {
-    entrySoundPlayed = false;
-  }
+    await audio.play();
+  } catch (error) {}
 }
 
-if (!hasEntrySoundPlayed()) {
-  getEntryAudio();
+function stopEntrySound() {
+  if (!entryAudio) return;
 
-  ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
-    window.addEventListener(eventName, playEntrySound, {
-      capture: true,
-      passive: true,
-    });
+  entryAudio.pause();
+  entryAudio.currentTime = 0;
+}
+
+if (soundToggle) {
+  updateSoundToggle(getSoundEnabled());
+
+  soundToggle.addEventListener("click", () => {
+    const nextEnabled = !getSoundEnabled();
+
+    setSoundEnabled(nextEnabled);
+    updateSoundToggle(nextEnabled);
+
+    if (nextEnabled) {
+      playEntrySound();
+    } else {
+      stopEntrySound();
+    }
   });
 }
 
@@ -621,14 +617,17 @@ const lines = [
   { text: "$ whoami", type: "cmd" },
   { text: "> Ernest Muzafarov", type: "out" },
   { text: "$ role", type: "cmd" },
-  { text: "> Frontend Developer", type: "out" },
+  { text: "> Frontend Developer · internal tools focus", type: "out" },
   { text: "$ background", type: "cmd" },
   { text: "> technical support lead · medical software", type: "out" },
   { text: "$ focus", type: "cmd" },
-  { text: "> React · TypeScript · JavaScript · UI logic", type: "out" },
+  {
+    text: "> support queues · dashboards · forms · filters",
+    type: "out",
+  },
   { text: "$ ./greet", type: "cmd" },
   {
-    text: "> building clean interfaces for real workflows.",
+    text: "> building interfaces for real operational workflows.",
     type: "out",
   },
 ];

@@ -6,29 +6,31 @@
     <title>Ernest Muzafarov — Frontend Developer</title>
     <meta
       name="description"
-      content="Frontend developer building clean interfaces for internal tools, dashboards and real business workflows."
+      content="Frontend developer focused on React, TypeScript, dashboards, forms, internal tools and medical software workflows."
     />
     <link rel="icon" href="./favicon.ico" sizes="any" />
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href="https://ernestmuzafarov.tech/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ernestmuzafarov.tech/" />
+    <meta property="og:image" content="https://ernestmuzafarov.tech/og-image.png" />
     <meta
       property="og:title"
       content="Ernest Muzafarov — Frontend Developer"
     />
     <meta
       property="og:description"
-      content="Frontend portfolio with workflow-focused projects, case studies, AI assistant and downloadable CV."
+      content="React and TypeScript frontend portfolio focused on internal tools, dashboards and medical software workflows."
     />
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://ernestmuzafarov.tech/og-image.png" />
     <meta
       name="twitter:title"
       content="Ernest Muzafarov — Frontend Developer"
     />
     <meta
       name="twitter:description"
-      content="Frontend portfolio with workflow-focused projects, case studies, AI assistant and downloadable CV."
+      content="React and TypeScript frontend portfolio focused on internal tools, dashboards and medical software workflows."
     />
     <script type="application/ld+json">
       {
@@ -48,7 +50,9 @@
           "React",
           "Frontend development",
           "Dashboards",
-          "Internal tools"
+          "Internal tools",
+          "Support workflows",
+          "Medical software"
         ]
       }
     </script>
@@ -97,7 +101,7 @@
           <li><a href="#experience">experience</a></li>
           <li><a href="#stack">stack</a></li>
           <li><a href="#work">work</a></li>
-          <li><a href="#learning">learning</a></li>
+          <li><a href="#learning">focus</a></li>
           <li><a href="#contact">contact</a></li>
         </ul>
         <div class="nav-actions">
@@ -161,6 +165,33 @@
               </svg>
             </button>
           </div>
+          <button
+            class="sound-toggle"
+            id="soundToggle"
+            type="button"
+            aria-label="Sound off"
+            aria-pressed="false"
+            title="Sound off"
+          >
+            <svg
+              class="sound-toggle-icon"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M11 5 6 9H3v6h3l5 4V5z" />
+              <path class="sound-wave" d="M16 9.5a4 4 0 0 1 0 5" />
+              <path class="sound-wave" d="M19 7a8 8 0 0 1 0 10" />
+              <path class="sound-off-line" d="M22 9 16 15" />
+            </svg>
+            <span class="sound-toggle-text">sound off</span>
+          </button>
           <a
             href="https://github.com/MrSSStrange"
             class="nav-gh"
@@ -182,6 +213,22 @@
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-main">
+          <div class="hero-copy fade-up">
+            <span class="hero-kicker">Ernest Muzafarov</span>
+            <h1>Frontend Developer for internal tools and real workflows.</h1>
+            <p>
+              I build React and TypeScript interfaces for support queues, clinic
+              workflows, dashboards, forms, filters and operational tools.
+            </p>
+            <div class="hero-badges" aria-label="frontend focus areas">
+              <span>Frontend Development</span>
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>Internal Tools</span>
+              <span>Medical Software</span>
+              <span>Support Workflows</span>
+            </div>
+          </div>
           <div class="terminal fade-up">
             <div class="terminal-bar">
               <span class="term-prompt"></span>
@@ -193,7 +240,7 @@
           </div>
           <div class="hero-cta" id="heroCta">
             <a href="#work" class="btn btn-primary">
-              <span>view work</span>
+              <span>View Projects</span>
               <svg
                 width="14"
                 height="14"
@@ -205,14 +252,22 @@
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
             </a>
-            <a href="#contact" class="btn btn-ghost">
-              <span>contact</span>
-            </a>
             <a
               href="./assets/ernest-muzafarov-cv.html"
               class="btn btn-ghost js-cv-preview"
             >
-              <span>view cv</span>
+              <span>View CV</span>
+            </a>
+            <a href="#contact" class="btn btn-ghost">
+              <span>Contact Me</span>
+            </a>
+            <a
+              href="https://github.com/MrSSStrange"
+              class="btn btn-ghost"
+              target="_blank"
+              rel="noopener"
+            >
+              <span>GitHub</span>
             </a>
           </div>
         </div>
@@ -229,16 +284,16 @@
             <span class="meta-label">status</span>
             <span class="meta-value">
               <span class="status-dot"></span>
-              open to internship
+              open to internship / junior frontend roles
             </span>
           </div>
           <div class="meta-block">
             <span class="meta-label">focus</span>
-            <span class="meta-value">frontend development</span>
+            <span class="meta-value">internal tools · dashboards</span>
           </div>
           <div class="meta-block">
             <span class="meta-label">now</span>
-            <span class="meta-value">learning React + TypeScript</span>
+            <span class="meta-value">React · TypeScript · workflow UI</span>
           </div>
         </aside>
       </div>
@@ -255,19 +310,19 @@
         </div>
         <div class="right">
           <p class="lead">
-            i'm Ernest — a frontend developer focused on clean interfaces,
-            dashboards, forms and internal tools.
+            I am a frontend developer with a technical support background in
+            medical software.
           </p>
           <p>
-            I come from a medical software support background, where I work with
-            real clinic workflows, integrations, reports, support requests and
-            user problems. This experience helps me understand not only how an
-            interface looks, but also how it should work for real users.
+            I work with real clinic workflows, support tickets, integrations,
+            reports and user problems. This helps me design interfaces not only
+            from a visual perspective, but also from a workflow perspective:
+            what users need to see first, how they search, filter, update
+            statuses and make decisions during the workday.
           </p>
           <p>
-            Now I am focused on frontend development: JavaScript, React,
-            TypeScript, REST API, Git and practical projects that solve real
-            business tasks.
+            My frontend focus is React, TypeScript, JavaScript, REST API,
+            forms, dashboards and internal tools.
           </p>
           <div class="about-tags">
             <span class="tag">frontend development</span>
@@ -297,13 +352,12 @@
             <div class="timeline-year">2026 — now</div>
             <div class="timeline-body">
               <div class="timeline-role">
-                frontend developer · learning & building
+                frontend developer · internal tools focus
               </div>
               <div class="timeline-desc">
-                Building frontend projects with JavaScript, React and
-                TypeScript. Focused on dashboards, forms, filters, state
-                management, REST API and clean UI for internal business
-                workflows.
+                Building React and TypeScript projects focused on real business
+                workflows: dashboards, forms, filters, status management, data
+                tables, local persistence and API-ready interface logic.
               </div>
             </div>
           </div>
@@ -315,9 +369,9 @@
               </div>
               <div class="timeline-desc">
                 Working with medical information systems, clinic workflows,
-                integrations, reports, support tickets and user requests.
-                Turning real business problems into clear interface and
-                functionality requirements.
+                integrations, reports, support tickets and user requests. I turn
+                unclear user problems into structured requirements for interface
+                logic, forms, reports and internal tools.
               </div>
             </div>
           </div>
@@ -339,11 +393,89 @@
       </div>
     </section>
 
+    <!-- Why me -->
+    <section class="section" id="why-me">
+      <div class="section-inner">
+        <div class="section-head fade-up">
+          <span class="eyebrow">03 / why me</span>
+          <h2 class="section-title">
+            support experience,<br />frontend execution.
+          </h2>
+        </div>
+        <div class="why-layout">
+          <div class="why-copy fade-up">
+            <p class="lead">I do not come to frontend only from tutorials.</p>
+            <p>
+              I have real experience with support workflows, clinic software,
+              user requests, reports, integrations and operational problems.
+              This helps me understand what internal users actually need from an
+              interface: speed, clarity, filters, statuses, readable data and
+              fewer unnecessary actions.
+            </p>
+            <p>
+              I build frontend projects around real workflow logic, not only
+              visual components.
+            </p>
+          </div>
+          <div class="why-grid">
+            <article class="why-card fade-up">
+              <h3>Workflow thinking</h3>
+              <p>I understand how users move through real business processes.</p>
+            </article>
+            <article class="why-card fade-up delay-1">
+              <h3>Support background</h3>
+              <p>
+                I know how unclear user problems become clear technical
+                requirements.
+              </p>
+            </article>
+            <article class="why-card fade-up">
+              <h3>Internal tools focus</h3>
+              <p>
+                I build dashboards, forms, filters, tables and status-based
+                interfaces.
+              </p>
+            </article>
+            <article class="why-card fade-up delay-1">
+              <h3>Medical software context</h3>
+              <p>
+                I have domain experience with clinic workflows, reports and
+                integrations.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What I can build -->
+    <section class="section" id="can-build">
+      <div class="section-inner">
+        <div class="section-head fade-up">
+          <span class="eyebrow">04 / what i can build</span>
+          <h2 class="section-title">
+            interface work<br />for operational teams.
+          </h2>
+        </div>
+        <div class="capability-grid fade-up">
+          <span>Support ticket dashboards</span>
+          <span>Clinic appointment interfaces</span>
+          <span>Patient data views</span>
+          <span>Admin panels</span>
+          <span>Internal CRM screens</span>
+          <span>Forms with validation</span>
+          <span>Filterable tables</span>
+          <span>Status-based workflows</span>
+          <span>Frontend prototypes for business tools</span>
+        </div>
+      </div>
+    </section>
+
     <!-- Stack -->
     <section class="section" id="stack">
       <div class="section-inner">
         <div class="section-head fade-up">
-          <span class="eyebrow">03 / stack</span>
+          <span class="eyebrow">05 / stack</span>
           <h2 class="section-title">tools i use<br />to build frontend.</h2>
         </div>
         <div class="code-block fade-up" id="stackCodeBlock">
@@ -399,7 +531,7 @@
     <section class="section" id="work">
       <div class="section-inner">
         <div class="section-head fade-up">
-          <span class="eyebrow">04 / work</span>
+          <span class="eyebrow">06 / work</span>
           <h2 class="section-title">
             projects built<br />around real workflows.
           </h2>
@@ -434,9 +566,8 @@
             </div>
             <h3 class="card-title">Ernest SupportDesk</h3>
             <p class="card-desc">
-              A frontend support desk application for managing tickets,
-              priorities, statuses and internal support workflows. Built around
-              real support processes and clean dashboard logic.
+              Support desk interface for managing clinic support tickets,
+              priorities, statuses, filters and internal workflow queues.
             </p>
             <div class="card-foot">
               <span>react</span><span>typescript</span><span>localStorage</span
@@ -469,9 +600,8 @@
             </div>
             <h3 class="card-title">Clinic Appointments Dashboard</h3>
             <p class="card-desc">
-              A clinic appointment dashboard with patient records, doctor
-              schedules, status tracking, filtering and simple analytics for
-              internal medical workflows.
+              Dashboard for clinic appointment planning with patient context,
+              doctor schedules, visit statuses, filters and simple analytics.
             </p>
             <div class="card-foot">
               <span>react</span><span>typescript</span><span>dashboard</span
@@ -505,8 +635,8 @@
             </div>
             <h3 class="card-title">Clinic Patients</h3>
             <p class="card-desc">
-              A JavaScript application for managing patient cards, search,
-              sorting, filtering and localStorage data persistence.
+              Vanilla JavaScript app for managing patient cards, search,
+              sorting, filtering and browser-side data persistence.
             </p>
             <div class="card-foot">
               <span>javascript</span><span>dom</span><span>forms</span
@@ -521,29 +651,36 @@
               <h3>Ernest SupportDesk</h3>
             </div>
             <p>
-              Support desk interface for real support workflows: tickets,
-              priorities, statuses, filtering and persistence.
+              Support desk interface for managing clinic support tickets,
+              priorities, statuses, filters and internal workflow queues.
             </p>
             <dl class="case-study-list">
               <div>
                 <dt>Problem</dt>
                 <dd>
                   Support requests need a clear queue, visible priority and
-                  fast status updates.
+                  workflow context.
                 </dd>
               </div>
               <div>
                 <dt>Built</dt>
                 <dd>
-                  Ticket cards, filters, status logic and localStorage-based
-                  persistence.
+                  Ticket cards, priority labels, status updates, filters,
+                  localStorage persistence and dashboard-style layout.
                 </dd>
               </div>
               <div>
                 <dt>Shows</dt>
                 <dd>
-                  React state thinking, UI structure and business workflow
-                  understanding.
+                  React state management, component structure, business workflow
+                  thinking and UI logic for internal tools.
+                </dd>
+              </div>
+              <div>
+                <dt>Next</dt>
+                <dd>
+                  Mock API, ticket details, comments, SLA indicator, assignee,
+                  clinic card and pagination.
                 </dd>
               </div>
             </dl>
@@ -560,29 +697,36 @@
               <h3>Clinic Appointments Dashboard</h3>
             </div>
             <p>
-              Dashboard for appointment planning with patient records, doctor
-              schedules, statuses and simple analytics.
+              Dashboard for clinic appointment planning with patient context,
+              doctor schedules, visit statuses, filters and simple analytics.
             </p>
             <dl class="case-study-list">
               <div>
                 <dt>Problem</dt>
                 <dd>
-                  Clinic workflows need compact data views that are easy to scan
-                  during the workday.
+                  Clinic staff need compact appointment views that are easy to
+                  scan during a working day.
                 </dd>
               </div>
               <div>
                 <dt>Built</dt>
                 <dd>
-                  Schedule-focused dashboard, filtering, status tracking and
-                  patient context.
+                  Schedule dashboard, patient cards, doctor filters,
+                  appointment statuses and analytics cards.
                 </dd>
               </div>
               <div>
                 <dt>Shows</dt>
                 <dd>
-                  Dashboard layout, domain modeling and TypeScript-oriented data
-                  structure.
+                  Dashboard layout, TypeScript data modeling, filtering logic
+                  and domain-focused UI structure.
+                </dd>
+              </div>
+              <div>
+                <dt>Next</dt>
+                <dd>
+                  Calendar view, drag-and-drop rescheduling, mock API, doctor
+                  workload statistics and loading/error states.
                 </dd>
               </div>
             </dl>
@@ -606,15 +750,15 @@
               <div>
                 <dt>Problem</dt>
                 <dd>
-                  Patient data needs quick lookup and simple organization
-                  without a backend.
+                  Patient records need quick lookup, clear structure and simple
+                  browser-side organization.
                 </dd>
               </div>
               <div>
                 <dt>Built</dt>
                 <dd>
-                  DOM rendering, form handling, sorting, filters and
-                  localStorage state.
+                  DOM rendering, form handling, search, sorting, filters and
+                  localStorage persistence.
                 </dd>
               </div>
               <div>
@@ -622,6 +766,13 @@
                 <dd>
                   JavaScript fundamentals, data transformation and practical UI
                   behavior.
+                </dd>
+              </div>
+              <div>
+                <dt>Next</dt>
+                <dd>
+                  Edit patient modal, validation, JSON import/export, visit
+                  history and pagination.
                 </dd>
               </div>
             </dl>
@@ -640,8 +791,8 @@
     <section class="section" id="learning">
       <div class="section-inner">
         <div class="section-head fade-up">
-          <span class="eyebrow">05 / learning</span>
-          <h2 class="section-title">what i'm<br />improving now.</h2>
+          <span class="eyebrow">07 / current focus</span>
+          <h2 class="section-title">current<br />focus.</h2>
         </div>
         <div class="article-list">
           <article class="article-card fade-up">
@@ -660,8 +811,8 @@
             </div>
             <h3 class="article-title">React</h3>
             <p class="article-excerpt">
-              Learning components, props, state, forms, rendering lists, effects
-              and project structure.
+              Building component-based interfaces with state, effects, forms,
+              lists and reusable UI structure.
             </p>
           </article>
           <article class="article-card fade-up">
@@ -680,8 +831,8 @@
             </div>
             <h3 class="article-title">Git & GitHub</h3>
             <p class="article-excerpt">
-              Practicing commits, branches, repository structure, README files
-              and project deployment.
+              Using GitHub for project structure, README documentation, commits,
+              branches and deployment.
             </p>
           </article>
         </div>
@@ -692,7 +843,7 @@
     <footer class="footer" id="contact">
       <div class="footer-inner">
         <div class="footer-main fade-up">
-          <span class="eyebrow">06 / contact</span>
+          <span class="eyebrow">08 / contact</span>
           <h2 class="footer-title">let's build<br />something useful.</h2>
           <a href="mailto:mega.ernest13@gmail.com" class="footer-email"
             >mega.ernest13@gmail.com</a
@@ -724,7 +875,8 @@
             <span class="link-label">colophon</span>
             <p>
               built as a personal frontend portfolio. focused on clean UI, real
-              workflow logic and practical projects for internship applications.
+              workflow logic and practical projects for internship and junior
+              frontend applications.
             </p>
           </div>
         </div>
@@ -819,30 +971,44 @@
           <button
             type="button"
             class="ai-chat-suggestion"
-            data-question="Who is Ernest?"
+            data-question="Why should we hire Ernest?"
           >
-            Who is Ernest?
+            Why should we hire Ernest?
           </button>
           <button
             type="button"
             class="ai-chat-suggestion"
-            data-question="What projects does Ernest have?"
+            data-question="What projects has Ernest built?"
           >
             Projects
           </button>
           <button
             type="button"
             class="ai-chat-suggestion"
-            data-question="Why is Ernest a good internship candidate?"
+            data-question="Is Ernest ready for internship?"
           >
             Internship fit
           </button>
           <button
             type="button"
             class="ai-chat-suggestion"
-            data-question="What is Ernest learning now?"
+            data-question="What makes Ernest different?"
           >
-            Learning
+            Difference
+          </button>
+          <button
+            type="button"
+            class="ai-chat-suggestion"
+            data-question="What frontend skills does Ernest have?"
+          >
+            Skills
+          </button>
+          <button
+            type="button"
+            class="ai-chat-suggestion"
+            data-question="What is his support background?"
+          >
+            Support background
           </button>
         </div>
 

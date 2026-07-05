@@ -1,6 +1,6 @@
 # Ernest Muzafarov — Frontend Portfolio
 
-Personal frontend portfolio website built to present my projects, technical background and current frontend development focus.
+Personal frontend portfolio website built to present my projects, technical support background and frontend focus on internal tools, dashboards, forms and real workflow logic.
 
 ## Live Demo
 
@@ -16,12 +16,14 @@ The goal of the project is to create a clean personal page that connects my real
 
 - Responsive layout
 - Dark / dim / light theme switcher
+- Explicit sound on / sound off control
 - Branded page loader
 - Terminal-style hero animation
 - Reading progress bar
 - Fade-up scroll animations
 - On-site CV preview
 - Project previews and short case studies
+- Why me and What I can build sections
 - SEO / social preview metadata
 - Floating AI Portfolio Assistant
 - Cloudflare Worker API integration
@@ -55,10 +57,15 @@ styles.css
 main.js
 assets/
   ernest-muzafarov-cv.html
+  favicon.svg
+_assets/
+  entry-sound.mp3
 worker/
   src/index.mjs
   wrangler.toml
   test-guards.mjs
+og-image.png
+favicon.ico
 ```
 
 ## Worker Guard Tests
@@ -69,4 +76,10 @@ node worker/test-guards.mjs
 
 ## Focus
 
-Frontend development, clean UI, dashboards, internal tools and real workflow logic.
+Frontend development, React, TypeScript, dashboards, forms, internal tools, support queues and medical software workflows.
+
+## Portfolio Projects
+
+- **Ernest SupportDesk** — support desk interface for clinic support tickets, priorities, statuses, filters and internal workflow queues.
+- **Clinic Appointments Dashboard** — dashboard for clinic appointment planning with patient context, doctor schedules, visit statuses, filters and simple analytics.
+- **Clinic Patients** — vanilla JavaScript app for patient cards, search, sorting, filtering and browser-side data persistence.
