@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   LOCATION_RESPONSE,
   SAFE_RESPONSE,
+  STATIC_FALLBACK_RESPONSE,
   TOO_LONG_RESPONSE,
   RateLimiter,
   handleRequest,
@@ -103,13 +104,16 @@ async function testOutputGuard() {
   for (const leakedAnswer of leakedAnswers) {
     resetRateLimitStore();
 
-    const response = await handleRequest(createRequest("Who is Ernest?"), {
-      AI: {
-        run: async () => ({
-          response: leakedAnswer,
-        }),
+    const response = await handleRequest(
+      createRequest("Tell me about frontend direction."),
+      {
+        AI: {
+          run: async () => ({
+            response: leakedAnswer,
+          }),
+        },
       },
-    });
+    );
 
     assert.equal(response.status, 200);
     assert.deepEqual(await readJson(response), { answer: SAFE_RESPONSE });
@@ -119,20 +123,43 @@ async function testOutputGuard() {
 async function testNormalAnswer() {
   resetRateLimitStore();
 
-  const response = await handleRequest(createRequest("Who is Ernest?"), {
-    AI: {
-      run: async () => ({
-        response:
-          "Ernest is a frontend developer focused on dashboards, forms and internal tools.",
-      }),
+  const response = await handleRequest(
+    createRequest("Tell me about frontend direction."),
+    {
+      AI: {
+        run: async () => ({
+          response:
+            "Ernest is a frontend developer focused on dashboards, forms and internal tools.",
+        }),
+      },
     },
-  });
+  );
 
   assert.equal(response.status, 200);
   assert.deepEqual(await readJson(response), {
     answer:
       "Ernest is a frontend developer focused on dashboards, forms and internal tools.",
   });
+}
+
+async function testIdentityStaticAnswer() {
+  resetRateLimitStore();
+
+  let aiWasCalled = false;
+  const response = await handleRequest(createRequest("Who is Ernest?"), {
+    AI: {
+      run: async () => {
+        aiWasCalled = true;
+        return { response: "should not happen" };
+      },
+    },
+  });
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(await readJson(response), {
+    answer: STATIC_FALLBACK_RESPONSE,
+  });
+  assert.equal(aiWasCalled, false);
 }
 
 async function testLocationAnswer() {
@@ -193,7 +220,7 @@ async function testRateLimit() {
   assert.deepEqual(await readJson(limited), {
     error: "AI assistant is temporarily unavailable",
   });
-  assert.equal(calls, 10);
+  assert.equal(calls, 0);
 }
 
 async function testCors() {
@@ -232,22 +259,25 @@ async function testCors() {
   assert.equal(denied.headers.has("Access-Control-Allow-Origin"), false);
 }
 
-async function testErrorHiding() {
+async function testAiFailureFallback() {
   resetRateLimitStore();
 
-  const response = await handleRequest(createRequest("Who is Ernest?"), {
-    AI: {
-      run: async () => {
-        throw new Error(
-          "OpenAI stack /Users/ernest/MySite/worker/src/index.mjs raw response",
-        );
+  const response = await handleRequest(
+    createRequest("Tell me about frontend direction."),
+    {
+      AI: {
+        run: async () => {
+          throw new Error(
+            "OpenAI stack /Users/ernest/MySite/worker/src/index.mjs raw response",
+          );
+        },
       },
     },
-  });
+  );
 
-  assert.equal(response.status, 503);
+  assert.equal(response.status, 200);
   assert.deepEqual(await readJson(response), {
-    error: "AI assistant is temporarily unavailable",
+    answer: STATIC_FALLBACK_RESPONSE,
   });
 }
 
@@ -255,9 +285,10 @@ await testBlockedInputs();
 await testLongInput();
 await testOutputGuard();
 await testNormalAnswer();
+await testIdentityStaticAnswer();
 await testLocationAnswer();
 await testRateLimit();
 await testCors();
-await testErrorHiding();
+await testAiFailureFallback();
 
 console.log("AI assistant guard tests passed");

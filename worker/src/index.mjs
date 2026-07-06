@@ -1,5 +1,5 @@
 const ALLOWED_ORIGIN = "https://ernestmuzafarov.tech";
-const DEFAULT_AI_MODEL = "@cf/meta/llama-3.1-8b-instruct";
+const DEFAULT_AI_MODEL = "@cf/meta/llama-3.2-3b-instruct";
 const RATE_LIMIT_REQUESTS = 10;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const ERROR_RESPONSE = "AI assistant is temporarily unavailable";
@@ -10,6 +10,8 @@ export const TOO_LONG_RESPONSE =
   "Слишком длинный запрос. Задайте короткий вопрос о портфолио Эрнеста.";
 export const LOCATION_RESPONSE =
   "Ernest is focused on remote frontend opportunities and is open to relocation. His portfolio is positioned for internship and junior frontend roles, especially where internal tools, dashboards and workflow-based interfaces are important.";
+export const STATIC_FALLBACK_RESPONSE =
+  "Ernest is a frontend developer focused on React, TypeScript, internal tools, dashboards and workflow-based interfaces. He has a technical support background in medical software, which helps him build practical UI around real support queues, clinic workflows, forms and reports.";
 export const MAX_MESSAGE_LENGTH = 1000;
 
 export const blockedInputPatterns = [
@@ -102,6 +104,59 @@ export const locationQuestionPatterns = [
   /удален/i,
   /удалён/i,
   /локац/i,
+];
+
+export const projectQuestionPatterns = [
+  /projects?/i,
+  /work/i,
+  /repository/i,
+  /github/i,
+  /проект/i,
+  /репозитор/i,
+];
+
+export const identityQuestionPatterns = [
+  /who.*ernest/i,
+  /about.*ernest/i,
+  /who is he/i,
+  /кто.*эрнест/i,
+  /расскажи.*эрнест/i,
+];
+
+export const skillQuestionPatterns = [
+  /skills?/i,
+  /stack/i,
+  /technolog/i,
+  /react/i,
+  /typescript/i,
+  /умени/i,
+  /навык/i,
+  /стек/i,
+  /технолог/i,
+];
+
+export const hireQuestionPatterns = [
+  /hire/i,
+  /internship/i,
+  /junior/i,
+  /fit/i,
+  /why/i,
+  /нанять/i,
+  /стажиров/i,
+  /джун/i,
+  /подход/i,
+  /почему/i,
+];
+
+export const supportQuestionPatterns = [
+  /support/i,
+  /medical/i,
+  /clinic/i,
+  /background/i,
+  /поддержк/i,
+  /медицин/i,
+  /клиник/i,
+  /опыт/i,
 ];
 
 const PORTFOLIO_CONTEXT = `
@@ -231,6 +286,34 @@ export function isBlockedOutput(text) {
 
 export function isLocationQuestion(text) {
   return matchesAnyPattern(text, locationQuestionPatterns);
+}
+
+function getStaticPortfolioAnswer(question) {
+  if (matchesAnyPattern(question, identityQuestionPatterns)) {
+    return STATIC_FALLBACK_RESPONSE;
+  }
+
+  if (matchesAnyPattern(question, projectQuestionPatterns)) {
+    return "Ernest's main projects are Ernest SupportDesk, Clinic Appointments Dashboard and Clinic Patients. They show React, TypeScript, JavaScript, forms, filters, status logic, localStorage and dashboard UI for internal tools and clinic workflows.";
+  }
+
+  if (matchesAnyPattern(question, skillQuestionPatterns)) {
+    return "Ernest works with JavaScript, TypeScript, React, HTML, CSS, Vite, REST API, fetch, async/await, localStorage, Git and GitHub. His strongest portfolio direction is internal tools: forms, filters, tables, dashboards and status-based workflows.";
+  }
+
+  if (matchesAnyPattern(question, hireQuestionPatterns)) {
+    return "Ernest is a good fit for internship and junior frontend roles because his projects are built around practical workflow UI, not only visual components. His technical support background helps him understand real user problems, support queues, reports, statuses and internal tool logic.";
+  }
+
+  if (matchesAnyPattern(question, supportQuestionPatterns)) {
+    return "Ernest has a technical support background in medical software. He worked with clinic workflows, integrations, reports, support tickets and user requests, which helps him translate operational problems into clear frontend interfaces.";
+  }
+
+  return null;
+}
+
+function getFallbackPortfolioAnswer(question) {
+  return getStaticPortfolioAnswer(question) || STATIC_FALLBACK_RESPONSE;
 }
 
 function getCorsHeaders(request) {
@@ -390,17 +473,28 @@ export async function handleRequest(request, env = {}) {
       return jsonResponse({ answer: LOCATION_RESPONSE }, 200, corsHeaders);
     }
 
-    if (!env.AI || typeof env.AI.run !== "function") {
-      throw new Error("AI binding is unavailable");
+    const staticAnswer = getStaticPortfolioAnswer(question);
+    if (staticAnswer) {
+      return jsonResponse({ answer: staticAnswer }, 200, corsHeaders);
     }
 
-    const result = await env.AI.run(env.AI_MODEL || DEFAULT_AI_MODEL, {
-      messages: createMessages(question),
-      max_tokens: 220,
-      temperature: 0.2,
-    });
+    let answer = "";
 
-    const answer = extractAiAnswer(result).trim();
+    if (env.AI && typeof env.AI.run === "function") {
+      try {
+        const result = await env.AI.run(env.AI_MODEL || DEFAULT_AI_MODEL, {
+          messages: createMessages(question),
+          max_tokens: 220,
+          temperature: 0.2,
+        });
+
+        answer = extractAiAnswer(result).trim();
+      } catch (error) {
+        answer = getFallbackPortfolioAnswer(question);
+      }
+    } else {
+      answer = getFallbackPortfolioAnswer(question);
+    }
 
     if (!answer || isBlockedOutput(answer)) {
       return jsonResponse({ answer: SAFE_RESPONSE }, 200, corsHeaders);

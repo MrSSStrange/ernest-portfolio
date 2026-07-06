@@ -228,6 +228,8 @@ const AI_TOO_LONG_RESPONSE =
   "Слишком длинный запрос. Задайте короткий вопрос о портфолио Эрнеста.";
 const AI_LOCATION_RESPONSE =
   "Ernest is focused on remote frontend opportunities and is open to relocation. His portfolio is positioned for internship and junior frontend roles, especially where internal tools, dashboards and workflow-based interfaces are important.";
+const AI_STATIC_FALLBACK_RESPONSE =
+  "Ernest is a frontend developer focused on React, TypeScript, internal tools, dashboards and workflow-based interfaces. He has a technical support background in medical software, which helps him build practical UI around real support queues, clinic workflows, forms and reports.";
 const MAX_MESSAGE_LENGTH = 1000;
 
 const BLOCKED_INPUT_PATTERNS = [
@@ -322,6 +324,59 @@ const LOCATION_QUESTION_PATTERNS = [
   /локац/i,
 ];
 
+const PROJECT_QUESTION_PATTERNS = [
+  /projects?/i,
+  /work/i,
+  /repository/i,
+  /github/i,
+  /проект/i,
+  /репозитор/i,
+];
+
+const IDENTITY_QUESTION_PATTERNS = [
+  /who.*ernest/i,
+  /about.*ernest/i,
+  /who is he/i,
+  /кто.*эрнест/i,
+  /расскажи.*эрнест/i,
+];
+
+const SKILL_QUESTION_PATTERNS = [
+  /skills?/i,
+  /stack/i,
+  /technolog/i,
+  /react/i,
+  /typescript/i,
+  /умени/i,
+  /навык/i,
+  /стек/i,
+  /технолог/i,
+];
+
+const HIRE_QUESTION_PATTERNS = [
+  /hire/i,
+  /internship/i,
+  /junior/i,
+  /fit/i,
+  /why/i,
+  /нанять/i,
+  /стажиров/i,
+  /джун/i,
+  /подход/i,
+  /почему/i,
+];
+
+const SUPPORT_QUESTION_PATTERNS = [
+  /support/i,
+  /medical/i,
+  /clinic/i,
+  /background/i,
+  /поддержк/i,
+  /медицин/i,
+  /клиник/i,
+  /опыт/i,
+];
+
 function matchesAnyPattern(text, patterns) {
   return patterns.some((pattern) => pattern.test(text));
 }
@@ -336,6 +391,34 @@ function isBlockedAiOutput(text) {
 
 function isLocationQuestion(text) {
   return matchesAnyPattern(String(text || ""), LOCATION_QUESTION_PATTERNS);
+}
+
+function getStaticPortfolioAnswer(question) {
+  if (matchesAnyPattern(question, IDENTITY_QUESTION_PATTERNS)) {
+    return AI_STATIC_FALLBACK_RESPONSE;
+  }
+
+  if (matchesAnyPattern(question, PROJECT_QUESTION_PATTERNS)) {
+    return "Ernest's main projects are Ernest SupportDesk, Clinic Appointments Dashboard and Clinic Patients. They show React, TypeScript, JavaScript, forms, filters, status logic, localStorage and dashboard UI for internal tools and clinic workflows.";
+  }
+
+  if (matchesAnyPattern(question, SKILL_QUESTION_PATTERNS)) {
+    return "Ernest works with JavaScript, TypeScript, React, HTML, CSS, Vite, REST API, fetch, async/await, localStorage, Git and GitHub. His strongest portfolio direction is internal tools: forms, filters, tables, dashboards and status-based workflows.";
+  }
+
+  if (matchesAnyPattern(question, HIRE_QUESTION_PATTERNS)) {
+    return "Ernest is a good fit for internship and junior frontend roles because his projects are built around practical workflow UI, not only visual components. His technical support background helps him understand real user problems, support queues, reports, statuses and internal tool logic.";
+  }
+
+  if (matchesAnyPattern(question, SUPPORT_QUESTION_PATTERNS)) {
+    return "Ernest has a technical support background in medical software. He worked with clinic workflows, integrations, reports, support tickets and user requests, which helps him translate operational problems into clear frontend interfaces.";
+  }
+
+  return "";
+}
+
+function getFallbackPortfolioAnswer(question) {
+  return getStaticPortfolioAnswer(question) || AI_STATIC_FALLBACK_RESPONSE;
 }
 
 const aiChat = document.getElementById("aiChat");
@@ -480,6 +563,13 @@ async function submitAiQuestion(question) {
     return true;
   }
 
+  const staticAnswer = getStaticPortfolioAnswer(cleanQuestion);
+  if (staticAnswer) {
+    appendAiMessage("user", cleanQuestion);
+    appendAiMessage("assistant", staticAnswer);
+    return true;
+  }
+
   appendAiMessage("user", cleanQuestion);
   setAiChatLoading(true);
 
@@ -498,8 +588,8 @@ async function submitAiQuestion(question) {
     return true;
   } catch (error) {
     if (loadingMessage) loadingMessage.remove();
-    appendAiMessage("error", getAiErrorMessage(error));
-    return false;
+    appendAiMessage("assistant", getFallbackPortfolioAnswer(cleanQuestion));
+    return true;
   } finally {
     setAiChatLoading(false);
   }
