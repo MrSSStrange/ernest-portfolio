@@ -1,85 +1,94 @@
-# Ernest Muzafarov — Frontend Portfolio
+# Ernest Muzafarov — Android Developer Portfolio
 
-Personal frontend portfolio website built to present my projects, technical support background and frontend focus on internal tools, dashboards, forms and real workflow logic.
+Персональное портфолио Android-разработчика с акцентом на Kotlin, Jetpack Compose, Android SDK и продуктовый подход к мобильным интерфейсам.
 
-## Live Demo
+[Открыть сайт](https://ernestmuzafarov.tech) · [GitHub](https://github.com/MrSSStrange)
 
-[ernestmuzafarov.tech](https://ernestmuzafarov.tech)
+## О проекте
 
-## About
+Сайт рассказывает о моём опыте технической поддержки медицинского ПО и переходе в Android-разработку. Интерфейс построен вокруг Android-визуального языка: Kotlin-код, мобильные экраны, карточки навыков, roadmap и концепты будущих приложений.
 
-This website presents my frontend portfolio, projects and background in technical support for medical software.
+## Возможности
 
-The goal of the project is to create a clean personal page that connects my real work experience with my frontend development direction.
+- адаптивный интерфейс для компьютеров и мобильных устройств;
+- анимированный hero-блок с Android-мокапом;
+- секции «Обо мне», «Навыки», «Проекты» и «Контакты»;
+- стек Kotlin, Jetpack Compose и Android SDK;
+- мобильное меню и плавное появление блоков при прокрутке;
+- поддержка `prefers-reduced-motion`;
+- русскоязычные SEO-метаданные и favicon;
+- статический экспорт для GitHub Pages;
+- совместимость с Vinext/OpenAI Sites.
 
-## Features
+## Технологии
 
-- Responsive layout
-- Dark / dim / light theme switcher
-- Explicit sound on / sound off control
-- Branded page loader
-- Terminal-style hero animation
-- Reading progress bar
-- Fade-up scroll animations
-- On-site CV preview
-- Project previews and short case studies
-- Why me and What I can build sections
-- SEO / social preview metadata
-- Floating AI Portfolio Assistant
-- Cloudflare Worker API integration
-- Workers AI integration
-- Custom domain deployment
+| Область | Технологии |
+| --- | --- |
+| Интерфейс | React 19, TypeScript, HTML, CSS |
+| Фреймворк | Next.js 16 |
+| Основная сборка | Vinext, Vite, Cloudflare Workers |
+| Статическая публикация | Next.js Static Export, GitHub Pages |
+| Дизайн-концепция | Kotlin, Jetpack Compose, Material Design |
 
-## Tech Stack
-
-- HTML
-- CSS
-- Vanilla JavaScript
-- Fetch API
-- GitHub Pages
-- Cloudflare Workers
-- Workers AI
-
-## AI Portfolio Assistant
-
-The portfolio includes a floating AI assistant that answers questions about my projects, skills, technical background and frontend development direction.
-
-The frontend sends requests to a Cloudflare Worker API.
-The AI logic runs on the backend side, so no API keys are exposed in the browser.
-
-**Stack:** Vanilla JavaScript, Fetch API, Cloudflare Workers, Workers AI
-
-## Project Structure
+## Структура проекта
 
 ```text
-index.html
-styles.css
-main.js
-assets/
-  ernest-muzafarov-cv.html
-  favicon.svg
-_assets/
-  entry-sound.mp3
-worker/
-  src/index.mjs
-  wrangler.toml
-  test-guards.mjs
-og-image.png
-favicon.ico
+.
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+├── public/
+│   ├── favicon.svg
+│   ├── CNAME
+│   └── .nojekyll
+├── scripts/
+├── tests/
+├── worker/
+├── next.config.ts
+├── vite.config.ts
+├── package.json
+└── README.md
 ```
 
-## Worker Guard Tests
+Файлы `index.html`, `_next/`, `404.html` и служебные `.txt` в корне — готовый статический экспорт, который обслуживается GitHub Pages.
+
+## Локальный запуск
+
+Требуется Node.js `22.13.0` или новее.
 
 ```bash
-node worker/test-guards.mjs
+git clone https://github.com/MrSSStrange/ernest-portfolio.git
+cd ernest-portfolio
+npm ci
+npm run dev
 ```
 
-## Focus
+После запуска откройте адрес, указанный Vite в терминале.
 
-Frontend development, React, TypeScript, dashboards, forms, internal tools, support queues and medical software workflows.
+## Проверки и сборка
 
-## Portfolio Projects
+```bash
+npm run lint
+npm run build
+npm test
+```
 
-- **Ernest SupportDesk** — support desk interface for clinic support tickets, priorities, statuses, filters and internal workflow queues.
-- **Clinic Appointments Dashboard** — dashboard for clinic appointment planning with patient context, doctor schedules, visit statuses, filters and simple analytics.
-- **Clinic Patients** — vanilla JavaScript app for patient cards, search, sorting, filtering and browser-side data persistence.
+Команда `npm run build` создаёт Vinext-артефакт для OpenAI Sites. Для статического экспорта GitHub Pages и синхронизации готовых файлов с корнем репозитория используется:
+
+```bash
+npm run export:pages
+```
+
+Скрипты основной Sites-сборки рассчитаны на Linux и используют `flock` и GNU `timeout`.
+
+## Текущий статус контента
+
+Карточки проектов на сайте показывают концепты и направления дальнейшей разработки. Контактная форма пока демонстрационная и не отправляет данные на сервер.
+
+## Автор
+
+Ernest Muzafarov — Android Developer.
+
+- GitHub: [MrSSStrange](https://github.com/MrSSStrange)
+- Сайт: [ernestmuzafarov.tech](https://ernestmuzafarov.tech)
