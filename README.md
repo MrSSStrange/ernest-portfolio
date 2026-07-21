@@ -1,85 +1,98 @@
 # Ernest Muzafarov — Frontend Portfolio
 
-Personal frontend portfolio website built to present my projects, technical support background and frontend focus on internal tools, dashboards, forms and real workflow logic.
+Personal portfolio for a frontend developer focused on React, TypeScript, internal tools, dashboards, forms, and real workflow logic.
 
-## Live Demo
+[Live website](https://ernestmuzafarov.tech) · [GitHub](https://github.com/MrSSStrange) · [LinkedIn](https://www.linkedin.com/in/ernest-muzafarov-919a323a2/)
 
-[ernestmuzafarov.tech](https://ernestmuzafarov.tech)
+## Overview
 
-## About
+The portfolio connects my frontend development work with my technical support background in medical software. It presents projects built around practical clinic and support workflows, including filters, status management, forms, dashboards, and browser-side data persistence.
 
-This website presents my frontend portfolio, projects and background in technical support for medical software.
-
-The goal of the project is to create a clean personal page that connects my real work experience with my frontend development direction.
+I am open to remote internship and junior frontend opportunities, as well as relocation.
 
 ## Features
 
-- Responsive layout
-- Dark / dim / light theme switcher
-- Explicit sound on / sound off control
-- Branded page loader
-- Terminal-style hero animation
-- Reading progress bar
-- Fade-up scroll animations
-- On-site CV preview
-- Project previews and short case studies
-- Why me and What I can build sections
-- SEO / social preview metadata
+- Responsive layout for desktop and mobile
+- Dark, dim, and light themes with saved preferences
+- Terminal-style hero animation and reading progress indicator
+- Optional entry sound with an explicit on/off control
+- Interactive project previews and case studies
+- Built-in CV preview
 - Floating AI Portfolio Assistant
-- Cloudflare Worker API integration
-- Workers AI integration
-- Custom domain deployment
+- SEO, Open Graph, Twitter Card, and structured-data metadata
+- Custom-domain deployment
 
 ## Tech Stack
 
-- HTML
-- CSS
-- Vanilla JavaScript
-- Fetch API
-- GitHub Pages
-- Cloudflare Workers
-- Workers AI
+| Area | Technologies |
+| --- | --- |
+| Portfolio UI | HTML, CSS, Vanilla JavaScript |
+| Browser APIs | Fetch API, DOM, localStorage |
+| AI assistant | Cloudflare Workers, Workers AI, Durable Objects |
+| Deployment | GitHub Pages, custom domain |
+| Project focus | React, TypeScript, Vite, REST APIs |
 
-## AI Portfolio Assistant
+The AI assistant runs through a Cloudflare Worker, keeping backend logic and credentials out of the browser. Its API includes origin restrictions, request limits, and input/output guards.
 
-The portfolio includes a floating AI assistant that answers questions about my projects, skills, technical background and frontend development direction.
+## Projects
 
-The frontend sends requests to a Cloudflare Worker API.
-The AI logic runs on the backend side, so no API keys are exposed in the browser.
+### [Ernest SupportDesk](https://github.com/MrSSStrange/ernest-supportdesk)
 
-**Stack:** Vanilla JavaScript, Fetch API, Cloudflare Workers, Workers AI
+React and TypeScript support desk interface for clinic tickets, priorities, statuses, filters, workflow queues, and local persistence.
+
+### [Clinic Appointments Dashboard](https://github.com/MrSSStrange/clinic-appointments-dashboard)
+
+React and TypeScript dashboard for appointment planning, patient context, doctor schedules, visit statuses, filters, and basic analytics.
+
+### [Clinic Patients](https://github.com/MrSSStrange/clinic-patients)
+
+Vanilla JavaScript application for patient cards, forms, search, sorting, filtering, and browser-side data persistence.
 
 ## Project Structure
 
-```text
-index.html
-styles.css
-main.js
-assets/
-  ernest-muzafarov-cv.html
-  favicon.svg
-_assets/
-  entry-sound.mp3
-worker/
-  src/index.mjs
-  wrangler.toml
-  test-guards.mjs
-og-image.png
-favicon.ico
-```
+~~~text
+.
+├── index.html
+├── styles.css
+├── main.js
+├── assets/
+│   ├── ernest-muzafarov-cv.html
+│   └── favicon.svg
+├── _assets/
+│   └── entry-sound.mp3
+├── worker/
+│   ├── src/index.mjs
+│   ├── wrangler.toml
+│   ├── test-guards.mjs
+│   └── README.md
+├── og-image.png
+├── favicon.ico
+└── CNAME
+~~~
 
-## Worker Guard Tests
+## Run Locally
 
-```bash
+No build step or package installation is required.
+
+~~~bash
+git clone https://github.com/MrSSStrange/ernest-portfolio.git
+cd ernest-portfolio
+python3 -m http.server 8000
+~~~
+
+Open [http://localhost:8000](http://localhost:8000).
+
+The production AI endpoint accepts requests only from `ernestmuzafarov.tech`, so the assistant may be unavailable when the site is opened locally.
+
+To run the Worker guard tests:
+
+~~~bash
 node worker/test-guards.mjs
-```
+~~~
 
-## Focus
+## Contact
 
-Frontend development, React, TypeScript, dashboards, forms, internal tools, support queues and medical software workflows.
-
-## Portfolio Projects
-
-- **Ernest SupportDesk** — support desk interface for clinic support tickets, priorities, statuses, filters and internal workflow queues.
-- **Clinic Appointments Dashboard** — dashboard for clinic appointment planning with patient context, doctor schedules, visit statuses, filters and simple analytics.
-- **Clinic Patients** — vanilla JavaScript app for patient cards, search, sorting, filtering and browser-side data persistence.
+- Email: [mega.ernest13@gmail.com](mailto:mega.ernest13@gmail.com)
+- GitHub: [MrSSStrange](https://github.com/MrSSStrange)
+- LinkedIn: [Ernest Muzafarov](https://www.linkedin.com/in/ernest-muzafarov-919a323a2/)
+- Portfolio: [ernestmuzafarov.tech](https://ernestmuzafarov.tech)
