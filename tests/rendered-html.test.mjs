@@ -34,8 +34,10 @@ test("renders development preview metadata", async () => {
   assert.match(html, developmentPreviewMeta);
   assert.match(html, /Эрнест — Android Developer/);
   assert.match(html, /Jetpack Compose/);
-  assert.match(html, /mega\.ernest13@gmail\.com/);
-  assert.match(html, /https:\/\/formsubmit\.co\/mega\.ernest13@gmail\.com/);
+  assert.match(html, /https:\/\/github\.com\/MrSSStrange/);
+  assert.match(html, /https:\/\/www\.linkedin\.com\/in\/ernest-muzafarov-919a323a2/);
+  assert.doesNotMatch(html, /@gmail\.|formsubmit|mailto:/i);
+  assert.doesNotMatch(html, /<form\b/i);
   assert.doesNotMatch(html, /Макет формы работает/);
   assert.doesNotMatch(html, /Frontend Developer/);
 });

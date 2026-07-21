@@ -302,25 +302,21 @@ h1 span { color: transparent; -webkit-text-stroke: 1px var(--green); text-shadow
 .contact-section { padding-bottom: 80px; }
 .contact-shell { min-height: 600px; padding: 64px; border-radius: 40px; border: 1px solid rgba(182,255,92,.25); background: radial-gradient(circle at 12% 90%, rgba(61,220,132,.12), transparent 35%), linear-gradient(145deg, #101713, #080c0a); display: grid; grid-template-columns: 1fr .85fr; gap: 70px; position: relative; overflow: hidden; }
 .contact-shell::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, rgba(182,255,92,.08) 1px, transparent 1.2px); background-size: 25px 25px; mask-image: linear-gradient(90deg, transparent 40%, #000); opacity: .3; }
-.contact-copy, .contact-form { position: relative; z-index: 2; }
+.contact-copy, .contact-private { position: relative; z-index: 2; }
 .contact-copy h2 { font-size: clamp(44px, 5vw, 70px); }
 .contact-copy > p:not(.section-kicker) { max-width: 480px; color: var(--muted); line-height: 1.7; margin-top: 28px; }
 .contact-links { max-width: 480px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 48px; }
 .contact-links > a { min-width: 0; padding: 17px; display: grid; grid-template-columns: 35px minmax(0, 1fr); column-gap: 10px; border: 1px solid rgba(182,255,92,.15); border-radius: 17px; background: rgba(182,255,92,.035); transition: border-color .2s, background .2s, transform .2s; }
 .contact-links > a:hover, .contact-links > a:focus-visible { border-color: rgba(182,255,92,.42); background: rgba(182,255,92,.075); transform: translateY(-2px); }
 .contact-links > a:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
-.contact-links .contact-email { grid-column: 1 / -1; }
 .contact-links i { width: 33px; height: 33px; grid-row: span 2; display: grid; place-items: center; background: rgba(61,220,132,.12); border-radius: 10px; color: var(--green); font-style: normal; font-size: 10px; font-weight: 700; }.contact-links b { min-width: 0; font-size: 12px; align-self: end; }.contact-links small { min-width: 0; overflow-wrap: anywhere; color: #718078; font-size: 9px; margin-top: 4px; }
-.contact-form { display: flex; flex-direction: column; gap: 18px; padding: 34px; border: 1px solid rgba(255,255,255,.07); border-radius: 27px; background: rgba(8,12,10,.65); backdrop-filter: blur(14px); }
-.contact-form label { display: flex; flex-direction: column; gap: 8px; color: #b7c6bc; font-size: 11px; }
-.contact-form input, .contact-form textarea { width: 100%; border: 1px solid rgba(255,255,255,.1); outline: 0; border-radius: 13px; background: rgba(255,255,255,.035); color: var(--text); padding: 14px 16px; resize: none; font: inherit; font-size: 13px; transition: border-color .2s, box-shadow .2s; }
-.contact-form input:focus, .contact-form textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(61,220,132,.08); }
-.contact-form input::placeholder, .contact-form textarea::placeholder { color: #56635b; }
-.contact-form .button { width: 100%; margin-top: 2px; border: 0; cursor: pointer; }
-.contact-form .button:disabled { cursor: wait; opacity: .72; }
-.form-note { min-height: 14px; margin: -7px 0 0; color: var(--green); text-align: center; font-size: 10px; }
-.form-note.error { color: #ff9b91; }
-.form-note a { text-decoration: underline; text-underline-offset: 2px; }
+.contact-private { min-height: 430px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 42px; border: 1px solid rgba(255,255,255,.07); border-radius: 27px; background: radial-gradient(circle at 90% 10%, rgba(182,255,92,.08), transparent 34%), rgba(8,12,10,.65); backdrop-filter: blur(14px); overflow: hidden; }
+.private-label { display: flex; align-items: center; gap: 9px; color: var(--green); font: 9px "Courier New", monospace; letter-spacing: .16em; }.private-label > i { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 12px var(--lime); }
+.private-mark { width: 72px; height: 72px; display: grid; place-items: center; margin: 30px 0 24px; border: 1px solid rgba(182,255,92,.2); border-radius: 22px; background: rgba(61,220,132,.08); }.private-mark .android-mark { transform: scale(1.25); }
+.contact-private h3 { margin: 0; font-size: clamp(28px, 3vw, 40px); line-height: 1.05; letter-spacing: -.04em; }
+.contact-private > p { max-width: 430px; margin: 20px 0 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.contact-private .button { width: 100%; margin-top: 28px; }
+.private-note { display: flex; align-items: center; gap: 8px; margin-top: 18px; color: #718078; font-size: 10px; }.private-note i { width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; background: rgba(61,220,132,.1); color: var(--green); font-style: normal; }
 .contact-mascot { position: absolute; left: 45%; bottom: 30px; width: 85px; height: 85px; border: 1px solid rgba(182,255,92,.2); border-radius: 26px; display: grid; place-items: center; background: #0a100d; transform: rotate(-8deg); animation: floatReverse 6s ease-in-out infinite; }
 .contact-mascot .android-mark { transform: scale(1.4); }.contact-mascot > i { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px var(--green); }.contact-mascot > i:nth-last-child(2) { left: 9px; top: 12px; }.contact-mascot > i:last-child { right: 10px; bottom: 13px; }
 
@@ -398,8 +394,8 @@ footer p { color: #56635b; font: 9px "Courier New", monospace; text-transform: u
   .project-featured { grid-column: auto; grid-row: auto; grid-template-columns: 1fr; padding: 30px; min-height: 720px; }
   .project-card h3 { margin-top: 42px; }.project-phone { width: min(290px, 95%); height: 490px; justify-self: center; margin-bottom: -65px; }
   .small-project { min-height: 340px; }.terminal-window { width: 175px; }
-  .contact-shell { padding: 34px 22px; border-radius: 28px; gap: 40px; }.contact-links { grid-template-columns: 1fr; }.contact-links .contact-email { grid-column: auto; }.contact-mascot { display: none; }
-  .contact-form { padding: 22px; }
+  .contact-shell { padding: 34px 22px; border-radius: 28px; gap: 40px; }.contact-links { grid-template-columns: 1fr; }.contact-mascot { display: none; }
+  .contact-private { min-height: 400px; padding: 28px 22px; }
   footer { flex-wrap: wrap; padding: 35px 0; } footer p { order: 3; width: 100%; text-align: center; }
 }
 

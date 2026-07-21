@@ -17,7 +17,7 @@
 - мобильное меню и плавное появление блоков при прокрутке;
 - поддержка `prefers-reduced-motion`;
 - русскоязычные SEO-метаданные и favicon;
-- рабочая контактная форма с отправкой сообщений на email через FormSubmit;
+- безопасные ссылки на публичные профили без публикации личной почты;
 - статический экспорт для GitHub Pages;
 - совместимость с Vinext/OpenAI Sites.
 
@@ -83,9 +83,9 @@ npm run export:pages
 
 Скрипты основной Sites-сборки рассчитаны на Linux и используют `flock` и GNU `timeout`.
 
-## Контактная форма
+## Контакты и приватность
 
-Форма отправляет сообщения через AJAX на FormSubmit и остаётся на текущей странице. Для защиты от автоматического спама добавлено honeypot-поле. При первом подключении адреса FormSubmit отправляет владельцу одноразовое письмо активации; после подтверждения новые сообщения приходят на `mega.ernest13@gmail.com`.
+На публичной странице нет email, формы отправки и стороннего сервиса обработки сообщений. Для первого контакта используются только публичные профили GitHub и LinkedIn.
 
 Карточки проектов на сайте показывают концепты и направления дальнейшей разработки.
 
@@ -94,6 +94,5 @@ npm run export:pages
 Ernest Muzafarov — Android Developer.
 
 - GitHub: [MrSSStrange](https://github.com/MrSSStrange)
-- Email: [mega.ernest13@gmail.com](mailto:mega.ernest13@gmail.com)
 - LinkedIn: [Ernest Muzafarov](https://www.linkedin.com/in/ernest-muzafarov-919a323a2/)
 - Сайт: [ernestmuzafarov.tech](https://ernestmuzafarov.tech)

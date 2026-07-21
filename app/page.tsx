@@ -1,12 +1,6 @@
 "use client";
 
-import { type FormEvent, useEffect, useState } from "react";
-
-const CONTACT_EMAIL = "mega.ernest13@gmail.com";
-const CONTACT_FORM_ACTION = `https://formsubmit.co/${CONTACT_EMAIL}`;
-const CONTACT_FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
-
-type FormStatus = "idle" | "sending" | "success" | "error";
+import { useEffect, useState } from "react";
 
 const ArrowIcon = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -34,58 +28,6 @@ function AndroidMark() {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [formStatus, setFormStatus] = useState<FormStatus>("idle");
-
-  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (formStatus === "sending") return;
-
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-
-    if (formData.get("_honey")) {
-      form.reset();
-      setFormStatus("success");
-      return;
-    }
-
-    setFormStatus("sending");
-
-    try {
-      const response = await fetch(CONTACT_FORM_ENDPOINT, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(Object.fromEntries(formData.entries())),
-      });
-      const result = (await response.json().catch(() => null)) as {
-        success?: boolean | string;
-      } | null;
-
-      if (
-        !response.ok ||
-        result?.success === false ||
-        result?.success === "false"
-      ) {
-        throw new Error("FormSubmit rejected the message");
-      }
-
-      form.reset();
-      setFormStatus("success");
-    } catch {
-      setFormStatus("error");
-    }
-  };
-
-  const submitLabel = {
-    idle: "Отправить сообщение",
-    sending: "Отправляем…",
-    success: "Сообщение принято ✓",
-    error: "Повторить отправку",
-  }[formStatus];
 
   useEffect(() => {
     const close = () => setMenuOpen(false);
@@ -360,7 +302,7 @@ export default function Home() {
           <div className="contact-copy">
             <p className="section-kicker"><span>04</span> Контакты</p>
             <h2>Давайте создадим<br /><em>что-то полезное</em></h2>
-            <p>Открыт к стажировкам, junior-позициям и интересным Android-проектам.</p>
+            <p>Открыт к стажировкам, junior-позициям и интересным Android-проектам. Для первого контакта используйте публичные профили.</p>
             <div className="contact-links">
               <a href="https://github.com/MrSSStrange" target="_blank" rel="noopener noreferrer">
                 <i aria-hidden="true">GH</i><b>GitHub</b><small>@MrSSStrange</small>
@@ -368,59 +310,19 @@ export default function Home() {
               <a href="https://www.linkedin.com/in/ernest-muzafarov-919a323a2/" target="_blank" rel="noopener noreferrer">
                 <i aria-hidden="true">in</i><b>LinkedIn</b><small>Ernest Muzafarov</small>
               </a>
-              <a className="contact-email" href={`mailto:${CONTACT_EMAIL}`}>
-                <i aria-hidden="true">✉</i><b>Email</b><small>{CONTACT_EMAIL}</small>
-              </a>
             </div>
           </div>
 
-          <form
-            className="contact-form"
-            action={CONTACT_FORM_ACTION}
-            method="POST"
-            onSubmit={handleContactSubmit}
-            onChange={() => {
-              if (formStatus !== "sending") setFormStatus("idle");
-            }}
-            aria-busy={formStatus === "sending"}
-            aria-describedby="contact-status"
-          >
-            <input type="hidden" name="_subject" value="Новое сообщение с Android-портфолио" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_url" value="https://ernestmuzafarov.tech/#contact" />
-            <input hidden type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-            <label>
-              <span>Ваше имя</span>
-              <input required name="name" maxLength={80} autoComplete="name" placeholder="Как к вам обращаться?" />
-            </label>
-            <label>
-              <span>Email</span>
-              <input required type="email" name="email" maxLength={254} autoComplete="email" placeholder="you@company.com" />
-            </label>
-            <label>
-              <span>Сообщение</span>
-              <textarea required name="message" rows={4} maxLength={3000} placeholder="Расскажите о задаче" />
-            </label>
-            <button className="button primary" type="submit" disabled={formStatus === "sending"}>
-              {submitLabel}
-              {(formStatus === "idle" || formStatus === "error") && <SendIcon />}
-            </button>
-            <p
-              className={`form-note${formStatus === "error" ? " error" : ""}`}
-              id="contact-status"
-              role={formStatus === "error" ? "alert" : undefined}
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              {formStatus === "idle" && "Сообщение придёт Эрнесту прямо на почту."}
-              {formStatus === "sending" && "Отправляем сообщение…"}
-              {formStatus === "success" && "Готово! Сообщение принято к отправке."}
-              {formStatus === "error" && <>
-                Не удалось отправить. Напишите напрямую: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-              </>}
-            </p>
-          </form>
+          <aside className="contact-private" aria-label="Безопасный способ связи">
+            <span className="private-label"><i /> PRIVATE_CONTACT</span>
+            <span className="private-mark"><AndroidMark /></span>
+            <h3>Связаться<br />без публикации почты</h3>
+            <p>Напишите мне через LinkedIn или посмотрите мои работы на GitHub. Личный email и форма на сайте не публикуются.</p>
+            <a className="button primary" href="https://www.linkedin.com/in/ernest-muzafarov-919a323a2/" target="_blank" rel="noopener noreferrer">
+              Открыть LinkedIn <ArrowIcon />
+            </a>
+            <span className="private-note"><i>✓</i> Без формы и сторонней передачи сообщений</span>
+          </aside>
           <div className="contact-mascot"><AndroidMark /><i /><i /></div>
         </div>
       </section>
