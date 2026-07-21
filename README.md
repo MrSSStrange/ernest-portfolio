@@ -2,7 +2,7 @@
 
 Персональное портфолио Android-разработчика с акцентом на Kotlin, Jetpack Compose, Android SDK и продуктовый подход к мобильным интерфейсам.
 
-[Открыть сайт](https://ernestmuzafarov.tech) · [GitHub](https://github.com/MrSSStrange)
+[Открыть сайт](https://ernestmuzafarov.tech) · [GitHub](https://github.com/MrSSStrange) · [LinkedIn](https://www.linkedin.com/in/ernest-muzafarov-919a323a2/)
 
 ## О проекте
 
@@ -17,6 +17,7 @@
 - мобильное меню и плавное появление блоков при прокрутке;
 - поддержка `prefers-reduced-motion`;
 - русскоязычные SEO-метаданные и favicon;
+- рабочая контактная форма с отправкой сообщений на email через FormSubmit;
 - статический экспорт для GitHub Pages;
 - совместимость с Vinext/OpenAI Sites.
 
@@ -82,13 +83,17 @@ npm run export:pages
 
 Скрипты основной Sites-сборки рассчитаны на Linux и используют `flock` и GNU `timeout`.
 
-## Текущий статус контента
+## Контактная форма
 
-Карточки проектов на сайте показывают концепты и направления дальнейшей разработки. Контактная форма пока демонстрационная и не отправляет данные на сервер.
+Форма отправляет сообщения через AJAX на FormSubmit и остаётся на текущей странице. Для защиты от автоматического спама добавлено honeypot-поле. При первом подключении адреса FormSubmit отправляет владельцу одноразовое письмо активации; после подтверждения новые сообщения приходят на `mega.ernest13@gmail.com`.
+
+Карточки проектов на сайте показывают концепты и направления дальнейшей разработки.
 
 ## Автор
 
 Ernest Muzafarov — Android Developer.
 
 - GitHub: [MrSSStrange](https://github.com/MrSSStrange)
+- Email: [mega.ernest13@gmail.com](mailto:mega.ernest13@gmail.com)
+- LinkedIn: [Ernest Muzafarov](https://www.linkedin.com/in/ernest-muzafarov-919a323a2/)
 - Сайт: [ernestmuzafarov.tech](https://ernestmuzafarov.tech)
