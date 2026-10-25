@@ -1,8 +1,8 @@
-<h1 align="center">Ernest Muzafarov — AI/ML portfolio</h1>
+<h1 align="center">Ernest Muzafarov — Portfolio</h1>
 
 <p align="center">
-  Personal website of a technical support lead moving into AI/ML development.<br />
-  A live particle neural network, a particle avatar and machine learning demos that run in your browser.
+  Personal portfolio website: a live particle neural network, a particle avatar<br />
+  and machine learning demos that run in your browser.
 </p>
 
 <p align="center">
@@ -73,25 +73,15 @@ Everything you are likely to change sits at the top of `script.js`:
 - `LEARNING` — learning progress. Each step has `status: 'done' | 'current' | 'todo'`; the percentage is calculated automatically, or set `progress: 40` by hand;
 - `I18N` — all texts in Russian and English. Wrap a word in `*asterisks*` to render it as an outlined accent.
 
-### Run locally
+### Hosting
 
-From the project folder:
-
-```bash
-python3 -m http.server 5174 --bind 127.0.0.1
-```
-
-Then open http://localhost:5174.
-
-### Deploy
-
-Pushing to `main` publishes the site through GitHub Pages. The domain is set in `CNAME`; DNS has four A records for `@` pointing to GitHub Pages (`185.199.108.153` – `185.199.111.153`) and a `www` CNAME to `mrssstrange.github.io`.
+The site is hosted on GitHub Pages with a custom domain: [ernestmuzafarov.tech](https://ernestmuzafarov.tech).
 
 ---
 
 ## Русский
 
-Личный сайт руководителя технической поддержки, который идёт в AI/ML-разработку.
+Личный сайт-портфолио.
 
 **Что на сайте:**
 
@@ -110,9 +100,7 @@ Pushing to `main` publishes the site through GitHub Pages. The domain is set in 
 - `LEARNING` — прогресс обучения;
 - `I18N` — тексты на двух языках.
 
-**Локальный запуск:** выполните в папке проекта команду из раздела *Run locally* и откройте http://localhost:5174.
-
-**Публикация:** push в `main`, сайт собирает GitHub Pages.
+**Хостинг:** GitHub Pages, домен [ernestmuzafarov.tech](https://ernestmuzafarov.tech).
 
 ---
 
