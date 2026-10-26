@@ -2,53 +2,46 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Эрнест Музафаров</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>ernest.os</title>
     <meta name="description" content="" />
-    <meta name="theme-color" content="#f4f5f7" />
+    <meta name="theme-color" content="#07090f" />
     <link rel="canonical" href="https://ernestmuzafarov.tech/" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ernestmuzafarov.tech/" />
-    <meta property="og:title" content="Эрнест Музафаров — путь в AI/ML" />
+    <meta property="og:title" content="ernest.os — Эрнест Музафаров" />
     <meta property="og:description" content="Руководитель технической поддержки. Изучаю Python, машинное обучение и LLM." />
     <meta name="twitter:card" content="summary" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=35" />
+    <link rel="stylesheet" href="style.css?v=40" />
   </head>
   <body>
-    <!-- Тексты всех элементов с data-i18n подставляются из объекта I18N в script.js -->
+    <!-- Сайт — это «операционная система»: рабочий стол, окна и ИИ-ассистент.
+         Тексты элементов с data-i18n подставляются из объекта I18N в script.js -->
 
-    <div class="preloader" id="preloader" aria-hidden="true">
-      <div class="preloader__top mono">
-        <span data-i18n="preloader.label"></span>
-        <span data-i18n="hero.nameFirst"></span>
-      </div>
-      <div class="preloader__count" id="preloader-count">000</div>
-      <div class="preloader__bar"><span id="preloader-bar"></span></div>
+    <!-- Загрузка системы -->
+    <div class="boot" id="boot" aria-hidden="true">
+      <pre class="boot__log" id="boot-log"></pre>
+      <span class="boot__skip" data-i18n="os.bootSkip"></span>
     </div>
 
-    <!-- 3D-сцена: голова-андроид из фарфора, внутри проступает нейросеть -->
-    <canvas class="scene" id="scene" aria-hidden="true"></canvas>
-    <div class="cursor" id="cursor" aria-hidden="true"></div>
+    <!-- Обои: 3D-голова из светящейся сетки -->
+    <canvas class="wallpaper" id="scene" aria-hidden="true"></canvas>
 
-    <header class="header" id="header">
-      <a href="#hero" class="wordmark" data-i18n="header.logo"></a>
-
-      <nav class="nav" id="nav">
-        <a href="#about" class="nav__link" data-i18n="nav.about"></a>
-        <a href="#playground" class="nav__link" data-i18n="nav.playground"></a>
-        <a href="#ideas" class="nav__link" data-i18n="nav.ideas"></a>
-        <a href="#contacts" class="nav__link" data-i18n="nav.contacts"></a>
-      </nav>
-
-      <div class="header__tools mono">
-        <button class="sound" id="sound" type="button" aria-pressed="false">
+    <!-- Верхняя панель -->
+    <header class="topbar">
+      <div class="topbar__left">
+        <span class="topbar__logo"><span class="topbar__dot"></span>ernest.os</span>
+        <span class="topbar__app" id="topbar-app"></span>
+      </div>
+      <div class="topbar__right">
+        <button class="topbar__btn sound" id="sound" type="button" aria-pressed="false">
           <span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
           <span data-i18n="header.sound"></span>
         </button>
@@ -56,155 +49,113 @@
           <button class="lang__btn" data-lang="ru" type="button">RU</button>
           <button class="lang__btn" data-lang="en" type="button">EN</button>
         </div>
+        <span class="topbar__clock" id="clock"></span>
       </div>
     </header>
 
-    <div class="scene-index mono" aria-hidden="true">
-      <span class="scene-index__num" id="scene-num">01</span>
-      <span class="scene-index__line"><span id="scene-progress"></span></span>
-      <span>06</span>
-      <span class="scene-index__name" id="scene-name"></span>
-    </div>
+    <!-- Рабочий стол -->
+    <main class="desktop" id="desktop">
+      <div class="desktop__intro">
+        <p class="desktop__hello" data-i18n="os.hello"></p>
+        <h1 class="desktop__name"><span data-i18n="hero.nameFirst"></span> <span data-i18n="hero.nameLast"></span></h1>
+        <p class="desktop__role" data-i18n="hero.tagline"></p>
+      </div>
 
-    <main>
-      <!-- 01 HERO: туман -->
-      <section class="hero" id="hero" data-scene="0">
-        <p class="hero__eyebrow mono" data-i18n="hero.eyebrow"></p>
-        <h1 class="hero__name">
-          <span class="hero__line" data-split data-i18n="hero.nameFirst"></span>
-          <span class="hero__line hero__line--serif" data-split data-i18n="hero.nameLast"></span>
-        </h1>
-        <div class="hero__side">
-          <p class="hero__tagline" data-i18n="hero.tagline"></p>
-          <div class="hero__actions">
-            <a href="#about" class="btn btn--dark" data-magnetic>
-              <span data-i18n="hero.ctaAbout"></span><span class="btn__icon">↓</span>
-            </a>
-            <a href="#contacts" class="btn btn--line" data-magnetic>
-              <span data-i18n="hero.ctaContact"></span><span class="btn__icon">↗</span>
-            </a>
-          </div>
-        </div>
-        <div class="hero__label mono" aria-hidden="true">
-          <span class="hero__label-dot"></span><span data-i18n="hero.headLabel"></span>
-        </div>
-        <div class="hero__foot mono">
-          <span class="hero__status"><span class="live-dot"></span><span data-i18n="hero.status"></span></span>
-          <span class="hero__scroll"><span data-i18n="hero.scroll"></span><i></i></span>
-        </div>
-      </section>
+      <nav class="icons" aria-label="Files">
+        <button class="icon" type="button" data-open="assistant"><i class="icon__img icon__img--chat"></i><span>assistant.sh</span></button>
+        <button class="icon" type="button" data-open="about"><i class="icon__img icon__img--doc"></i><span>about.md</span></button>
+        <button class="icon" type="button" data-open="lab"><i class="icon__img icon__img--folder"></i><span>lab/</span></button>
+        <button class="icon" type="button" data-open="ideas"><i class="icon__img icon__img--doc"></i><span>ideas.md</span></button>
+        <button class="icon" type="button" data-open="contacts"><i class="icon__img icon__img--sh"></i><span>contacts.sh</span></button>
+      </nav>
 
-      <!-- 02 Туман расходится, появляется гора -->
-      <section class="statement" id="statement" data-scene="1">
-        <div class="statement__inner">
-          <p class="kicker mono reveal" data-i18n="statement.label"></p>
-          <h2 class="statement__title reveal" data-i18n="statement.title"></h2>
-          <p class="statement__text reveal" data-i18n="statement.text"></p>
+      <p class="desktop__hint" data-i18n="os.hint"></p>
+
+      <!-- ===== Окно: ИИ-ассистент ===== -->
+      <section class="win" data-win="assistant" role="dialog" aria-label="assistant.sh" hidden>
+        <header class="win__bar">
+          <span class="win__dots"><button class="win__close" type="button" aria-label="Close"></button><button class="win__min" type="button" aria-label="Minimize"></button><i></i></span>
+          <span class="win__title">assistant.sh</span>
+          <span class="win__meta" data-i18n="os.assistantMeta"></span>
+        </header>
+        <div class="win__body chat">
+          <div class="chat__log" id="chat-log" aria-live="polite"></div>
+          <div class="chat__suggest" id="chat-suggest"></div>
+          <form class="chat__form" id="chat-form" autocomplete="off">
+            <span class="chat__prompt">$</span>
+            <input class="chat__input" id="chat-input" type="text" maxlength="200" data-i18n-placeholder="os.inputPlaceholder" />
+            <button class="chat__send" type="submit" aria-label="Send">↵</button>
+          </form>
         </div>
       </section>
 
-      <!-- 03 ОБО МНЕ -->
-      <section class="section" id="about" data-scene="2">
-        <div class="wrap">
-          <p class="kicker mono reveal"><span>03</span><span data-i18n="about.label"></span></p>
-          <h2 class="title reveal" data-i18n="about.title"></h2>
+      <!-- ===== Окно: обо мне ===== -->
+      <section class="win" data-win="about" role="dialog" aria-label="about.md" hidden>
+        <header class="win__bar">
+          <span class="win__dots"><button class="win__close" type="button" aria-label="Close"></button><button class="win__min" type="button" aria-label="Minimize"></button><i></i></span>
+          <span class="win__title">~/about.md</span>
+        </header>
+        <div class="win__body doc">
+          <p class="doc__h"># <span data-i18n="about.label"></span></p>
+          <p class="doc__lead" data-i18n="about.p1"></p>
+          <p data-i18n="about.p2"></p>
+          <p data-i18n="about.p3"></p>
 
-          <div class="glass about reveal">
-            <!-- Нейро-аватар из частиц вместо фото: рисуется в script.js (initAvatar) -->
-            <div class="photo">
-              <canvas class="avatar" id="avatar" aria-hidden="true"></canvas>
-              <span class="photo__tag mono">ID · E.M.</span>
-              <span class="photo__note mono" data-i18n="about.avatarNote"></span>
-            </div>
-            <div class="about__text">
-              <p class="about__lead" data-i18n="about.p1"></p>
-              <p data-i18n="about.p2"></p>
-              <p data-i18n="about.p3"></p>
-            </div>
-          </div>
+          <p class="doc__h">## <span data-i18n="strengths.title"></span></p>
+          <ul class="doc__list" id="strengths"></ul>
 
-          <div class="block">
-            <h3 class="block__title mono reveal"><span>03.1</span><span data-i18n="strengths.title"></span></h3>
-            <ol class="glass rows" id="strengths"></ol>
-          </div>
-
-          <div class="block">
-            <div class="block__head reveal">
-              <h3 class="block__title mono"><span>03.2</span><span data-i18n="learning.title"></span></h3>
-              <p class="block__note mono" data-i18n="learning.note"></p>
-            </div>
-            <div class="skills" id="learning"></div>
-            <ul class="legend mono">
-              <li><span class="cp cp--done"></span><span data-i18n="learning.done"></span></li>
-              <li><span class="cp cp--current"></span><span data-i18n="learning.current"></span></li>
-              <li><span class="cp cp--todo"></span><span data-i18n="learning.todo"></span></li>
-            </ul>
-          </div>
+          <p class="doc__h">## <span data-i18n="learning.title"></span> <span class="doc__muted" data-i18n="learning.note"></span></p>
+          <div class="progress" id="learning"></div>
         </div>
       </section>
 
-      <!-- 04 ЛАБОРАТОРИЯ: сцена уходит в ночь -->
-      <section class="section" id="playground" data-scene="3">
-        <div class="wrap">
-          <p class="kicker mono reveal"><span>04</span><span data-i18n="playground.label"></span></p>
-          <h2 class="title reveal" data-i18n="playground.title"></h2>
-          <p class="intro reveal" data-i18n="playground.intro"></p>
-
-          <div class="tabs reveal mono" role="tablist">
-            <button type="button" class="tabs__btn is-active" role="tab" data-tab="neuron">
-              <span class="tabs__num">01</span><span data-i18n="playground.tabNeuron"></span>
-            </button>
-            <button type="button" class="tabs__btn" role="tab" data-tab="gd">
-              <span class="tabs__num">02</span><span data-i18n="playground.tabGd"></span>
-            </button>
-            <button type="button" class="tabs__btn" role="tab" data-tab="llm">
-              <span class="tabs__num">03</span><span data-i18n="playground.tabLlm"></span>
-            </button>
+      <!-- ===== Окно: лаборатория ===== -->
+      <section class="win win--wide" data-win="lab" role="dialog" aria-label="lab" hidden>
+        <header class="win__bar">
+          <span class="win__dots"><button class="win__close" type="button" aria-label="Close"></button><button class="win__min" type="button" aria-label="Minimize"></button><i></i></span>
+          <span class="win__title">~/lab</span>
+        </header>
+        <div class="win__body labwin">
+          <div class="tabs" role="tablist">
+            <button type="button" class="tabs__btn is-active" role="tab" data-tab="neuron"><span>neuron.py</span></button>
+            <button type="button" class="tabs__btn" role="tab" data-tab="gd"><span>gradient_descent.py</span></button>
+            <button type="button" class="tabs__btn" role="tab" data-tab="llm"><span>next_token.py</span></button>
           </div>
 
           <!-- 01: нейрон -->
-          <div class="tab-panel reveal" id="tab-neuron" role="tabpanel">
+          <div class="tab-panel" id="tab-neuron" role="tabpanel">
             <p class="panel__intro" data-i18n="playground.neuronIntro"></p>
             <div class="lab">
-              <div class="glass lab__board">
+              <div class="lab__board">
                 <canvas id="lab-canvas" class="lab__canvas"></canvas>
-                <p class="lab__empty mono" id="lab-empty" data-i18n="playground.empty"></p>
+                <p class="lab__empty" id="lab-empty" data-i18n="playground.empty"></p>
               </div>
-
-              <div class="glass lab__panel">
+              <div class="lab__panel">
                 <div class="lab__group">
-                  <span class="lab__caption mono" data-i18n="playground.classLabel"></span>
+                  <span class="lab__caption" data-i18n="playground.classLabel"></span>
                   <div class="seg">
-                    <button type="button" class="seg__btn is-active" data-class="1">
-                      <span class="swatch swatch--a"></span><span data-i18n="playground.classA"></span>
-                    </button>
-                    <button type="button" class="seg__btn" data-class="0">
-                      <span class="swatch swatch--b"></span><span data-i18n="playground.classB"></span>
-                    </button>
+                    <button type="button" class="seg__btn is-active" data-class="1"><span class="swatch swatch--a"></span><span data-i18n="playground.classA"></span></button>
+                    <button type="button" class="seg__btn" data-class="0"><span class="swatch swatch--b"></span><span data-i18n="playground.classB"></span></button>
                   </div>
                 </div>
-
                 <div class="lab__group">
-                  <span class="lab__caption mono" data-i18n="playground.modelLabel"></span>
+                  <span class="lab__caption" data-i18n="playground.modelLabel"></span>
                   <div class="seg">
                     <button type="button" class="seg__btn is-active" data-model="neuron" data-i18n="playground.modelNeuron"></button>
                     <button type="button" class="seg__btn" data-model="mlp" data-i18n="playground.modelMlp"></button>
                   </div>
                 </div>
-
                 <div class="lab__group lab__buttons">
-                  <button type="button" class="btn btn--dark btn--sm" id="lab-train" data-i18n="playground.train"></button>
-                  <button type="button" class="btn btn--line btn--sm" id="lab-preset-line" data-i18n="playground.presetLine"></button>
-                  <button type="button" class="btn btn--line btn--sm" id="lab-preset-circle" data-i18n="playground.presetCircle"></button>
-                  <button type="button" class="btn btn--line btn--sm" id="lab-clear" data-i18n="playground.clear"></button>
+                  <button type="button" class="btn btn--accent" id="lab-train" data-i18n="playground.train"></button>
+                  <button type="button" class="btn" id="lab-preset-line" data-i18n="playground.presetLine"></button>
+                  <button type="button" class="btn" id="lab-preset-circle" data-i18n="playground.presetCircle"></button>
+                  <button type="button" class="btn" id="lab-clear" data-i18n="playground.clear"></button>
                 </div>
-
-                <dl class="stats mono">
+                <dl class="stats">
                   <div><dt data-i18n="playground.epoch"></dt><dd id="stat-epoch">0</dd></div>
                   <div><dt data-i18n="playground.loss"></dt><dd id="stat-loss">—</dd></div>
                   <div><dt data-i18n="playground.accuracy"></dt><dd id="stat-acc">—</dd></div>
                 </dl>
-
                 <p class="lab__tip" data-i18n="playground.tip"></p>
               </div>
             </div>
@@ -214,38 +165,31 @@
           <div class="tab-panel" id="tab-gd" role="tabpanel" hidden>
             <p class="panel__intro" data-i18n="gd.intro"></p>
             <div class="lab">
-              <div class="glass lab__board">
+              <div class="lab__board">
                 <canvas id="gd-canvas" class="lab__canvas"></canvas>
-                <p class="lab__corner mono" data-i18n="gd.hint"></p>
+                <p class="lab__corner" data-i18n="gd.hint"></p>
               </div>
-
-              <div class="glass lab__panel">
+              <div class="lab__panel">
                 <div class="lab__group">
-                  <span class="lab__caption mono" data-i18n="gd.surface"></span>
+                  <span class="lab__caption" data-i18n="gd.surface"></span>
                   <div class="seg">
                     <button type="button" class="seg__btn is-active" data-surface="bowl" data-i18n="gd.bowl"></button>
                     <button type="button" class="seg__btn" data-surface="hills" data-i18n="gd.hills"></button>
                   </div>
                 </div>
-
                 <div class="lab__group">
-                  <label class="lab__caption mono range-head" for="gd-lr">
-                    <span data-i18n="gd.lr"></span><span class="range-val" id="gd-lr-val">0.10</span>
-                  </label>
+                  <label class="lab__caption range-head" for="gd-lr"><span data-i18n="gd.lr"></span><span class="range-val" id="gd-lr-val">0.10</span></label>
                   <input type="range" class="range" id="gd-lr" min="0.01" max="0.45" step="0.01" value="0.1" />
                 </div>
-
                 <div class="lab__group lab__buttons">
-                  <button type="button" class="btn btn--dark btn--sm" id="gd-run" data-i18n="gd.run"></button>
-                  <button type="button" class="btn btn--line btn--sm" id="gd-reset" data-i18n="gd.reset"></button>
+                  <button type="button" class="btn btn--accent" id="gd-run" data-i18n="gd.run"></button>
+                  <button type="button" class="btn" id="gd-reset" data-i18n="gd.reset"></button>
                 </div>
-
-                <dl class="stats mono">
+                <dl class="stats">
                   <div><dt data-i18n="gd.step"></dt><dd id="gd-step">0</dd></div>
                   <div><dt data-i18n="gd.loss"></dt><dd id="gd-loss">—</dd></div>
                   <div><dt data-i18n="gd.status"></dt><dd id="gd-status" data-i18n="gd.statusIdle"></dd></div>
                 </dl>
-
                 <p class="lab__tip" data-i18n="gd.tip"></p>
               </div>
             </div>
@@ -255,39 +199,24 @@
           <div class="tab-panel" id="tab-llm" role="tabpanel" hidden>
             <p class="panel__intro" data-i18n="llm.intro"></p>
             <div class="lab">
-              <div class="glass llm">
+              <div class="llm">
                 <div class="seg seg--wrap" id="llm-prompts"></div>
-
-                <div class="llm__block">
-                  <span class="lab__caption mono" data-i18n="llm.tokensLabel"></span>
-                  <div class="tokens" id="llm-tokens"></div>
-                </div>
-
-                <div class="llm__block">
-                  <span class="lab__caption mono" data-i18n="llm.nextLabel"></span>
-                  <div class="probs" id="llm-probs"></div>
-                </div>
-
+                <div class="llm__block"><span class="lab__caption" data-i18n="llm.tokensLabel"></span><div class="tokens" id="llm-tokens"></div></div>
+                <div class="llm__block"><span class="lab__caption" data-i18n="llm.nextLabel"></span><div class="probs" id="llm-probs"></div></div>
                 <p class="lab__tip" data-i18n="llm.note"></p>
               </div>
-
-              <div class="glass lab__panel">
+              <div class="lab__panel">
                 <div class="lab__group">
-                  <label class="lab__caption mono range-head" for="llm-temp">
-                    <span data-i18n="llm.temp"></span><span class="range-val" id="llm-temp-val">1.00</span>
-                  </label>
+                  <label class="lab__caption range-head" for="llm-temp"><span data-i18n="llm.temp"></span><span class="range-val" id="llm-temp-val">1.00</span></label>
                   <input type="range" class="range" id="llm-temp" min="0.1" max="2" step="0.05" value="1" />
                 </div>
-
                 <p class="lab__tip temp-hint" id="llm-temp-hint" data-i18n="llm.tempMid"></p>
-
                 <div class="lab__group lab__buttons">
-                  <button type="button" class="btn btn--dark btn--sm" id="llm-sample" data-i18n="llm.sample"></button>
-                  <button type="button" class="btn btn--line btn--sm" id="llm-sample20" data-i18n="llm.sample20"></button>
-                  <button type="button" class="btn btn--line btn--sm" id="llm-reset" data-i18n="llm.reset"></button>
+                  <button type="button" class="btn btn--accent" id="llm-sample" data-i18n="llm.sample"></button>
+                  <button type="button" class="btn" id="llm-sample20" data-i18n="llm.sample20"></button>
+                  <button type="button" class="btn" id="llm-reset" data-i18n="llm.reset"></button>
                 </div>
-
-                <dl class="stats stats--2 mono">
+                <dl class="stats stats--2">
                   <div><dt data-i18n="llm.samples"></dt><dd id="llm-count">0</dd></div>
                   <div><dt data-i18n="llm.topShare"></dt><dd id="llm-top">—</dd></div>
                 </dl>
@@ -297,75 +226,54 @@
         </div>
       </section>
 
-      <!-- 05 ИДЕИ -->
-      <section class="section" id="ideas" data-scene="4">
-        <div class="wrap">
-          <p class="kicker mono reveal"><span>05</span><span data-i18n="ideas.label"></span></p>
-          <h2 class="title reveal" data-i18n="ideas.title"></h2>
-          <p class="intro reveal" data-i18n="ideas.intro"></p>
-
-          <div class="stack" id="ideas-list"></div>
-
-          <div class="glass note reveal">
-            <span class="note__label mono" data-i18n="ideas.noteLabel"></span>
-            <p data-i18n="ideas.note"></p>
-          </div>
+      <!-- ===== Окно: идеи ===== -->
+      <section class="win" data-win="ideas" role="dialog" aria-label="ideas.md" hidden>
+        <header class="win__bar">
+          <span class="win__dots"><button class="win__close" type="button" aria-label="Close"></button><button class="win__min" type="button" aria-label="Minimize"></button><i></i></span>
+          <span class="win__title">~/ideas.md</span>
+        </header>
+        <div class="win__body doc">
+          <p class="doc__h"># <span data-i18n="ideas.title"></span></p>
+          <p data-i18n="ideas.intro"></p>
+          <ol class="ideas" id="ideas-list"></ol>
+          <p class="doc__note"><span data-i18n="ideas.noteLabel"></span>: <span data-i18n="ideas.note"></span></p>
         </div>
       </section>
 
-      <!-- 06 КОНТАКТЫ -->
-      <section class="section contacts" id="contacts" data-scene="5">
-        <div class="wrap">
-          <p class="kicker mono reveal"><span>06</span><span data-i18n="contacts.label"></span></p>
-
-          <a class="cta reveal" id="cta-telegram" target="_blank" rel="noopener">
-            <span class="cta__line" data-i18n="contacts.ctaA"></span>
-            <span class="cta__line cta__line--serif"><span data-i18n="contacts.ctaB"></span><span class="cta__arrow">↗</span></span>
-          </a>
-          <p class="intro reveal" data-i18n="contacts.intro"></p>
-
-          <ul class="glass links reveal">
-            <li>
-              <a class="link-row" id="contact-telegram" target="_blank" rel="noopener">
-                <span class="link-row__label mono">Telegram</span>
-                <span class="link-row__value contact__value"></span>
-                <span class="link-row__arrow">↗</span>
-              </a>
-            </li>
-            <li>
-              <a class="link-row" id="contact-github" target="_blank" rel="noopener">
-                <span class="link-row__label mono">GitHub</span>
-                <span class="link-row__value contact__value"></span>
-                <span class="link-row__arrow">↗</span>
-              </a>
-            </li>
-            <li>
-              <a class="link-row" id="contact-linkedin" target="_blank" rel="noopener">
-                <span class="link-row__label mono">LinkedIn</span>
-                <span class="link-row__value contact__value"></span>
-                <span class="link-row__arrow">↗</span>
-              </a>
-            </li>
+      <!-- ===== Окно: контакты ===== -->
+      <section class="win" data-win="contacts" role="dialog" aria-label="contacts.sh" hidden>
+        <header class="win__bar">
+          <span class="win__dots"><button class="win__close" type="button" aria-label="Close"></button><button class="win__min" type="button" aria-label="Minimize"></button><i></i></span>
+          <span class="win__title">~/contacts.sh</span>
+        </header>
+        <div class="win__body doc">
+          <p class="doc__cmd">$ ./contacts.sh</p>
+          <p data-i18n="contacts.intro"></p>
+          <ul class="links">
+            <li><a class="link" id="contact-telegram" target="_blank" rel="noopener"><span class="link__k">telegram</span><span class="link__v contact__value"></span><span class="link__go">↗</span></a></li>
+            <li><a class="link" id="contact-github" target="_blank" rel="noopener"><span class="link__k">github</span><span class="link__v contact__value"></span><span class="link__go">↗</span></a></li>
+            <li><a class="link" id="contact-linkedin" target="_blank" rel="noopener"><span class="link__k">linkedin</span><span class="link__v contact__value"></span><span class="link__go">↗</span></a></li>
           </ul>
         </div>
       </section>
     </main>
 
-    <footer class="footer wrap mono">
-      <span data-i18n="footer.text"></span>
-      <span>
-        <a href="https://threejs.org/examples/#webgl_decals" target="_blank" rel="noopener" data-i18n="footer.credit"></a>
-        · © <span id="year"></span>
-      </span>
+    <!-- Док -->
+    <nav class="dock" aria-label="Dock">
+      <button class="dock__item" type="button" data-open="assistant" data-i18n-title="os.dock.assistant"><i class="dock__ic dock__ic--chat"></i></button>
+      <button class="dock__item" type="button" data-open="about" data-i18n-title="os.dock.about"><i class="dock__ic dock__ic--user"></i></button>
+      <button class="dock__item" type="button" data-open="lab" data-i18n-title="os.dock.lab"><i class="dock__ic dock__ic--lab"></i></button>
+      <button class="dock__item" type="button" data-open="ideas" data-i18n-title="os.dock.ideas"><i class="dock__ic dock__ic--bulb"></i></button>
+      <button class="dock__item" type="button" data-open="contacts" data-i18n-title="os.dock.contacts"><i class="dock__ic dock__ic--send"></i></button>
+    </nav>
+
+    <footer class="credit">
+      <a href="https://threejs.org/examples/#webgl_decals" target="_blank" rel="noopener" data-i18n="footer.credit"></a>
     </footer>
 
-    <!-- three.js рисует 3D-сцену (GLTFLoader и RoomEnvironment — из примеров three.js r128),
-         Lenis даёт плавный скролл.
-         Если библиотеки не загрузятся, сайт работает без них -->
+    <!-- three.js рисует голову на обоях (GLTFLoader — из примеров three.js r128) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="assets/vendor/GLTFLoader.js"></script>
-    <script src="assets/vendor/RoomEnvironment.js"></script>
-    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-    <script src="script.js?v=35"></script>
+    <script src="script.js?v=42"></script>
   </body>
 </html>

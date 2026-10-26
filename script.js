@@ -247,6 +247,50 @@ const I18N = {
       noteLabel: 'Важно',
       note: 'ИИ здесь — помощник, а не замена людям: финальное решение остаётся за человеком. А данные клиентов требуют защиты и соблюдения законодательства о персональных данных.',
     },
+    os: {
+      bootSkip: 'нажмите, чтобы пропустить',
+      boot: [
+        'ernest.os v1.0',
+        'проверка памяти ............ ok',
+        'загрузка нейро-головы ...... ok',
+        'монтирование ~/lab ......... ok',
+        'запуск assistant.sh ........ ok',
+        '',
+        'добро пожаловать.',
+      ],
+      hello: '> система загружена',
+      hint: 'нажмите на иконку, чтобы открыть файл · окна можно таскать',
+      assistantMeta: 'ответы написаны заранее',
+      inputPlaceholder: 'спросите что-нибудь или напишите help',
+      dock: { assistant: 'Ассистент', about: 'Обо мне', lab: 'Лаборатория', ideas: 'Идеи', contacts: 'Контакты' },
+      apps: { assistant: 'Ассистент', about: 'Обо мне', lab: 'Лаборатория', ideas: 'Идеи', contacts: 'Контакты' },
+    },
+    assistant: {
+      greet: 'Привет! Я ассистент Эрнеста. Спросите, кто он, чем занимается и что сейчас изучает, — или откройте файлы на рабочем столе.',
+      open: 'открыть',
+      suggestions: [
+        ['Кто такой Эрнест?', 'about'],
+        ['Чем занимаешься?', 'work'],
+        ['Что изучаешь?', 'learning'],
+        ['Сильные стороны', 'strengths'],
+        ['Покажи демо', 'lab'],
+        ['Как связаться?', 'contacts'],
+        ['Ты настоящий ИИ?', 'me'],
+      ],
+      answers: {
+        about: 'Эрнест Музафаров — руководитель технической поддержки, который идёт в AI/ML-разработку. Открыл about.md — там подробности и прогресс обучения.',
+        learning: 'Сейчас Эрнест целенаправленно изучает Python, SQL, основы машинного обучения и LLM. В процессе прямо сейчас:',
+        strengths: 'Вот что Эрнест приносит в команду:',
+        lab: 'Открываю ~/lab. Там три интерактива: как учится нейрон, градиентный спуск и как LLM выбирает следующее слово. Всё считается прямо в браузере.',
+        ideas: 'Вот задачи, которые Эрнест хочет научиться решать с помощью ИИ. Это направления для изучения, а не готовые проекты.',
+        contacts: 'Быстрее всего — Telegram @ErnestKzn. Ещё есть GitHub и LinkedIn — открыл contacts.sh.',
+        me: 'Честно: я не настоящая нейросеть. Мои ответы заранее написал Эрнест. Зато голова на обоях — настоящая 3D-модель, а демки в ~/lab — настоящие вычисления.',
+        help: 'Можно спросить своими словами или набрать команду: about, work, learning, strengths, lab, ideas, contacts, clear, lang en.',
+        hello: 'Привет! Спросите про Эрнеста или нажмите подсказку ниже.',
+        fallback: 'Такого вопроса я пока не знаю. Попробуйте подсказки ниже или напишите Эрнесту в Telegram: @ErnestKzn.',
+        langSwitched: 'Язык переключён.',
+      },
+    },
     footer: { text: 'Эрнест Музафаров · техподдержка → AI/ML', credit: '3D-модель головы: Lee Perry-Smith, CC BY 3.0' },
   },
 
@@ -437,6 +481,50 @@ const I18N = {
       noteLabel: 'Important',
       note: 'AI here is an assistant, not a replacement for people: the final decision stays with a human. Client data needs protection and compliance with personal data laws.',
     },
+    os: {
+      bootSkip: 'click to skip',
+      boot: [
+        'ernest.os v1.0',
+        'memory check .............. ok',
+        'loading neural head ....... ok',
+        'mounting ~/lab ............ ok',
+        'starting assistant.sh ..... ok',
+        '',
+        'welcome.',
+      ],
+      hello: '> system ready',
+      hint: 'click an icon to open a file · windows can be dragged',
+      assistantMeta: 'answers are pre-written',
+      inputPlaceholder: 'ask something or type help',
+      dock: { assistant: 'Assistant', about: 'About', lab: 'Lab', ideas: 'Ideas', contacts: 'Contact' },
+      apps: { assistant: 'Assistant', about: 'About', lab: 'Lab', ideas: 'Ideas', contacts: 'Contact' },
+    },
+    assistant: {
+      greet: "Hi! I'm Ernest's assistant. Ask who he is, what he does and what he is learning — or open the files on the desktop.",
+      open: 'open',
+      suggestions: [
+        ['Who is Ernest?', 'about'],
+        ['What do you do?', 'work'],
+        ['What are you learning?', 'learning'],
+        ['Strengths', 'strengths'],
+        ['Show me a demo', 'lab'],
+        ['How to get in touch?', 'contacts'],
+        ['Are you a real AI?', 'me'],
+      ],
+      answers: {
+        about: 'Ernest Muzafarov is a head of technical support moving into AI/ML development. I opened about.md — details and learning progress are there.',
+        learning: 'Ernest is deliberately learning Python, SQL, machine learning fundamentals and LLMs. In progress right now:',
+        strengths: 'Here is what Ernest brings to a team:',
+        lab: 'Opening ~/lab. There are three interactive demos: how a neuron learns, gradient descent and how an LLM picks the next word. Everything runs in your browser.',
+        ideas: 'These are problems Ernest wants to learn to solve with AI. Directions to explore, not finished projects.',
+        contacts: 'Telegram is the fastest: @ErnestKzn. There are also GitHub and LinkedIn — I opened contacts.sh.',
+        me: "Honestly: I'm not a real neural network. Ernest wrote my answers in advance. The head on the wallpaper is a real 3D model, though, and the demos in ~/lab are real computations.",
+        help: 'Ask in your own words or type a command: about, work, learning, strengths, lab, ideas, contacts, clear, lang ru.',
+        hello: 'Hi! Ask about Ernest or tap a suggestion below.',
+        fallback: "I don't know that one yet. Try a suggestion below or message Ernest on Telegram: @ErnestKzn.",
+        langSwitched: 'Language switched.',
+      },
+    },
     footer: { text: 'Ernest Muzafarov · tech support → AI/ML', credit: 'Head model: Lee Perry-Smith, CC BY 3.0' },
   },
 };
@@ -450,12 +538,28 @@ const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const isMobile = () => window.innerWidth < 760;
 
 const escapeHtml = (str) =>
   String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
-// *слово* в тексте превращается в выделенное (контурное) слово
-const rich = (str) => escapeHtml(str).replace(/\*(.+?)\*/g, '<em>$1</em>');
+// Какие окна открывает ассистент и как называются файлы на рабочем столе
+const FILES = { assistant: 'assistant.sh', about: 'about.md', lab: '~/lab', ideas: 'ideas.md', contacts: 'contacts.sh' };
+const OPENS = { about: 'about', work: 'about', learning: 'about', strengths: 'about', lab: 'lab', ideas: 'ideas', contacts: 'contacts' };
+
+// Ключевые слова для свободного ввода в чате (русские и английские сразу)
+const KEYWORDS = {
+  me: ['настоящ', 'нейросеть ли', 'ты ии', 'ты бот', 'are you real', 'are you ai', 'are you a bot', 'real ai'],
+  help: ['help', 'помощ', 'команд', 'что умеешь', 'commands'],
+  hello: ['привет', 'здравств', 'hello', 'hi ', 'hey'],
+  contacts: ['контакт', 'связ', 'telegram', 'телеграм', 'написать', 'github', 'linkedin', 'contact', 'reach', 'hire', 'нанять'],
+  lab: ['демо', 'лаб', 'нейрон', 'градиент', 'llm', 'demo', 'lab', 'neuron', 'gradient'],
+  ideas: ['иде', 'план', 'idea', 'plan', 'future'],
+  learning: ['изуча', 'учишь', 'учит', 'python', 'sql', 'обучен', 'learn', 'study', 'progress', 'прогресс'],
+  strengths: ['сильн', 'умеешь', 'навык', 'strength', 'skill', 'good at'],
+  work: ['работ', 'занима', 'должност', 'опыт', 'work', 'job', 'experience', 'do you do'],
+  about: ['кто', 'эрнест', 'о себе', 'about', 'who', 'ernest'],
+};
 
 /* ---------- Язык ---------- */
 
@@ -479,16 +583,6 @@ function detectLang() {
   return (navigator.language || 'ru').toLowerCase().startsWith('ru') ? 'ru' : 'en';
 }
 
-// Разбивает строку на буквы-спаны: нужны для появления и реакции на курсор
-function splitLetters() {
-  let index = 0;
-  $$('[data-split]').forEach((el) => {
-    el.innerHTML = [...t(el.dataset.i18n)]
-      .map((ch) => `<span class="ch" style="--i:${index++}"><span class="ch__in">${escapeHtml(ch)}</span></span>`)
-      .join('');
-  });
-}
-
 function setLang(next) {
   lang = I18N[next] ? next : 'ru';
   try {
@@ -496,18 +590,18 @@ function setLang(next) {
   } catch (e) {}
 
   document.documentElement.lang = lang;
-  document.title = t('meta.title');
+  document.title = `ernest.os — ${t('hero.nameFirst')} ${t('hero.nameLast')}`;
   $('meta[name="description"]').setAttribute('content', t('meta.description'));
 
   $$('[data-i18n]').forEach((el) => {
-    if (el.hasAttribute('data-split')) return;
-    const value = t(el.dataset.i18n);
-    if (value.includes('*')) el.innerHTML = rich(value);
-    else el.textContent = value;
+    el.textContent = t(el.dataset.i18n).replace(/\*/g, '');
   });
-  splitLetters();
-  $$('[data-i18n-alt]').forEach((el) => {
-    el.alt = t(el.dataset.i18nAlt);
+  $$('[data-i18n-placeholder]').forEach((el) => {
+    el.placeholder = t(el.dataset.i18nPlaceholder);
+  });
+  $$('[data-i18n-title]').forEach((el) => {
+    el.title = t(el.dataset.i18nTitle);
+    el.setAttribute('aria-label', el.title);
   });
   $$('.lang__btn').forEach((btn) => {
     btn.classList.toggle('is-active', btn.dataset.lang === lang);
@@ -520,50 +614,13 @@ function setLang(next) {
   langListeners.forEach((fn) => fn());
 }
 
-/* ---------- Появление при прокрутке ---------- */
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible', 'revealed');
-      revealObserver.unobserve(entry.target);
-      const group = entry.target.closest('[data-reveal-group]');
-      if (group) group.dataset.revealed = 'true';
-    });
-  },
-  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-);
-
-// При смене языка блоки перерисовываются: уже показанные не прячем снова
-function observeChildren(root, selector) {
-  const revealed = root.dataset.revealed === 'true';
-  $$(selector, root).forEach((el) => {
-    if (revealed) el.classList.add('is-visible', 'revealed');
-    else revealObserver.observe(el);
-  });
-}
-
-/* ---------- Сильные стороны ---------- */
+/* ---------- Содержимое окон ---------- */
 
 function renderStrengths() {
-  const root = $('#strengths');
-  root.dataset.revealGroup = '';
-  root.innerHTML = t('strengths.items')
-    .map(
-      (item, i) => `
-      <li class="row reveal" style="transition-delay:${i * 80}ms">
-        <span class="row__num mono">0${i + 1}</span>
-        <h4 class="row__title">${escapeHtml(item.title)}</h4>
-        <p class="row__text">${escapeHtml(item.text)}</p>
-        <span class="row__arrow">→</span>
-      </li>`
-    )
+  $('#strengths').innerHTML = t('strengths.items')
+    .map((item) => `<li><span><b>${escapeHtml(item.title)}</b>${escapeHtml(item.text)}</span></li>`)
     .join('');
-  observeChildren(root, '.row');
 }
-
-/* ---------- Прогресс обучения ---------- */
 
 function skillProgress(skill) {
   if (typeof skill.progress === 'number') return Math.max(0, Math.min(100, Math.round(skill.progress)));
@@ -571,62 +628,333 @@ function skillProgress(skill) {
   return skill.steps.length ? Math.round((done / skill.steps.length) * 100) : 0;
 }
 
+// прогресс рисуется символами, как в терминале: [████░░░░░░] 40%
 function renderLearning() {
-  const root = $('#learning');
-  root.dataset.revealGroup = '';
-  root.innerHTML = LEARNING.map((skill, k) => {
+  const mark = { done: '✓', current: '›', todo: '·' };
+  $('#learning').innerHTML = LEARNING.map((skill) => {
     const pct = skillProgress(skill);
-    const segs = skill.steps.map((s, i) => `<span class="is-${s.status}" style="--i:${i}"></span>`).join('');
+    const filled = Math.round(pct / 10);
+    const bar = '█'.repeat(filled) + '░'.repeat(10 - filled);
     const steps = skill.steps
-      .map((s) => `<li class="is-${s.status}"><span class="cp cp--${s.status}"></span>${escapeHtml(tr(s))}</li>`)
+      .map((s) => `<li class="is-${s.status}">${mark[s.status]} ${escapeHtml(tr(s))}</li>`)
       .join('');
     return `
-      <div class="glass skill reveal" style="transition-delay:${k * 90}ms">
-        <div class="skill__top">
-          <h4 class="skill__name">${escapeHtml(tr(skill.name))}</h4>
-          <span class="skill__pct">${pct}%</span>
-        </div>
-        <div class="segs" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}">${segs}</div>
-        <ul class="checkpoints">${steps}</ul>
+      <div class="skillrow">
+        <div class="skillrow__head"><span>${escapeHtml(tr(skill.name))}</span><span><span class="skillrow__bar">[${bar}]</span> ${pct}%</span></div>
+        <ul class="skillrow__steps">${steps}</ul>
       </div>`;
   }).join('');
-  observeChildren(root, '.skill');
 }
-
-/* ---------- Идеи: ИИ в поддержке ---------- */
 
 function renderIdeas() {
-  const root = $('#ideas-list');
-  root.dataset.revealGroup = '';
-  root.innerHTML = t('ideas.items')
+  $('#ideas-list').innerHTML = t('ideas.items')
     .map(
-      (item, i) => `
-      <article class="glass stack__card reveal" style="--i:${i}">
-        <span class="stack__num">0${i + 1}</span>
-        <div>
-          <h3 class="stack__title">${escapeHtml(item.title)}</h3>
-          <p class="stack__text">${escapeHtml(item.text)}</p>
-          <ul class="tags">${item.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join('')}</ul>
-        </div>
-      </article>`
+      (item) => `
+      <li>
+        <b>${escapeHtml(item.title)}</b>
+        ${escapeHtml(item.text)}
+        <div class="tags">${item.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>
+      </li>`
     )
     .join('');
-  observeChildren(root, '.stack__card');
 }
 
-/* ---------- Подсветка стеклянных блоков под курсором ---------- */
+function initContacts() {
+  const pretty = (url) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+  const tg = $('#contact-telegram');
+  tg.href = `https://t.me/${CONTACTS.telegram}`;
+  $('.contact__value', tg).textContent = `@${CONTACTS.telegram}`;
+  const gh = $('#contact-github');
+  gh.href = CONTACTS.github;
+  $('.contact__value', gh).textContent = pretty(CONTACTS.github);
+  const li = $('#contact-linkedin');
+  li.href = CONTACTS.linkedin;
+  $('.contact__value', li).textContent = pretty(CONTACTS.linkedin);
+}
 
-function initIceGlow() {
-  document.addEventListener('pointermove', (e) => {
-    const el = e.target.closest && e.target.closest('.glass');
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-    el.style.setProperty('--my', `${e.clientY - r.top}px`);
+/* ---------- Часы в верхней панели ---------- */
+
+function initClock() {
+  const el = $('#clock');
+  const tick = () => {
+    el.textContent = new Date().toLocaleTimeString(lang === 'ru' ? 'ru-RU' : 'en-GB', { hour: '2-digit', minute: '2-digit' });
+  };
+  tick();
+  setInterval(tick, 10000);
+  langListeners.push(tick);
+}
+
+/* ---------- Окна: открыть, закрыть, перетащить ---------- */
+
+// Где окно появляется в первый раз — доли ширины и высоты рабочего стола
+// (x: 1 — прижать к правому краю)
+const WIN_LAYOUT = {
+  assistant: { x: 1, y: 0.06 },
+  about: { x: 0.3, y: 0.05 },
+  lab: { x: 0.14, y: 0.03 },
+  ideas: { x: 0.38, y: 0.08 },
+  contacts: { x: 0.56, y: 0.28 },
+};
+
+function initWindows() {
+  const desktop = $('#desktop');
+  const wins = new Map($$('.win').map((w) => [w.dataset.win, w]));
+  let z = 20;
+  let focused = null;
+
+  function updateDock() {
+    $$('.dock__item').forEach((b) => b.classList.toggle('is-open', !wins.get(b.dataset.open).hidden));
+    $('#topbar-app').textContent = focused ? t(`os.apps.${focused}`) : '';
+  }
+
+  function place(win, id) {
+    if (win.dataset.placed || isMobile()) return;
+    const W = desktop.clientWidth;
+    const H = desktop.clientHeight;
+    const pos = WIN_LAYOUT[id] || { x: 0.3, y: 0.1 };
+    win.style.left = `${clamp(pos.x * W, 12, Math.max(12, W - win.offsetWidth - 24))}px`;
+    win.style.top = `${clamp(pos.y * H, 12, Math.max(12, H - win.offsetHeight - 90))}px`;
+    win.dataset.placed = '1';
+  }
+
+  function focus(id) {
+    const win = wins.get(id);
+    if (!win || win.hidden) return;
+    win.style.zIndex = ++z;
+    wins.forEach((w, key) => w.classList.toggle('is-focused', key === id));
+    focused = id;
+    updateDock();
+  }
+
+  function open(id) {
+    const win = wins.get(id);
+    if (!win) return;
+    const wasHidden = win.hidden;
+    win.hidden = false;
+    place(win, id);
+    focus(id);
+    if (wasHidden) sound.tick();
+  }
+
+  function close(id) {
+    const win = wins.get(id);
+    if (!win) return;
+    win.hidden = true;
+    win.classList.remove('is-focused');
+    if (focused === id) {
+      // фокус переходит на верхнее из оставшихся окон
+      const rest = [...wins.entries()].filter(([, w]) => !w.hidden).sort((a, b) => b[1].style.zIndex - a[1].style.zIndex);
+      focused = rest.length ? rest[0][0] : null;
+      if (focused) focus(focused);
+    }
+    updateDock();
+  }
+
+  // иконка или кнопка дока: открыть, вывести вперёд или свернуть
+  function toggle(id) {
+    const win = wins.get(id);
+    if (win.hidden) open(id);
+    else if (focused === id) close(id);
+    else focus(id);
+  }
+
+  $$('[data-open]').forEach((btn) => btn.addEventListener('click', () => toggle(btn.dataset.open)));
+
+  wins.forEach((win, id) => {
+    win.addEventListener('pointerdown', () => focus(id));
+    $('.win__close', win).addEventListener('click', () => close(id));
+    $('.win__min', win).addEventListener('click', () => close(id));
+
+    // перетаскивание за заголовок
+    const bar = $('.win__bar', win);
+    bar.addEventListener('pointerdown', (e) => {
+      if (isMobile() || e.target.closest('button')) return;
+      const startX = e.clientX - win.offsetLeft;
+      const startY = e.clientY - win.offsetTop;
+      bar.setPointerCapture(e.pointerId);
+      const move = (ev) => {
+        const W = desktop.clientWidth;
+        const H = desktop.clientHeight;
+        win.style.left = `${clamp(ev.clientX - startX, -win.offsetWidth + 80, W - 80)}px`;
+        win.style.top = `${clamp(ev.clientY - startY, 0, H - 40)}px`;
+      };
+      const up = () => {
+        bar.removeEventListener('pointermove', move);
+        bar.removeEventListener('pointerup', up);
+      };
+      bar.addEventListener('pointermove', move);
+      bar.addEventListener('pointerup', up);
+    });
   });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && focused) close(focused);
+  });
+  langListeners.push(updateDock);
+
+  return { open, close, focus };
+}
+
+/* ---------- Загрузка системы ---------- */
+
+function initBoot(onDone) {
+  const boot = $('#boot');
+  const log = $('#boot-log');
+  let finished = false;
+  const finish = () => {
+    if (finished) return;
+    finished = true;
+    boot.classList.add('is-done');
+    setTimeout(() => boot.remove(), 700);
+    onDone();
+  };
+  boot.addEventListener('click', finish);
+  if (reducedMotion) {
+    finish();
+    return;
+  }
+  const lines = t('os.boot');
+  let i = 0;
+  (function next() {
+    if (finished) return;
+    if (i >= lines.length) {
+      setTimeout(finish, 350);
+      return;
+    }
+    const line = lines[i++];
+    const html = escapeHtml(line).replace(/ ok$/, ' <span class="ok">ok</span>');
+    log.innerHTML += `<span class="${i === lines.length ? 'hi' : ''}">${html}</span>\n`;
+    setTimeout(next, line ? 150 : 60);
+  })();
+  setTimeout(finish, 4000);
+}
+
+/* ---------- ИИ-ассистент ---------- */
+
+// Ответы не генерируются нейросетью: они собраны из текстов сайта.
+// Голова на обоях «говорит», пока ответ печатается.
+function initAssistant(wm, head) {
+  const log = $('#chat-log');
+  const input = $('#chat-input');
+  let timer = null;
+
+  function add(cls, text) {
+    const p = document.createElement('p');
+    p.className = `msg ${cls}`;
+    p.textContent = text;
+    log.appendChild(p);
+    log.scrollTop = log.scrollHeight;
+    return p;
+  }
+
+  function compose(id) {
+    if (id === 'work') return `${t('about.p1')} ${t('about.p2')}`;
+    if (id === 'learning') {
+      const current = LEARNING.flatMap((skill) =>
+        skill.steps.filter((s) => s.status === 'current').map((s) => `· ${tr(skill.name)}: ${tr(s)}`)
+      );
+      return `${t('assistant.answers.learning')}\n${current.join('\n')}`;
+    }
+    if (id === 'strengths') {
+      return `${t('assistant.answers.strengths')}\n${t('strengths.items')
+        .map((s) => `· ${s.title}`)
+        .join('\n')}`;
+    }
+    return t(`assistant.answers.${id}`);
+  }
+
+  // печатает ответ по буквам; новый вопрос сразу допечатывает предыдущий
+  let finishCurrent = null;
+  function say(text, then) {
+    if (finishCurrent) finishCurrent();
+    const p = add('msg--ai is-typing', '');
+    head.talk(true);
+    const start = performance.now();
+    const done = () => {
+      clearInterval(timer);
+      finishCurrent = null;
+      p.textContent = text;
+      p.classList.remove('is-typing');
+      head.talk(false);
+      if (then) then(p);
+    };
+    const step = () => {
+      const i = Math.floor((performance.now() - start) / 14);
+      if (i >= text.length) return done();
+      p.textContent = text.slice(0, i);
+      log.scrollTop = log.scrollHeight;
+    };
+    finishCurrent = done;
+    if (reducedMotion) done();
+    else timer = setInterval(step, 16);
+  }
+
+  function answer(id) {
+    say(compose(id), (p) => {
+      const win = OPENS[id];
+      if (!win) return;
+      wm.open(win);
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'msg__open';
+      btn.textContent = `${t('assistant.open')} ${FILES[win]}`;
+      btn.addEventListener('click', () => wm.open(win));
+      p.appendChild(document.createElement('br'));
+      p.appendChild(btn);
+    });
+  }
+
+  function route(raw) {
+    const q = raw.toLowerCase().trim();
+    if (!q) return;
+    if (q === 'clear') {
+      log.innerHTML = '';
+      return;
+    }
+    const langCmd = q.match(/^lang\s+(ru|en)$/);
+    if (langCmd) {
+      setLang(langCmd[1]);
+      say(t('assistant.answers.langSwitched'));
+      return;
+    }
+    const id = Object.keys(KEYWORDS).find((key) => KEYWORDS[key].some((w) => `${q} `.includes(w)));
+    answer(id || 'fallback');
+  }
+
+  function renderSuggestions() {
+    $('#chat-suggest').innerHTML = t('assistant.suggestions')
+      .map(([label, id]) => `<button type="button" class="chip" data-ask="${id}">${escapeHtml(label)}</button>`)
+      .join('');
+  }
+
+  $('#chat-suggest').addEventListener('click', (e) => {
+    const chip = e.target.closest('[data-ask]');
+    if (!chip) return;
+    add('msg--user', chip.textContent);
+    answer(chip.dataset.ask);
+  });
+
+  $('#chat-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const q = input.value;
+    if (!q.trim()) return;
+    add('msg--user', q);
+    input.value = '';
+    route(q);
+  });
+
+  langListeners.push(renderSuggestions);
+  renderSuggestions();
+
+  return {
+    greet() {
+      say(t('assistant.greet'));
+    },
+  };
 }
 
 /* ---------- Звук ---------- */
+
 
 // Фоновый звук синтезируется прямо в браузере (Web Audio), файлов нет.
 // По умолчанию выключен, включается кнопкой «Звук» в шапке.
@@ -746,164 +1074,148 @@ function initSound() {
   });
 }
 
-/* ---------- 3D: голова-андроид ---------- */
+/* ---------- Обои: голова-голограмма ---------- */
 
-// Голова из белого «фарфора» поворачивается за курсором. При прокрутке её сверху вниз
-// проходит линия сканирования: ниже линии — гладкая поверхность, выше — синяя сетка
-// с узлами и бегущими сигналами, как нейросеть внутри.
+// Тёмный силуэт головы со светящейся кромкой, поверх — синяя сетка и узлы.
+// Сверху вниз постоянно идёт линия сканирования, по сетке бегут сигналы.
+// Пока ассистент печатает ответ, голова «говорит»: сканирование и сигналы ускоряются.
 // Модель: Lee Perry-Smith, CC BY 3.0 (из примеров three.js), лежит в assets/models/head.glb.
 function initScene() {
-  const stub = { setScene() {} };
+  const stub = { talk() {} };
   const canvas = $('#scene');
-  const fail = () => {
+  if (!window.THREE || !THREE.GLTFLoader) {
     canvas.remove();
-    document.documentElement.classList.add('no-webgl');
     return stub;
-  };
-  if (!window.THREE || !THREE.GLTFLoader) return fail();
+  }
 
   let renderer;
   try {
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
   } catch (e) {
-    return fail();
+    canvas.remove();
+    return stub;
   }
-
-  const small = isTouch || window.innerWidth < 760;
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+  renderer.setPixelRatio(pixelRatio);
   renderer.setClearColor(0x000000, 0);
-  renderer.outputEncoding = THREE.sRGBEncoding;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 0.92;
-  renderer.localClippingEnabled = true;
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
+  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
   camera.position.set(0, 0, 7.5);
 
-  // мягкие отражения студии — без них фарфор выглядит пластиком
-  if (THREE.RoomEnvironment) {
-    const pmrem = new THREE.PMREMGenerator(renderer);
-    scene.environment = pmrem.fromScene(new THREE.RoomEnvironment(), 0.04).texture;
-  }
-  const key = new THREE.DirectionalLight(0xffffff, 1.7);
-  key.position.set(-4, 3, 3);
-  scene.add(key);
-  const rim = new THREE.DirectionalLight(0x4d6bff, 2.4);
-  rim.position.set(4, 1.5, -3);
-  scene.add(rim);
-  scene.add(new THREE.AmbientLight(0xffffff, 0.08));
-
-  const pivot = new THREE.Group(); // положение на экране
-  const head = new THREE.Group(); // поворот за курсором
+  const pivot = new THREE.Group();
+  const head = new THREE.Group();
   pivot.add(head);
   scene.add(pivot);
 
-  const BLUE = new THREE.Color('#2b4cff');
-  const skinPlane = new THREE.Plane(new THREE.Vector3(0, -1, 0), 0); // фарфор остаётся ниже линии
-  const wirePlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0); // сетка проступает выше линии
-  const uScan = { value: 10 };
-
-  const skinMaterial = new THREE.MeshPhysicalMaterial({
-    color: '#e6e8ed',
-    roughness: 0.3,
-    envMapIntensity: 0.75,
-    metalness: 0,
-    clearcoat: 0.8,
-    clearcoatRoughness: 0.22,
-    clippingPlanes: [skinPlane],
-    side: THREE.DoubleSide,
-  });
-  // светящаяся кромка там, где проходит линия сканирования
-  skinMaterial.onBeforeCompile = (shader) => {
-    shader.uniforms.uScan = uScan;
-    shader.uniforms.uGlow = { value: BLUE };
-    shader.vertexShader =
-      'varying float vWorldY;\n' +
-      shader.vertexShader.replace(
-        '#include <begin_vertex>',
-        '#include <begin_vertex>\n  vWorldY = (modelMatrix * vec4(transformed, 1.0)).y;'
-      );
-    shader.fragmentShader =
-      'uniform float uScan;\nuniform vec3 uGlow;\nvarying float vWorldY;\n' +
-      shader.fragmentShader.replace(
-        '#include <dithering_fragment>',
-        'gl_FragColor.rgb += uGlow * exp(-pow((vWorldY - uScan) / 0.025, 2.0)) * 1.1;\n#include <dithering_fragment>'
-      );
+  const uniforms = {
+    uScan: { value: 2 },
+    uTalk: { value: 0 },
+    uTime: { value: 0 },
+    uBlue: { value: new THREE.Color('#4d6bff') },
+    uPixel: { value: pixelRatio },
   };
 
-  // круглая точка для узлов и сигналов (по умолчанию точки квадратные)
-  const dot = (() => {
-    const c = document.createElement('canvas');
-    c.width = c.height = 64;
-    const g = c.getContext('2d');
-    g.fillStyle = '#fff';
-    g.beginPath();
-    g.arc(32, 32, 28, 0, Math.PI * 2);
-    g.fill();
-    return new THREE.CanvasTexture(c);
-  })();
-  const wireMaterial = new THREE.LineBasicMaterial({ color: BLUE, transparent: true, opacity: 0.5, clippingPlanes: [wirePlane] });
-  const nodeMaterial = new THREE.PointsMaterial({ color: BLUE, size: 0.04, map: dot, alphaTest: 0.5, clippingPlanes: [wirePlane] });
-  const pulseMaterial = new THREE.PointsMaterial({ color: '#ff5a2e', size: 0.09, map: dot, alphaTest: 0.5, clippingPlanes: [wirePlane] });
+  // общий кусок шейдера: яркость полосы сканирования по высоте в мире
+  const scanChunk = `
+    uniform float uScan;
+    uniform float uTalk;
+    float scanBand(float y) {
+      return exp(-pow((y - uScan) / (0.05 + uTalk * 0.03), 2.0));
+    }
+  `;
+
+  // силуэт: почти чёрный, с синей кромкой по краю (эффект Френеля)
+  const shellMaterial = new THREE.ShaderMaterial({
+    uniforms,
+    transparent: true,
+    vertexShader: `
+      varying vec3 vNormal;
+      varying vec3 vView;
+      varying float vWorldY;
+      void main() {
+        vec4 mv = modelViewMatrix * vec4(position, 1.0);
+        vNormal = normalize(normalMatrix * normal);
+        vView = normalize(-mv.xyz);
+        vWorldY = (modelMatrix * vec4(position, 1.0)).y;
+        gl_Position = projectionMatrix * mv;
+      }
+    `,
+    fragmentShader: `
+      uniform vec3 uBlue;
+      varying vec3 vNormal;
+      varying vec3 vView;
+      varying float vWorldY;
+      ${scanChunk}
+      void main() {
+        float rim = pow(1.0 - abs(dot(normalize(vNormal), vView)), 2.4);
+        vec3 col = vec3(0.025, 0.035, 0.07) + uBlue * rim * 0.9 + uBlue * scanBand(vWorldY) * 0.55;
+        gl_FragColor = vec4(col, 0.96);
+      }
+    `,
+  });
+
+  const wireMaterial = new THREE.ShaderMaterial({
+    uniforms,
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    vertexShader: `
+      varying float vWorldY;
+      void main() {
+        vWorldY = (modelMatrix * vec4(position, 1.0)).y;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform vec3 uBlue;
+      varying float vWorldY;
+      ${scanChunk}
+      void main() {
+        float a = 0.16 + uTalk * 0.08 + scanBand(vWorldY) * 0.9;
+        gl_FragColor = vec4(mix(uBlue, vec3(0.8, 0.86, 1.0), scanBand(vWorldY) * 0.6) * a, a);
+      }
+    `,
+  });
+
+  // круглые точки: узлы сетки и сигналы
+  const pointsMaterial = (color, size) =>
+    new THREE.ShaderMaterial({
+      uniforms: { ...uniforms, uColor: { value: new THREE.Color(color) }, uSize: { value: size } },
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      vertexShader: `
+        uniform float uPixel;
+        uniform float uSize;
+        varying float vWorldY;
+        void main() {
+          vec4 mv = modelViewMatrix * vec4(position, 1.0);
+          vWorldY = (modelMatrix * vec4(position, 1.0)).y;
+          gl_Position = projectionMatrix * mv;
+          gl_PointSize = uSize * uPixel * 30.0 / -mv.z;
+        }
+      `,
+      fragmentShader: `
+        uniform vec3 uColor;
+        varying float vWorldY;
+        ${scanChunk}
+        void main() {
+          float d = length(gl_PointCoord - 0.5);
+          if (d > 0.5) discard;
+          float a = smoothstep(0.5, 0.15, d) * (0.55 + scanBand(vWorldY));
+          gl_FragColor = vec4(uColor * a, a);
+        }
+      `,
+    });
 
   let ready = false;
-  let top = 1.4;
-  let bottom = -1.4;
+  let top = 1.3;
+  let bottom = -1.3;
+  let positions = null;
   let pulses = [];
   let pulseGeometry = null;
-  let positions = null;
 
-  new THREE.GLTFLoader().load(
-    'assets/models/head.glb',
-    (gltf) => {
-      let mesh = null;
-      gltf.scene.updateMatrixWorld(true);
-      gltf.scene.traverse((o) => {
-        if (o.isMesh && !mesh) mesh = o;
-      });
-      if (!mesh) return;
-
-      const geometry = mesh.geometry.clone();
-      geometry.applyMatrix4(mesh.matrixWorld);
-      geometry.computeBoundingBox();
-      const box = geometry.boundingBox;
-      const center = box.getCenter(new THREE.Vector3());
-      const size = box.getSize(new THREE.Vector3());
-      const s = 2.5 / size.y;
-      geometry.translate(-center.x, -center.y, -center.z);
-      geometry.scale(s, s, s);
-      geometry.computeVertexNormals();
-      top = (size.y * s) / 2 + 0.05;
-      bottom = -top;
-
-      head.add(new THREE.Mesh(geometry, skinMaterial));
-      // сетка чуть меньше поверхности, чтобы не мерцала на кромке
-      const wire = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), wireMaterial);
-      wire.scale.setScalar(0.995);
-      head.add(wire);
-
-      positions = geometry.attributes.position;
-      const nodePos = [];
-      for (let i = 0; i < positions.count; i += 4) nodePos.push(positions.getX(i), positions.getY(i), positions.getZ(i));
-      const nodeGeometry = new THREE.BufferGeometry();
-      nodeGeometry.setAttribute('position', new THREE.Float32BufferAttribute(nodePos, 3));
-      head.add(new THREE.Points(nodeGeometry, nodeMaterial));
-
-      const PULSES = small ? 50 : 90;
-      pulses = Array.from({ length: PULSES }, () => spawn({ t: Math.random() }));
-      pulseGeometry = new THREE.BufferGeometry();
-      pulseGeometry.setAttribute('position', new THREE.Float32BufferAttribute(new Float32Array(PULSES * 3), 3));
-      head.add(new THREE.Points(pulseGeometry, pulseMaterial));
-
-      ready = true;
-      document.documentElement.classList.add('head-ready');
-    },
-    undefined,
-    () => document.documentElement.classList.add('no-webgl')
-  );
-
-  // сигнал летит по прямой между двумя соседними узлами сетки — сквозь голову
   function spawn(p) {
     const n = positions.count;
     const a = Math.floor(Math.random() * n);
@@ -911,7 +1223,7 @@ function initScene() {
     for (let tries = 0; tries < 30; tries++) {
       const c = Math.floor(Math.random() * n);
       const d = Math.hypot(positions.getX(a) - positions.getX(c), positions.getY(a) - positions.getY(c), positions.getZ(a) - positions.getZ(c));
-      if (d > 0.25 && d < 0.75) {
+      if (d > 0.2 && d < 0.6) {
         b = c;
         break;
       }
@@ -919,28 +1231,52 @@ function initScene() {
     p.a = a;
     p.b = b;
     p.t = p.t ?? 0;
-    p.speed = 0.5 + Math.random() * 0.9;
+    p.speed = 0.5 + Math.random() * 0.8;
     return p;
   }
 
-  /* --- прокрутка: где голова и насколько её «просканировало» --- */
+  new THREE.GLTFLoader().load('assets/models/head.glb', (gltf) => {
+    let mesh = null;
+    gltf.scene.updateMatrixWorld(true);
+    gltf.scene.traverse((o) => {
+      if (o.isMesh && !mesh) mesh = o;
+    });
+    if (!mesh) return;
 
-  const sections = $$('[data-scene]');
-  let tops = [];
-  const measure = () => {
-    tops = sections.map((el) => el.getBoundingClientRect().top + window.scrollY);
-  };
-  function progress() {
-    const y = window.scrollY;
-    let i = 0;
-    for (let k = 0; k < tops.length; k++) if (tops[k] <= y) i = k;
-    if (i >= tops.length - 1) return tops.length - 1;
-    return i + clamp((y - tops[i]) / (tops[i + 1] - tops[i]), 0, 1);
-  }
-  const smooth = (a, b, x) => {
-    const t = clamp((x - a) / (b - a), 0, 1);
-    return t * t * (3 - 2 * t);
-  };
+    const geometry = mesh.geometry.clone();
+    geometry.applyMatrix4(mesh.matrixWorld);
+    geometry.computeBoundingBox();
+    const box = geometry.boundingBox;
+    const center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
+    const s = 2.6 / size.y;
+    geometry.translate(-center.x, -center.y, -center.z);
+    geometry.scale(s, s, s);
+    geometry.computeVertexNormals();
+    top = (size.y * s) / 2;
+    bottom = -top;
+
+    // силуэт чуть меньше, чтобы сетка лежала поверх него, а задняя сторона пряталась
+    const shell = new THREE.Mesh(geometry, shellMaterial);
+    shell.scale.setScalar(0.992);
+    head.add(shell);
+    head.add(new THREE.LineSegments(new THREE.WireframeGeometry(geometry), wireMaterial));
+
+    positions = geometry.attributes.position;
+    const nodes = [];
+    for (let i = 0; i < positions.count; i += 5) nodes.push(positions.getX(i), positions.getY(i), positions.getZ(i));
+    const nodeGeometry = new THREE.BufferGeometry();
+    nodeGeometry.setAttribute('position', new THREE.Float32BufferAttribute(nodes, 3));
+    head.add(new THREE.Points(nodeGeometry, pointsMaterial('#7d93ff', 0.05)));
+
+    const PULSES = isMobile() ? 40 : 70;
+    pulses = Array.from({ length: PULSES }, () => spawn({ t: Math.random() }));
+    pulseGeometry = new THREE.BufferGeometry();
+    pulseGeometry.setAttribute('position', new THREE.Float32BufferAttribute(new Float32Array(PULSES * 3), 3));
+    head.add(new THREE.Points(pulseGeometry, pointsMaterial('#ff6a3d', 0.11)));
+
+    ready = true;
+  });
 
   const mouse = { x: 0, y: 0 };
   window.addEventListener('pointermove', (e) => {
@@ -953,20 +1289,16 @@ function initScene() {
     const h = window.innerHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
-    camera.fov = w < 760 ? 40 : 30;
+    camera.fov = w < 760 ? 44 : 32;
     camera.updateProjectionMatrix();
-    measure();
   }
   window.addEventListener('resize', resize);
   resize();
-  setInterval(measure, 1500);
 
-  /* --- цикл отрисовки --- */
-
+  let talking = false;
+  let talk = 0;
+  let scanPhase = 0;
   let last = performance.now();
-  let time = 0;
-  let scanY = 10;
-  let opacity = 1;
 
   function frame(now) {
     requestAnimationFrame(frame);
@@ -974,523 +1306,50 @@ function initScene() {
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
     const motion = reducedMotion ? 0 : 1;
-    time += dt * motion;
 
-    const g = progress();
-    const mobile = window.innerWidth < 760;
-    // насколько сдвинуть голову вбок, зависит от ширины видимой области
+    talk += ((talking ? 1 : 0) - talk) * (1 - Math.exp(-dt * 6));
+    uniforms.uTalk.value = talk;
+    uniforms.uTime.value += dt;
+
+    // линия сканирования бежит сверху вниз; пока ассистент «говорит» — быстрее
+    scanPhase = (scanPhase + dt * motion * (0.22 + talk * 0.5)) % 1;
+    uniforms.uScan.value = top + 0.15 - (top - bottom + 0.3) * scanPhase + pivot.position.y;
+
+    // на компьютере голова левее центра (справа — окно ассистента), на телефоне выше
     const halfWidth = Math.tan((camera.fov * Math.PI) / 360) * camera.position.z * camera.aspect;
-    const side = mobile ? 0 : halfWidth * 0.52;
-    const toStatement = smooth(0.55, 1.15, g);
-    const toContacts = smooth(4.55, 5, g);
-
-    // в «Направлении» голова уходит вправо и сканируется сверху вниз,
-    // в контактах возвращается наполовину «раскрытой»
-    const scanT = Math.max(smooth(1.05, 1.85, g) * (1 - toContacts), toContacts * 0.5);
-    const targetScan = top + (bottom - top) * scanT;
-    scanY += (targetScan - scanY) * (reducedMotion ? 1 : 1 - Math.exp(-dt * 6));
-
-    const px = side * Math.max(toStatement, toContacts);
-    const py = mobile ? -0.75 * Math.max(toStatement, toContacts) : 0;
-    const baseYaw = -0.18 - 0.42 * Math.max(toStatement, toContacts);
+    const tx = isMobile() ? 0 : -halfWidth * 0.12;
+    const ty = isMobile() ? 0.15 : -0.05;
+    pivot.position.x += (tx - pivot.position.x) * 0.08;
+    pivot.position.y += (ty + Math.sin(uniforms.uTime.value * 0.7) * 0.03 * motion - pivot.position.y) * 0.08;
     const k = reducedMotion ? 1 : 1 - Math.exp(-dt * 4);
-    pivot.position.x += (px - pivot.position.x) * k;
-    pivot.position.y += (py + Math.sin(time * 0.8) * 0.04 - pivot.position.y) * k;
-    head.rotation.y += (baseYaw + mouse.x * 0.45 - head.rotation.y) * k;
-    head.rotation.x += (mouse.y * 0.22 - head.rotation.x) * k;
+    head.rotation.y += (mouse.x * 0.5 - 0.1 - head.rotation.y) * k;
+    head.rotation.x += (mouse.y * 0.25 - head.rotation.x) * k;
 
-    // в разделах с контентом голова исчезает, в контактах возвращается
-    const targetOpacity = clamp(1 - smooth(1.85, 2.15, g) + toContacts, 0, 1);
-    opacity += (targetOpacity - opacity) * (reducedMotion ? 1 : 1 - Math.exp(-dt * 6));
-    canvas.style.opacity = opacity.toFixed(3);
-    if (opacity < 0.01 || !ready) return;
+    if (!ready) return;
 
-    // линия сканирования задаётся в мировых координатах, а голова наклонена,
-    // поэтому плоскости отсечения ставим по высоте сцены
-    const worldScan = scanY + pivot.position.y;
-    uScan.value = worldScan;
-    skinPlane.constant = worldScan;
-    wirePlane.constant = -worldScan;
-
-    if (pulseGeometry) {
-      const arr = pulseGeometry.attributes.position.array;
-      pulses.forEach((p, i) => {
-        p.t += p.speed * dt * motion;
-        if (p.t >= 1) {
-          p.t = 0;
-          spawn(p);
-        }
-        const { a, b } = p;
-        arr[i * 3] = positions.getX(a) + (positions.getX(b) - positions.getX(a)) * p.t;
-        arr[i * 3 + 1] = positions.getY(a) + (positions.getY(b) - positions.getY(a)) * p.t;
-        arr[i * 3 + 2] = positions.getZ(a) + (positions.getZ(b) - positions.getZ(a)) * p.t;
-      });
-      pulseGeometry.attributes.position.needsUpdate = true;
-    }
+    const arr = pulseGeometry.attributes.position.array;
+    pulses.forEach((p, i) => {
+      p.t += p.speed * dt * motion * (1 + talk * 2);
+      if (p.t >= 1) {
+        p.t = 0;
+        spawn(p);
+      }
+      const { a, b } = p;
+      arr[i * 3] = positions.getX(a) + (positions.getX(b) - positions.getX(a)) * p.t;
+      arr[i * 3 + 1] = positions.getY(a) + (positions.getY(b) - positions.getY(a)) * p.t;
+      arr[i * 3 + 2] = positions.getZ(a) + (positions.getZ(b) - positions.getZ(a)) * p.t;
+    });
+    pulseGeometry.attributes.position.needsUpdate = true;
 
     renderer.render(scene, camera);
   }
   requestAnimationFrame(frame);
 
   return {
-    setScene() {
-      sound.whoosh();
+    talk(on) {
+      talking = on;
     },
   };
-}
-
-/* ---------- Нейро-аватар из частиц ---------- */
-
-// Абстрактный силуэт по пояс, собранный из частиц. Внутри — маленькая нейросеть,
-// по которой бегут сигналы к «ядру» в голове. Частицы разлетаются от курсора
-// и собираются обратно, сверху вниз периодически проходит линия сканирования.
-function initAvatar() {
-  const canvas = $('#avatar');
-  const ctx = canvas.getContext('2d');
-  const ICE = '30,42,90';
-  const WARM = '36,67,255';
-
-  let W = 0;
-  let H = 0;
-  let particles = [];
-  let nodes = [];
-  let links = [];
-  let adj = [];
-  let pulses = [];
-  let visible = false;
-  let assembled = false;
-  let time = 0;
-  let last = performance.now();
-  const mouse = { x: -999, y: -999, inside: false };
-
-  // силуэт рисуется на скрытом холсте, закрашенные пиксели становятся частицами
-  function silhouette(w, h) {
-    const c = document.createElement('canvas');
-    c.width = w;
-    c.height = h;
-    const g = c.getContext('2d');
-    g.fillStyle = '#fff';
-    g.beginPath();
-    g.moveTo(w * 0.02, h);
-    g.bezierCurveTo(w * 0.05, h * 0.82, w * 0.2, h * 0.75, w * 0.39, h * 0.72);
-    g.lineTo(w * 0.61, h * 0.72);
-    g.bezierCurveTo(w * 0.8, h * 0.75, w * 0.95, h * 0.82, w * 0.98, h);
-    g.closePath();
-    g.fill();
-    g.fillRect(w * 0.42, h * 0.52, w * 0.16, h * 0.24);
-    g.beginPath();
-    g.ellipse(w * 0.5, h * 0.39, w * 0.19, h * 0.205, 0, 0, Math.PI * 2);
-    g.fill();
-    return g.getImageData(0, 0, w, h).data;
-  }
-
-  function build() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = canvas.clientWidth;
-    H = canvas.clientHeight;
-    if (!W || !H) return;
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    const w = Math.round(W);
-    const h = Math.round(H);
-    const data = silhouette(w, h);
-    const filled = (x, y) => x >= 0 && y >= 0 && x < w && y < h && data[(y * w + x) * 4 + 3] > 128;
-    const step = W < 260 ? 3 : 4;
-
-    particles = [];
-    for (let y = 0; y < h; y += step) {
-      for (let x = 0; x < w; x += step) {
-        if (!filled(x, y)) continue;
-        const edge = !filled(x + step, y) || !filled(x - step, y) || !filled(x, y + step) || !filled(x, y - step);
-        if (!edge && Math.random() > 0.75) continue;
-        const hx = x + (Math.random() - 0.5) * 3;
-        const hy = y + (Math.random() - 0.5) * 3;
-        // свет падает слева сверху: так у силуэта появляется объём
-        const light = 1 - Math.min(1, Math.hypot(hx - W * 0.3, hy - H * 0.25) / (W * 0.95));
-        particles.push({
-          hx,
-          hy,
-          x: assembled ? hx : Math.random() * W,
-          y: assembled ? hy : Math.random() * H,
-          vx: 0,
-          vy: 0,
-          edge,
-          b: 0.18 + light * 0.55 + (edge ? 0.3 : 0) + Math.random() * 0.12,
-          seed: Math.random() * 100,
-        });
-      }
-    }
-
-    // узлы сети: в основном в голове, немного в плечах
-    const head = particles.map((p, i) => i).filter((i) => particles[i].hy < H * 0.6 && !particles[i].edge);
-    const body = particles.map((p, i) => i).filter((i) => particles[i].hy >= H * 0.74 && !particles[i].edge);
-    const pick = (list, n) => Array.from({ length: n }, () => list[Math.floor(Math.random() * list.length)]);
-    nodes = [...new Set([...pick(head, 26), ...pick(body, 10)])];
-
-    links = [];
-    adj = nodes.map(() => []);
-    const seen = new Set();
-    nodes.forEach((a, i) => {
-      nodes
-        .map((b, j) => [j, Math.hypot(particles[a].hx - particles[b].hx, particles[a].hy - particles[b].hy)])
-        .filter(([j]) => j !== i)
-        .sort((m, n) => m[1] - n[1])
-        .slice(0, 2)
-        .forEach(([j]) => {
-          const key = i < j ? `${i}-${j}` : `${j}-${i}`;
-          if (seen.has(key)) return;
-          seen.add(key);
-          links.push([i, j]);
-          adj[i].push(j);
-          adj[j].push(i);
-        });
-    });
-
-    pulses = Array.from({ length: 16 }, () => spawn({}));
-  }
-
-  function spawn(p, from) {
-    const a = from ?? Math.floor(Math.random() * nodes.length);
-    const next = adj[a] || [];
-    p.a = a;
-    p.b = next.length ? next[Math.floor(Math.random() * next.length)] : a;
-    p.t = from == null ? Math.random() : 0;
-    p.speed = 0.6 + Math.random() * 0.9;
-    p.warm = Math.random() < 0.4;
-    return p;
-  }
-
-  function draw(dt) {
-    ctx.clearRect(0, 0, W, H);
-    time += dt;
-
-    // линия сканирования: проходит сверху вниз, потом пауза
-    const cycle = (time % 6) / 3.5;
-    const scan = cycle <= 1 ? cycle * 1.2 - 0.1 : -1;
-
-    // «ядро» в голове
-    const pulse = 0.6 + Math.sin(time * 2.2) * 0.25;
-    const core = ctx.createRadialGradient(W * 0.5, H * 0.38, 0, W * 0.5, H * 0.38, W * 0.2);
-    core.addColorStop(0, `rgba(${WARM},${0.14 * pulse})`);
-    core.addColorStop(1, `rgba(${WARM},0)`);
-    ctx.fillStyle = core;
-    ctx.fillRect(0, 0, W, H);
-
-    // частицы: пружина к своему месту, отталкивание от курсора и лёгкий дрейф
-    const radius = Math.max(50, W * 0.2);
-    particles.forEach((p) => {
-      if (mouse.inside) {
-        const dx = p.x - mouse.x;
-        const dy = p.y - mouse.y;
-        const d = Math.hypot(dx, dy) || 1;
-        if (d < radius) {
-          const f = Math.pow(1 - d / radius, 2) * 4.5;
-          p.vx += (dx / d) * f;
-          p.vy += (dy / d) * f;
-        }
-      }
-      p.vx += (p.hx - p.x) * 0.055;
-      p.vy += (p.hy - p.y) * 0.055;
-      p.vx *= 0.82;
-      p.vy *= 0.82;
-      p.x += p.vx + Math.sin(time * 1.3 + p.seed) * 0.06;
-      p.y += p.vy + Math.cos(time * 1.1 + p.seed) * 0.06;
-
-      let b = p.b;
-      if (scan > -0.5) {
-        const near = 1 - Math.min(1, Math.abs(p.hy / H - scan) / 0.035);
-        b += near * 0.9;
-      }
-      const offset = Math.min(1, Math.hypot(p.x - p.hx, p.y - p.hy) / 30);
-      ctx.fillStyle = offset > 0.35 ? `rgba(${WARM},${Math.min(1, b)})` : `rgba(${ICE},${Math.min(1, b * 0.55)})`;
-      const s = p.edge ? 1.8 : 1.4;
-      ctx.fillRect(p.x, p.y, s, s);
-    });
-
-    // связи сети
-    ctx.strokeStyle = `rgba(${ICE},0.12)`;
-    ctx.lineWidth = 0.6;
-    ctx.beginPath();
-    links.forEach(([i, j]) => {
-      const a = particles[nodes[i]];
-      const b = particles[nodes[j]];
-      ctx.moveTo(a.x, a.y);
-      ctx.lineTo(b.x, b.y);
-    });
-    ctx.stroke();
-
-    // узлы
-    nodes.forEach((n) => {
-      const p = particles[n];
-      ctx.fillStyle = `rgba(${ICE},0.75)`;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
-      ctx.fill();
-    });
-
-    // сигналы с хвостом
-    pulses.forEach((p) => {
-      p.t += p.speed * dt;
-      if (p.t >= 1) spawn(p, Math.random() < 0.85 ? p.b : undefined);
-      const a = particles[nodes[p.a]];
-      const b = particles[nodes[p.b]];
-      const tint = p.warm ? WARM : ICE;
-      for (let k = 0; k < 4; k++) {
-        const t = Math.max(0, p.t - k * 0.06);
-        ctx.fillStyle = `rgba(${tint},${0.9 * (1 - k / 4)})`;
-        ctx.beginPath();
-        ctx.arc(a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t, 2.2 - k * 0.4, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    });
-
-    // сама линия сканирования
-    if (scan > -0.5) {
-      const y = scan * H;
-      const g = ctx.createLinearGradient(0, y - 22, 0, y + 6);
-      g.addColorStop(0, `rgba(${WARM},0)`);
-      g.addColorStop(0.8, `rgba(${WARM},0.1)`);
-      g.addColorStop(0.86, `rgba(${WARM},0.28)`);
-      g.addColorStop(1, `rgba(${WARM},0)`);
-      ctx.fillStyle = g;
-      ctx.fillRect(0, y - 22, W, 28);
-    }
-  }
-
-  function loop(now) {
-    requestAnimationFrame(loop);
-    const dt = Math.min(0.05, (now - last) / 1000);
-    last = now;
-    if (!visible || !W) return;
-    draw(dt);
-  }
-
-  canvas.addEventListener('pointermove', (e) => {
-    const r = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - r.left;
-    mouse.y = e.clientY - r.top;
-    mouse.inside = true;
-  });
-  canvas.addEventListener('pointerleave', () => {
-    mouse.inside = false;
-  });
-
-  new IntersectionObserver(([entry]) => {
-    visible = entry.isIntersecting;
-    // при первом появлении частицы слетаются в силуэт из случайных точек
-    if (visible) setTimeout(() => (assembled = true), 3000);
-  }).observe(canvas);
-  new ResizeObserver(() => {
-    build();
-    if (reducedMotion) draw(0);
-  }).observe(canvas);
-
-  build();
-  if (reducedMotion) {
-    assembled = true;
-    particles.forEach((p) => {
-      p.x = p.hx;
-      p.y = p.hy;
-    });
-    draw(0);
-  } else {
-    requestAnimationFrame(loop);
-  }
-}
-
-/* ---------- Шапка, навигация и номер сцены ---------- */
-
-function initNav(scene3d) {
-  const links = $$('.nav__link');
-  const sections = $$('[data-scene]');
-  let ticking = false;
-  let currentIndex = -1;
-
-  function update() {
-    ticking = false;
-    const line = window.scrollY + window.innerHeight * 0.5;
-    let index = 0;
-    sections.forEach((s, i) => {
-      if (s.offsetTop <= line) index = i;
-    });
-    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
-    if (atBottom) index = sections.length - 1;
-    $('.scene-index').classList.toggle('is-hidden', atBottom);
-
-    const id = sections[index].id;
-    let atTop = sections[0];
-    sections.forEach((s) => {
-      if (s.offsetTop <= window.scrollY + 60) atTop = s;
-    });
-    document.body.classList.toggle('is-night', atTop.classList.contains('night'));
-    links.forEach((link) => link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`));
-
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    $('#scene-progress').style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
-
-    if (index !== currentIndex) {
-      currentIndex = index;
-      $('#scene-num').textContent = String(index + 1).padStart(2, '0');
-      $('#scene-name').textContent = t('scenes')[index];
-      scene3d.setScene(index);
-    }
-  }
-
-  langListeners.push(() => {
-    if (currentIndex >= 0) $('#scene-name').textContent = t('scenes')[currentIndex];
-  });
-
-  window.addEventListener(
-    'scroll',
-    () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
-    },
-    { passive: true }
-  );
-  window.addEventListener('resize', update);
-  update();
-}
-
-/* ---------- Плавный скролл ---------- */
-
-function initSmoothScroll() {
-  let lenis = null;
-  if (window.Lenis && !reducedMotion) {
-    lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 0.9 });
-    const raf = (time) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
-    requestAnimationFrame(raf);
-  }
-
-  document.addEventListener('click', (e) => {
-    const link = e.target.closest('a[href^="#"]');
-    if (!link) return;
-    const target = document.querySelector(link.getAttribute('href'));
-    if (!target) return;
-    e.preventDefault();
-    if (lenis) lenis.scrollTo(target, { duration: 1.6 });
-    else target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
-  });
-
-  return lenis;
-}
-
-/* ---------- Курсор и «магнитные» кнопки ---------- */
-
-function initCursor() {
-  if (isTouch) return;
-  const cursor = $('#cursor');
-  const pos = { x: -100, y: -100 };
-  const cur = { x: -100, y: -100 };
-
-  window.addEventListener('pointermove', (e) => {
-    pos.x = e.clientX;
-    pos.y = e.clientY;
-    cursor.classList.add('is-visible');
-  });
-  document.addEventListener('pointerleave', () => cursor.classList.remove('is-visible'));
-  document.addEventListener('pointerover', (e) => {
-    const hover = e.target.closest && e.target.closest('a, button, .range');
-    cursor.classList.toggle('is-hover', !!hover);
-  });
-
-  (function loop() {
-    cur.x += (pos.x - cur.x) * 0.2;
-    cur.y += (pos.y - cur.y) * 0.2;
-    cursor.style.transform = `translate(${cur.x}px, ${cur.y}px)`;
-    requestAnimationFrame(loop);
-  })();
-}
-
-function initMagnetic() {
-  if (isTouch || reducedMotion) return;
-  $$('[data-magnetic]').forEach((el) => {
-    el.addEventListener('pointermove', (e) => {
-      const r = el.getBoundingClientRect();
-      const x = e.clientX - r.left - r.width / 2;
-      const y = e.clientY - r.top - r.height / 2;
-      el.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px)`;
-    });
-    el.addEventListener('pointerleave', () => {
-      el.style.transform = '';
-    });
-  });
-}
-
-/* ---------- Прелоадер ---------- */
-
-function initPreloader() {
-  const pre = $('#preloader');
-  const count = $('#preloader-count');
-  const bar = $('#preloader-bar');
-  document.body.classList.add('is-loading');
-
-  let finished = false;
-  const finish = () => {
-    if (finished) return;
-    finished = true;
-    pre.classList.add('is-done');
-    document.body.classList.remove('is-loading');
-    document.body.classList.add('is-ready');
-    setTimeout(() => pre.remove(), 1300);
-  };
-
-  if (reducedMotion) {
-    finish();
-    return;
-  }
-
-  const minTime = 1500;
-  const start = performance.now();
-  let fontsReady = false;
-  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
-    fontsReady = true;
-  });
-  // не ждём шрифты дольше 4 секунд, а весь прелоадер — дольше 5
-  setTimeout(() => {
-    fontsReady = true;
-  }, 4000);
-  setTimeout(finish, 5000);
-
-  (function tick(now) {
-    const p = Math.min(1, (now - start) / minTime);
-    const eased = 1 - Math.pow(1 - p, 3);
-    const value = Math.round(eased * (fontsReady ? 100 : 92));
-    count.textContent = String(value).padStart(3, '0');
-    bar.style.width = `${value}%`;
-    if (p >= 1 && fontsReady) setTimeout(finish, 250);
-    else requestAnimationFrame(tick);
-  })(start);
-}
-
-/* ---------- Контакты ---------- */
-
-function initContacts(scene3d) {
-  const pretty = (url) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
-  const telegramUrl = `https://t.me/${CONTACTS.telegram}`;
-
-  $('#cta-telegram').href = telegramUrl;
-
-  const tg = $('#contact-telegram');
-  tg.href = telegramUrl;
-  $('.contact__value', tg).textContent = `@${CONTACTS.telegram}`;
-
-  const gh = $('#contact-github');
-  gh.href = CONTACTS.github;
-  $('.contact__value', gh).textContent = pretty(CONTACTS.github);
-
-  const li = $('#contact-linkedin');
-  li.href = CONTACTS.linkedin;
-  $('.contact__value', li).textContent = pretty(CONTACTS.linkedin);
-
-  // наведение на ссылку: частицы складываются в её название
 }
 
 /* ---------- Интерактив: как учится нейрон ---------- */
@@ -1500,7 +1359,7 @@ function initPlayground() {
   const ctx = canvas.getContext('2d');
   const emptyHint = $('#lab-empty');
   const trainBtn = $('#lab-train');
-  const COLORS = { 1: [36, 67, 255], 0: [255, 90, 46] };
+  const COLORS = { 1: [77, 107, 255], 0: [255, 106, 61] };
   const HIDDEN = 8;
   const sigmoid = (z) => 1 / (1 + Math.exp(-z));
   const rnd = (scale) => (Math.random() * 2 - 1) * scale;
@@ -1610,7 +1469,7 @@ function initPlayground() {
     }
 
     // сетка
-    ctx.strokeStyle = 'rgba(13,17,23,0.06)';
+    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
     ctx.lineWidth = 1;
     for (let k = 1; k < 10; k++) {
       const v = (k / 10) * size;
@@ -1632,7 +1491,7 @@ function initPlayground() {
       ctx.arc(toPx(pt.x), toPx(pt.y), 6, 0, Math.PI * 2);
       ctx.fill();
       ctx.shadowBlur = 0;
-      ctx.strokeStyle = 'rgba(255,255,255,0.95)';
+      ctx.strokeStyle = 'rgba(7,9,15,0.95)';
       ctx.lineWidth = 1.5;
       ctx.stroke();
     });
@@ -1829,9 +1688,9 @@ function initGradientDescent() {
       // «террасы»: уровень квантуется, как на топографической карте
       const terrace = Math.floor(level * 12) / 12;
       const v = terrace * 0.75 + level * 0.25;
-      img.data[k * 4] = 30 + v * 222;
-      img.data[k * 4 + 1] = 52 + v * 200;
-      img.data[k * 4 + 2] = 190 + v * 63;
+      img.data[k * 4] = 10 + v * 70;
+      img.data[k * 4 + 1] = 14 + v * 90;
+      img.data[k * 4 + 2] = 30 + v * 170;
       img.data[k * 4 + 3] = 255;
     }
     octx.putImageData(img, 0, 0);
@@ -1876,7 +1735,7 @@ function initGradientDescent() {
 
     // старт
     const [sx, sy] = path[0];
-    ctx.strokeStyle = 'rgba(13,17,23,0.7)';
+    ctx.strokeStyle = 'rgba(255,255,255,0.6)';
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.arc(toPx(sx), toPx(sy), 7, 0, Math.PI * 2);
@@ -2158,27 +2017,23 @@ function initLlmDemo() {
 /* ---------- Запуск ---------- */
 
 document.addEventListener('DOMContentLoaded', () => {
-  $('#year').textContent = new Date().getFullYear();
-
   $$('.lang__btn').forEach((btn) => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
   setLang(detectLang());
-  $$('.reveal').forEach((el) => {
-    if (!el.closest('[data-reveal-group]')) revealObserver.observe(el);
-  });
 
-  initPreloader();
-  const scene3d = initScene();
-  initNav(scene3d);
-  initAvatar();
-  initContacts(scene3d);
-  initSmoothScroll();
+  const head = initScene();
+  const wm = initWindows();
+  const assistant = initAssistant(wm, head);
+  initContacts();
+  initClock();
   initSound();
-  initCursor();
-  initMagnetic();
-  initIceGlow();
-
   initPlayground();
   initTabs();
   initGradientDescent();
   initLlmDemo();
+
+  // после загрузки сразу открыт чат с ассистентом
+  initBoot(() => {
+    wm.open('assistant');
+    setTimeout(() => assistant.greet(), 250);
+  });
 });
