@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Эрнест Музафаров</title>
     <meta name="description" content="" />
-    <meta name="theme-color" content="#05070a" />
+    <meta name="theme-color" content="#f4f5f7" />
     <link rel="canonical" href="https://ernestmuzafarov.tech/" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
@@ -16,10 +16,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Onest:wght@300;400;500&family=Unbounded:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=5" />
+    <link rel="stylesheet" href="style.css?v=35" />
   </head>
   <body>
     <!-- Тексты всех элементов с data-i18n подставляются из объекта I18N в script.js -->
@@ -33,16 +33,14 @@
       <div class="preloader__bar"><span id="preloader-bar"></span></div>
     </div>
 
-    <!-- 3D-сцена из частиц: фон всего сайта -->
+    <!-- 3D-сцена: голова-андроид из фарфора, внутри проступает нейросеть -->
     <canvas class="scene" id="scene" aria-hidden="true"></canvas>
-    <div class="vignette" aria-hidden="true"></div>
-    <div class="grain" aria-hidden="true"></div>
     <div class="cursor" id="cursor" aria-hidden="true"></div>
 
     <header class="header" id="header">
-      <a href="#hero" class="logo mono" data-i18n="header.logo"></a>
+      <a href="#hero" class="wordmark" data-i18n="header.logo"></a>
 
-      <nav class="nav mono" id="nav">
+      <nav class="nav" id="nav">
         <a href="#about" class="nav__link" data-i18n="nav.about"></a>
         <a href="#playground" class="nav__link" data-i18n="nav.playground"></a>
         <a href="#ideas" class="nav__link" data-i18n="nav.ideas"></a>
@@ -61,72 +59,63 @@
       </div>
     </header>
 
-    <!-- Номер текущей сцены -->
     <div class="scene-index mono" aria-hidden="true">
       <span class="scene-index__num" id="scene-num">01</span>
       <span class="scene-index__line"><span id="scene-progress"></span></span>
-      <span class="scene-index__total">05</span>
+      <span>06</span>
       <span class="scene-index__name" id="scene-name"></span>
     </div>
 
     <main>
-      <!-- 01 HERO -->
+      <!-- 01 HERO: туман -->
       <section class="hero" id="hero" data-scene="0">
-        <div class="hero__top wrap mono">
-          <span data-i18n="hero.eyebrow"></span>
-          <span class="hero__status"><span class="live-dot"></span><span data-i18n="hero.status"></span></span>
-        </div>
-
-        <!-- Живые показатели нейросети на фоне: числа берутся из 3D-сцены -->
-        <div class="hero__hud mono" id="hero-hud" aria-hidden="true">
-          <div class="hud__row"><span data-i18n="hero.hud.neurons"></span><b id="hud-neurons">—</b></div>
-          <div class="hud__row"><span data-i18n="hero.hud.links"></span><b id="hud-links">—</b></div>
-          <div class="hud__row"><span data-i18n="hero.hud.fires"></span><b id="hud-fires">—</b></div>
-          <p class="hud__hint" data-i18n="hero.hud.hint"></p>
-        </div>
-
-        <h1 class="hero__name" id="hero-name">
+        <p class="hero__eyebrow mono" data-i18n="hero.eyebrow"></p>
+        <h1 class="hero__name">
           <span class="hero__line" data-split data-i18n="hero.nameFirst"></span>
-          <span class="hero__line hero__line--outline" data-split data-i18n="hero.nameLast"></span>
+          <span class="hero__line hero__line--serif" data-split data-i18n="hero.nameLast"></span>
         </h1>
-
-        <div class="hero__bottom wrap">
+        <div class="hero__side">
           <p class="hero__tagline" data-i18n="hero.tagline"></p>
           <div class="hero__actions">
-            <a href="#about" class="btn btn--solid" data-magnetic>
+            <a href="#about" class="btn btn--dark" data-magnetic>
               <span data-i18n="hero.ctaAbout"></span><span class="btn__icon">↓</span>
             </a>
-            <a href="#contacts" class="btn btn--ghost" data-magnetic>
+            <a href="#contacts" class="btn btn--line" data-magnetic>
               <span data-i18n="hero.ctaContact"></span><span class="btn__icon">↗</span>
             </a>
           </div>
         </div>
-
-        <div class="hero__scroll mono"><span data-i18n="hero.scroll"></span><i></i></div>
+        <div class="hero__label mono" aria-hidden="true">
+          <span class="hero__label-dot"></span><span data-i18n="hero.headLabel"></span>
+        </div>
+        <div class="hero__foot mono">
+          <span class="hero__status"><span class="live-dot"></span><span data-i18n="hero.status"></span></span>
+          <span class="hero__scroll"><span data-i18n="hero.scroll"></span><i></i></span>
+        </div>
       </section>
 
-      <div class="marquee mono" aria-hidden="true">
-        <div class="marquee__track" id="marquee-track"></div>
-      </div>
+      <!-- 02 Туман расходится, появляется гора -->
+      <section class="statement" id="statement" data-scene="1">
+        <div class="statement__inner">
+          <p class="kicker mono reveal" data-i18n="statement.label"></p>
+          <h2 class="statement__title reveal" data-i18n="statement.title"></h2>
+          <p class="statement__text reveal" data-i18n="statement.text"></p>
+        </div>
+      </section>
 
-      <!-- 02 ОБО МНЕ -->
-      <section class="section" id="about" data-scene="1">
+      <!-- 03 ОБО МНЕ -->
+      <section class="section" id="about" data-scene="2">
         <div class="wrap">
-          <div class="section-head reveal mono">
-            <span>02</span><i></i><span data-i18n="about.label"></span>
-          </div>
-          <h2 class="big-title reveal" data-i18n="about.title"></h2>
+          <p class="kicker mono reveal"><span>03</span><span data-i18n="about.label"></span></p>
+          <h2 class="title reveal" data-i18n="about.title"></h2>
 
-          <div class="ice about reveal">
-            <div class="about__photo">
-              <!-- Нейро-аватар из частиц вместо фото: рисуется в script.js (initAvatar) -->
-              <div class="photo">
-                <canvas class="avatar" id="avatar" aria-hidden="true"></canvas>
-                <span class="photo__tag mono">ID · E.M.</span>
-                <span class="photo__note mono" data-i18n="about.avatarNote"></span>
-              </div>
+          <div class="glass about reveal">
+            <!-- Нейро-аватар из частиц вместо фото: рисуется в script.js (initAvatar) -->
+            <div class="photo">
+              <canvas class="avatar" id="avatar" aria-hidden="true"></canvas>
+              <span class="photo__tag mono">ID · E.M.</span>
+              <span class="photo__note mono" data-i18n="about.avatarNote"></span>
             </div>
-
             <div class="about__text">
               <p class="about__lead" data-i18n="about.p1"></p>
               <p data-i18n="about.p2"></p>
@@ -135,13 +124,13 @@
           </div>
 
           <div class="block">
-            <h3 class="block__title reveal mono"><span>02.1</span><span data-i18n="strengths.title"></span></h3>
-            <ol class="ice rows" id="strengths"></ol>
+            <h3 class="block__title mono reveal"><span>03.1</span><span data-i18n="strengths.title"></span></h3>
+            <ol class="glass rows" id="strengths"></ol>
           </div>
 
           <div class="block">
             <div class="block__head reveal">
-              <h3 class="block__title mono"><span>02.2</span><span data-i18n="learning.title"></span></h3>
+              <h3 class="block__title mono"><span>03.2</span><span data-i18n="learning.title"></span></h3>
               <p class="block__note mono" data-i18n="learning.note"></p>
             </div>
             <div class="skills" id="learning"></div>
@@ -154,14 +143,12 @@
         </div>
       </section>
 
-      <!-- 03 ЛАБОРАТОРИЯ -->
-      <section class="section" id="playground" data-scene="2">
+      <!-- 04 ЛАБОРАТОРИЯ: сцена уходит в ночь -->
+      <section class="section" id="playground" data-scene="3">
         <div class="wrap">
-          <div class="section-head reveal mono">
-            <span>03</span><i></i><span data-i18n="playground.label"></span>
-          </div>
-          <h2 class="big-title reveal" data-i18n="playground.title"></h2>
-          <p class="section__intro reveal" data-i18n="playground.intro"></p>
+          <p class="kicker mono reveal"><span>04</span><span data-i18n="playground.label"></span></p>
+          <h2 class="title reveal" data-i18n="playground.title"></h2>
+          <p class="intro reveal" data-i18n="playground.intro"></p>
 
           <div class="tabs reveal mono" role="tablist">
             <button type="button" class="tabs__btn is-active" role="tab" data-tab="neuron">
@@ -179,12 +166,12 @@
           <div class="tab-panel reveal" id="tab-neuron" role="tabpanel">
             <p class="panel__intro" data-i18n="playground.neuronIntro"></p>
             <div class="lab">
-              <div class="ice lab__board">
+              <div class="glass lab__board">
                 <canvas id="lab-canvas" class="lab__canvas"></canvas>
                 <p class="lab__empty mono" id="lab-empty" data-i18n="playground.empty"></p>
               </div>
 
-              <div class="ice lab__panel">
+              <div class="glass lab__panel">
                 <div class="lab__group">
                   <span class="lab__caption mono" data-i18n="playground.classLabel"></span>
                   <div class="seg">
@@ -206,10 +193,10 @@
                 </div>
 
                 <div class="lab__group lab__buttons">
-                  <button type="button" class="btn btn--solid btn--sm" id="lab-train" data-i18n="playground.train"></button>
-                  <button type="button" class="btn btn--ghost btn--sm" id="lab-preset-line" data-i18n="playground.presetLine"></button>
-                  <button type="button" class="btn btn--ghost btn--sm" id="lab-preset-circle" data-i18n="playground.presetCircle"></button>
-                  <button type="button" class="btn btn--ghost btn--sm" id="lab-clear" data-i18n="playground.clear"></button>
+                  <button type="button" class="btn btn--dark btn--sm" id="lab-train" data-i18n="playground.train"></button>
+                  <button type="button" class="btn btn--line btn--sm" id="lab-preset-line" data-i18n="playground.presetLine"></button>
+                  <button type="button" class="btn btn--line btn--sm" id="lab-preset-circle" data-i18n="playground.presetCircle"></button>
+                  <button type="button" class="btn btn--line btn--sm" id="lab-clear" data-i18n="playground.clear"></button>
                 </div>
 
                 <dl class="stats mono">
@@ -227,12 +214,12 @@
           <div class="tab-panel" id="tab-gd" role="tabpanel" hidden>
             <p class="panel__intro" data-i18n="gd.intro"></p>
             <div class="lab">
-              <div class="ice lab__board">
+              <div class="glass lab__board">
                 <canvas id="gd-canvas" class="lab__canvas"></canvas>
                 <p class="lab__corner mono" data-i18n="gd.hint"></p>
               </div>
 
-              <div class="ice lab__panel">
+              <div class="glass lab__panel">
                 <div class="lab__group">
                   <span class="lab__caption mono" data-i18n="gd.surface"></span>
                   <div class="seg">
@@ -249,8 +236,8 @@
                 </div>
 
                 <div class="lab__group lab__buttons">
-                  <button type="button" class="btn btn--solid btn--sm" id="gd-run" data-i18n="gd.run"></button>
-                  <button type="button" class="btn btn--ghost btn--sm" id="gd-reset" data-i18n="gd.reset"></button>
+                  <button type="button" class="btn btn--dark btn--sm" id="gd-run" data-i18n="gd.run"></button>
+                  <button type="button" class="btn btn--line btn--sm" id="gd-reset" data-i18n="gd.reset"></button>
                 </div>
 
                 <dl class="stats mono">
@@ -268,7 +255,7 @@
           <div class="tab-panel" id="tab-llm" role="tabpanel" hidden>
             <p class="panel__intro" data-i18n="llm.intro"></p>
             <div class="lab">
-              <div class="ice llm">
+              <div class="glass llm">
                 <div class="seg seg--wrap" id="llm-prompts"></div>
 
                 <div class="llm__block">
@@ -284,7 +271,7 @@
                 <p class="lab__tip" data-i18n="llm.note"></p>
               </div>
 
-              <div class="ice lab__panel">
+              <div class="glass lab__panel">
                 <div class="lab__group">
                   <label class="lab__caption mono range-head" for="llm-temp">
                     <span data-i18n="llm.temp"></span><span class="range-val" id="llm-temp-val">1.00</span>
@@ -295,9 +282,9 @@
                 <p class="lab__tip temp-hint" id="llm-temp-hint" data-i18n="llm.tempMid"></p>
 
                 <div class="lab__group lab__buttons">
-                  <button type="button" class="btn btn--solid btn--sm" id="llm-sample" data-i18n="llm.sample"></button>
-                  <button type="button" class="btn btn--ghost btn--sm" id="llm-sample20" data-i18n="llm.sample20"></button>
-                  <button type="button" class="btn btn--ghost btn--sm" id="llm-reset" data-i18n="llm.reset"></button>
+                  <button type="button" class="btn btn--dark btn--sm" id="llm-sample" data-i18n="llm.sample"></button>
+                  <button type="button" class="btn btn--line btn--sm" id="llm-sample20" data-i18n="llm.sample20"></button>
+                  <button type="button" class="btn btn--line btn--sm" id="llm-reset" data-i18n="llm.reset"></button>
                 </div>
 
                 <dl class="stats stats--2 mono">
@@ -310,77 +297,75 @@
         </div>
       </section>
 
-      <!-- 04 ИДЕИ: ИИ В ПОДДЕРЖКЕ -->
-      <section class="section" id="ideas" data-scene="3">
+      <!-- 05 ИДЕИ -->
+      <section class="section" id="ideas" data-scene="4">
         <div class="wrap">
-          <div class="section-head reveal mono">
-            <span>04</span><i></i><span data-i18n="ideas.label"></span>
-          </div>
-          <h2 class="big-title reveal" data-i18n="ideas.title"></h2>
-          <p class="section__intro reveal" data-i18n="ideas.intro"></p>
+          <p class="kicker mono reveal"><span>05</span><span data-i18n="ideas.label"></span></p>
+          <h2 class="title reveal" data-i18n="ideas.title"></h2>
+          <p class="intro reveal" data-i18n="ideas.intro"></p>
 
           <div class="stack" id="ideas-list"></div>
 
-          <div class="ice note reveal">
+          <div class="glass note reveal">
             <span class="note__label mono" data-i18n="ideas.noteLabel"></span>
             <p data-i18n="ideas.note"></p>
           </div>
         </div>
       </section>
 
-      <!-- 05 КОНТАКТЫ -->
-      <section class="section contacts" id="contacts" data-scene="4">
+      <!-- 06 КОНТАКТЫ -->
+      <section class="section contacts" id="contacts" data-scene="5">
         <div class="wrap">
-          <div class="section-head reveal mono">
-            <span>05</span><i></i><span data-i18n="contacts.label"></span>
-          </div>
+          <p class="kicker mono reveal"><span>06</span><span data-i18n="contacts.label"></span></p>
 
-          <a class="cta reveal" id="cta-telegram" target="_blank" rel="noopener" data-morph="Telegram">
+          <a class="cta reveal" id="cta-telegram" target="_blank" rel="noopener">
             <span class="cta__line" data-i18n="contacts.ctaA"></span>
-            <span class="cta__line"><span data-i18n="contacts.ctaB"></span><span class="cta__arrow">↗</span></span>
+            <span class="cta__line cta__line--serif"><span data-i18n="contacts.ctaB"></span><span class="cta__arrow">↗</span></span>
           </a>
-          <p class="section__intro reveal" data-i18n="contacts.intro"></p>
+          <p class="intro reveal" data-i18n="contacts.intro"></p>
 
-          <ul class="ice links reveal">
+          <ul class="glass links reveal">
             <li>
-              <a class="link-row" id="contact-telegram" target="_blank" rel="noopener" data-morph="Telegram">
+              <a class="link-row" id="contact-telegram" target="_blank" rel="noopener">
                 <span class="link-row__label mono">Telegram</span>
                 <span class="link-row__value contact__value"></span>
                 <span class="link-row__arrow">↗</span>
               </a>
             </li>
             <li>
-              <a class="link-row" id="contact-github" target="_blank" rel="noopener" data-morph="GitHub">
+              <a class="link-row" id="contact-github" target="_blank" rel="noopener">
                 <span class="link-row__label mono">GitHub</span>
                 <span class="link-row__value contact__value"></span>
                 <span class="link-row__arrow">↗</span>
               </a>
             </li>
             <li>
-              <a class="link-row" id="contact-linkedin" target="_blank" rel="noopener" data-morph="LinkedIn">
+              <a class="link-row" id="contact-linkedin" target="_blank" rel="noopener">
                 <span class="link-row__label mono">LinkedIn</span>
                 <span class="link-row__value contact__value"></span>
                 <span class="link-row__arrow">↗</span>
               </a>
             </li>
           </ul>
-
-          <p class="contacts__hint mono" data-i18n="contacts.hint"></p>
         </div>
-        <!-- пустая «сцена» внизу: здесь частицы складываются в имя и названия ссылок -->
-        <div class="stage" aria-hidden="true"></div>
       </section>
     </main>
 
     <footer class="footer wrap mono">
       <span data-i18n="footer.text"></span>
-      <span>© <span id="year"></span></span>
+      <span>
+        <a href="https://threejs.org/examples/#webgl_decals" target="_blank" rel="noopener" data-i18n="footer.credit"></a>
+        · © <span id="year"></span>
+      </span>
     </footer>
 
-    <!-- three.js рисует 3D-сцену, Lenis даёт плавный скролл.
+    <!-- three.js рисует 3D-сцену (GLTFLoader и RoomEnvironment — из примеров three.js r128),
+         Lenis даёт плавный скролл.
          Если библиотеки не загрузятся, сайт работает без них -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="assets/vendor/GLTFLoader.js"></script>
+    <script src="assets/vendor/RoomEnvironment.js"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-    <script src="script.js?v=11"></script>
+    <script src="script.js?v=35"></script>
   </body>
 </html>

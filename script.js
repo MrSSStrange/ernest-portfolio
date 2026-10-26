@@ -66,9 +66,14 @@ const I18N = {
       description:
         'Руководитель технической поддержки. Изучаю Python, машинное обучение и LLM, чтобы перейти в AI/ML-разработку.',
     },
-    header: { logo: 'Э.М.', sound: 'Звук' },
+    header: { logo: 'Эрнест Музафаров', sound: 'Звук' },
     preloader: { label: 'Загрузка сцены' },
-    scenes: ['Вступление', 'Обо мне', 'Лаборатория', 'Идеи', 'Контакты'],
+    scenes: ['Вступление', 'Направление', 'Обо мне', 'Лаборатория', 'Идеи', 'Контакты'],
+    statement: {
+      label: '02 — направление',
+      title: 'Из технической поддержки — *в AI/ML*',
+      text: 'Каждый день разбираю реальные инциденты и процессы клиентов. Теперь учусь решать такие задачи с помощью машинного обучения.',
+    },
     marquee: ['Техподдержка', 'Внедрения', 'Работа с инцидентами', 'Python', 'SQL', 'Machine learning', 'LLM'],
     nav: { about: 'Обо мне', playground: 'ИИ-лаб', ideas: 'Идеи', contacts: 'Контакты' },
     hero: {
@@ -80,6 +85,7 @@ const I18N = {
       ctaAbout: 'Обо мне',
       ctaContact: 'Связаться',
       scroll: 'Листайте',
+      headLabel: 'нейро-голова · ведите курсором',
       hud: {
         neurons: 'нейронов',
         links: 'связей',
@@ -89,7 +95,7 @@ const I18N = {
     },
     about: {
       label: 'Обо мне',
-      title: 'Из технической поддержки — *в AI/ML*',
+      title: 'Кто *я*',
       avatarNote: 'нейро-аватар · наведите курсор',
       p1: 'С января 2025 руковожу технической поддержкой информационной системы.',
       p2: 'Чем занимаюсь: руковожу командой поддержки, веду внедрения системы у клиентов, собираю требования и ставлю задачи разработчикам.',
@@ -241,7 +247,7 @@ const I18N = {
       noteLabel: 'Важно',
       note: 'ИИ здесь — помощник, а не замена людям: финальное решение остаётся за человеком. А данные клиентов требуют защиты и соблюдения законодательства о персональных данных.',
     },
-    footer: { text: 'Эрнест Музафаров · техподдержка → AI/ML' },
+    footer: { text: 'Эрнест Музафаров · техподдержка → AI/ML', credit: '3D-модель головы: Lee Perry-Smith, CC BY 3.0' },
   },
 
   en: {
@@ -250,9 +256,14 @@ const I18N = {
       description:
         'Head of technical support. Learning Python, machine learning and LLMs to move into AI/ML development.',
     },
-    header: { logo: 'E.M.', sound: 'Sound' },
+    header: { logo: 'Ernest Muzafarov', sound: 'Sound' },
     preloader: { label: 'Loading scene' },
-    scenes: ['Intro', 'About', 'Lab', 'Ideas', 'Contact'],
+    scenes: ['Intro', 'Direction', 'About', 'Lab', 'Ideas', 'Contact'],
+    statement: {
+      label: '02 — direction',
+      title: 'From technical support *to AI/ML*',
+      text: 'Every day I deal with real incidents and client workflows. Now I am learning to solve problems like these with machine learning.',
+    },
     marquee: ['Tech support', 'Rollouts', 'Incident management', 'Python', 'SQL', 'Machine learning', 'LLM'],
     nav: { about: 'About', playground: 'AI lab', ideas: 'Ideas', contacts: 'Contact' },
     hero: {
@@ -264,6 +275,7 @@ const I18N = {
       ctaAbout: 'About me',
       ctaContact: 'Get in touch',
       scroll: 'Scroll',
+      headLabel: 'neural head · move your cursor',
       hud: {
         neurons: 'neurons',
         links: 'connections',
@@ -273,7 +285,7 @@ const I18N = {
     },
     about: {
       label: 'About',
-      title: 'From technical support *to AI/ML*',
+      title: 'Who *I am*',
       avatarNote: 'neural avatar · hover me',
       p1: 'Since January 2025, I have been leading technical support for an information system.',
       p2: 'What I do: I lead the support team, run system rollouts for clients, gather requirements and turn them into tasks for developers.',
@@ -425,7 +437,7 @@ const I18N = {
       noteLabel: 'Important',
       note: 'AI here is an assistant, not a replacement for people: the final decision stays with a human. Client data needs protection and compliance with personal data laws.',
     },
-    footer: { text: 'Ernest Muzafarov · tech support → AI/ML' },
+    footer: { text: 'Ernest Muzafarov · tech support → AI/ML', credit: 'Head model: Lee Perry-Smith, CC BY 3.0' },
   },
 };
 
@@ -437,6 +449,7 @@ const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
 const escapeHtml = (str) =>
   String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -568,7 +581,7 @@ function renderLearning() {
       .map((s) => `<li class="is-${s.status}"><span class="cp cp--${s.status}"></span>${escapeHtml(tr(s))}</li>`)
       .join('');
     return `
-      <div class="ice skill reveal" style="transition-delay:${k * 90}ms">
+      <div class="glass skill reveal" style="transition-delay:${k * 90}ms">
         <div class="skill__top">
           <h4 class="skill__name">${escapeHtml(tr(skill.name))}</h4>
           <span class="skill__pct">${pct}%</span>
@@ -588,7 +601,7 @@ function renderIdeas() {
   root.innerHTML = t('ideas.items')
     .map(
       (item, i) => `
-      <article class="ice stack__card reveal" style="--i:${i}">
+      <article class="glass stack__card reveal" style="--i:${i}">
         <span class="stack__num">0${i + 1}</span>
         <div>
           <h3 class="stack__title">${escapeHtml(item.title)}</h3>
@@ -601,11 +614,11 @@ function renderIdeas() {
   observeChildren(root, '.stack__card');
 }
 
-/* ---------- Подсветка ледяных блоков под курсором ---------- */
+/* ---------- Подсветка стеклянных блоков под курсором ---------- */
 
 function initIceGlow() {
   document.addEventListener('pointermove', (e) => {
-    const el = e.target.closest && e.target.closest('.ice');
+    const el = e.target.closest && e.target.closest('.glass');
     if (!el) return;
     const r = el.getBoundingClientRect();
     el.style.setProperty('--mx', `${e.clientX - r.left}px`);
@@ -728,628 +741,302 @@ function initSound() {
     btn.setAttribute('aria-pressed', on);
   });
   document.addEventListener('pointerover', (e) => {
-    const target = e.target.closest && e.target.closest('a, button, [data-morph]');
+    const target = e.target.closest && e.target.closest('a, button');
     if (target && !target.contains(e.relatedTarget)) sound.tick();
   });
 }
 
-/* ---------- 3D-сцена из частиц ---------- */
+/* ---------- 3D: голова-андроид ---------- */
 
+// Голова из белого «фарфора» поворачивается за курсором. При прокрутке её сверху вниз
+// проходит линия сканирования: ниже линии — гладкая поверхность, выше — синяя сетка
+// с узлами и бегущими сигналами, как нейросеть внутри.
+// Модель: Lee Perry-Smith, CC BY 3.0 (из примеров three.js), лежит в assets/models/head.glb.
 function initScene() {
-  const stub = { setScene() {}, morphText() {}, stats: null };
+  const stub = { setScene() {} };
   const canvas = $('#scene');
-  if (!window.THREE) {
+  const fail = () => {
     canvas.remove();
+    document.documentElement.classList.add('no-webgl');
     return stub;
-  }
+  };
+  if (!window.THREE || !THREE.GLTFLoader) return fail();
 
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: false, powerPreference: 'high-performance' });
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
   } catch (e) {
-    canvas.remove();
-    return stub;
+    return fail();
   }
 
   const small = isTouch || window.innerWidth < 760;
-  const COUNT = small ? 7000 : 14000;
-  const dpr = Math.min(window.devicePixelRatio || 1, small ? 1.5 : 2);
-  renderer.setPixelRatio(dpr);
-  renderer.setClearColor(0x05070a, 1);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setClearColor(0x000000, 0);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 0.92;
+  renderer.localClippingEnabled = true;
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
-  camera.position.set(0, 0, 9);
-  const group = new THREE.Group();
-  scene.add(group);
+  const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
+  camera.position.set(0, 0, 7.5);
 
-  const rand = (a, b) => a + Math.random() * (b - a);
-  const side = () => (window.innerWidth > 1000 ? 2.6 : 0);
-
-  /* --- формы, в которые складываются частицы --- */
-
-  // 2. ландшафт функции ошибки (сцена лаборатории): горы и долины, по которым «спускается» модель
-  function terrain() {
-    const out = new Float32Array(COUNT * 3);
-    const rows = 40;
-    for (let i = 0; i < COUNT; i++) {
-      // большая часть точек ложится на «линии» — так рельеф читается как горы
-      const onRow = i < COUNT * 0.85;
-      const x = rand(-10, 10);
-      const z = onRow ? -11 + (Math.floor(Math.random() * rows) / (rows - 1)) * 13 : rand(-11, 2);
-      let h = 0;
-      let amp = 1.5;
-      let freq = 0.32;
-      for (let o = 0; o < 4; o++) {
-        h += amp * (1 - Math.abs(Math.sin(x * freq + Math.sin(z * freq * 1.3) * 1.7) * Math.cos(z * freq * 0.9 + Math.cos(x * freq * 0.7))));
-        amp *= 0.5;
-        freq *= 2.1;
-      }
-      h *= 0.4 + Math.pow((4 - z) / 15, 1.6) * 2.2;
-      out.set([x, -3.4 + h, z], i * 3);
-    }
-    return out;
+  // мягкие отражения студии — без них фарфор выглядит пластиком
+  if (THREE.RoomEnvironment) {
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new THREE.RoomEnvironment(), 0.04).texture;
   }
+  const key = new THREE.DirectionalLight(0xffffff, 1.7);
+  key.position.set(-4, 3, 3);
+  scene.add(key);
+  const rim = new THREE.DirectionalLight(0x4d6bff, 2.4);
+  rim.position.set(4, 1.5, -3);
+  scene.add(rim);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.08));
 
-  // 1. орбита: наклонённое кольцо с ядром в центре
-  function orbit() {
-    const out = new Float32Array(COUNT * 3);
-    const off = side();
-    const tilt = 1.1;
-    for (let i = 0; i < COUNT; i++) {
-      let x;
-      let y;
-      let z;
-      if (i < COUNT * 0.7) {
-        // кольцо: плотнее к середине, с лёгким разбросом по толщине
-        const a = rand(0, Math.PI * 2);
-        const r = 2.4 + (Math.random() + Math.random() - 1) * 0.55;
-        x = Math.cos(a) * r;
-        y = (Math.random() - 0.5) * 0.12;
-        z = Math.sin(a) * r;
-      } else {
-        // ядро
-        const r = Math.pow(Math.random(), 1.6) * 0.9;
-        const th = rand(0, Math.PI * 2);
-        const ph = Math.acos(rand(-1, 1));
-        x = r * Math.sin(ph) * Math.cos(th);
-        y = r * Math.sin(ph) * Math.sin(th);
-        z = r * Math.cos(ph);
-      }
-      const ty = y * Math.cos(tilt) - z * Math.sin(tilt);
-      const tz = y * Math.sin(tilt) + z * Math.cos(tilt);
-      out.set([x + off, ty, tz], i * 3);
-    }
-    return out;
-  }
+  const pivot = new THREE.Group(); // положение на экране
+  const head = new THREE.Group(); // поворот за курсором
+  pivot.add(head);
+  scene.add(pivot);
 
-  // 3. спиральная галактика
-  function galaxy() {
-    const out = new Float32Array(COUNT * 3);
-    const off = side();
-    const arms = 3;
-    const tilt = 1.05;
-    for (let i = 0; i < COUNT; i++) {
-      const r = Math.pow(Math.random(), 0.7) * 4;
-      const arm = (i % arms) * ((Math.PI * 2) / arms);
-      const a = arm + r * 1.15;
-      const spread = 0.12 + r * 0.09;
-      const x = Math.cos(a) * r + (Math.random() - 0.5) * spread * 2;
-      const z = Math.sin(a) * r + (Math.random() - 0.5) * spread * 2;
-      const y = (Math.random() - 0.5) * 0.25 * (1.2 - r / 4);
-      const ty = y * Math.cos(tilt) - z * Math.sin(tilt);
-      const tz = y * Math.sin(tilt) + z * Math.cos(tilt);
-      out.set([x + off, ty, tz], i * 3);
-    }
-    return out;
-  }
+  const BLUE = new THREE.Color('#2b4cff');
+  const skinPlane = new THREE.Plane(new THREE.Vector3(0, -1, 0), 0); // фарфор остаётся ниже линии
+  const wirePlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0); // сетка проступает выше линии
+  const uScan = { value: 10 };
 
-  // 4. текст из частиц
-  function textShape(str) {
-    const W = 1400;
-    const H = 360;
-    const c = document.createElement('canvas');
-    c.width = W;
-    c.height = H;
-    const g = c.getContext('2d');
-    let size = 260;
-    g.font = `400 ${size}px Unbounded, sans-serif`;
-    while (g.measureText(str).width > W * 0.92 && size > 40) {
-      size -= 10;
-      g.font = `400 ${size}px Unbounded, sans-serif`;
-    }
-    g.fillStyle = '#fff';
-    g.textAlign = 'center';
-    g.textBaseline = 'middle';
-    g.fillText(str, W / 2, H / 2);
-    const data = g.getImageData(0, 0, W, H).data;
-    const pts = [];
-    for (let y = 0; y < H; y += 3) {
-      for (let x = 0; x < W; x += 3) {
-        if (data[(y * W + x) * 4 + 3] > 128) pts.push([x, y]);
-      }
-    }
-    if (!pts.length) return orbit();
-    // текст ложится в нижнюю часть экрана — в пустую «сцену» под контактами
-    const viewH = 2 * 9 * Math.tan((camera.fov * Math.PI) / 360);
-    const viewW = viewH * camera.aspect;
-    const worldW = Math.min(viewW * 0.82, 11);
-    const baseY = -viewH * 0.27;
-    const out = new Float32Array(COUNT * 3);
-    for (let i = 0; i < COUNT; i++) {
-      const [px, py] = pts[Math.floor(Math.random() * pts.length)];
-      out.set(
-        [((px - W / 2) / W) * worldW + rand(-0.02, 0.02), -((py - H / 2) / W) * worldW + baseY, rand(-0.25, 0.25)],
-        i * 3
+  const skinMaterial = new THREE.MeshPhysicalMaterial({
+    color: '#e6e8ed',
+    roughness: 0.3,
+    envMapIntensity: 0.75,
+    metalness: 0,
+    clearcoat: 0.8,
+    clearcoatRoughness: 0.22,
+    clippingPlanes: [skinPlane],
+    side: THREE.DoubleSide,
+  });
+  // светящаяся кромка там, где проходит линия сканирования
+  skinMaterial.onBeforeCompile = (shader) => {
+    shader.uniforms.uScan = uScan;
+    shader.uniforms.uGlow = { value: BLUE };
+    shader.vertexShader =
+      'varying float vWorldY;\n' +
+      shader.vertexShader.replace(
+        '#include <begin_vertex>',
+        '#include <begin_vertex>\n  vWorldY = (modelMatrix * vec4(transformed, 1.0)).y;'
       );
-    }
-    return out;
-  }
+    shader.fragmentShader =
+      'uniform float uScan;\nuniform vec3 uGlow;\nvarying float vWorldY;\n' +
+      shader.fragmentShader.replace(
+        '#include <dithering_fragment>',
+        'gl_FragColor.rgb += uGlow * exp(-pow((vWorldY - uScan) / 0.025, 2.0)) * 1.1;\n#include <dithering_fragment>'
+      );
+  };
 
-  // 0. нейросеть-облако первого экрана: нейроны и связи между ними
-  const brain = (() => {
-    const total = small ? 90 : 150;
-    const cx = side() * 0.5;
-    const nodes = [];
-    while (nodes.length < total) {
-      const x = rand(-1, 1);
-      const y = rand(-1, 1);
-      const z = rand(-1, 1);
-      if (x * x + y * y + z * z > 1) continue;
-      nodes.push(new THREE.Vector3(x * 4.3 + cx, y * 2.5 + 0.8, z * 2.6));
-    }
-    // каждый нейрон связан с тремя ближайшими
-    const edges = [];
-    const adj = nodes.map(() => []);
-    const seen = new Set();
-    nodes.forEach((a, i) => {
-      nodes
-        .map((b, j) => [j, a.distanceToSquared(b)])
-        .filter(([j]) => j !== i)
-        .sort((m, n) => m[1] - n[1])
-        .slice(0, 3)
-        .forEach(([j]) => {
-          const key = i < j ? `${i}-${j}` : `${j}-${i}`;
-          if (seen.has(key)) return;
-          seen.add(key);
-          adj[i].push(j);
-          adj[j].push(i);
-          edges.push([i, j]);
-        });
-    });
-    return { nodes, edges, adj };
+  // круглая точка для узлов и сигналов (по умолчанию точки квадратные)
+  const dot = (() => {
+    const c = document.createElement('canvas');
+    c.width = c.height = 64;
+    const g = c.getContext('2d');
+    g.fillStyle = '#fff';
+    g.beginPath();
+    g.arc(32, 32, 28, 0, Math.PI * 2);
+    g.fill();
+    return new THREE.CanvasTexture(c);
   })();
+  const wireMaterial = new THREE.LineBasicMaterial({ color: BLUE, transparent: true, opacity: 0.5, clippingPlanes: [wirePlane] });
+  const nodeMaterial = new THREE.PointsMaterial({ color: BLUE, size: 0.04, map: dot, alphaTest: 0.5, clippingPlanes: [wirePlane] });
+  const pulseMaterial = new THREE.PointsMaterial({ color: '#ff5a2e', size: 0.09, map: dot, alphaTest: 0.5, clippingPlanes: [wirePlane] });
 
-  function brainShape() {
-    const out = new Float32Array(COUNT * 3);
-    const { nodes, edges } = brain;
-    const cx = side() * 0.5;
-    for (let i = 0; i < COUNT; i++) {
-      let p;
-      if (i < COUNT * 0.3) {
-        // сгусток вокруг нейрона
-        const n = nodes[i % nodes.length];
-        const r = Math.pow(Math.random(), 2) * 0.16;
-        const th = rand(0, Math.PI * 2);
-        const ph = Math.acos(rand(-1, 1));
-        p = [n.x + r * Math.sin(ph) * Math.cos(th), n.y + r * Math.sin(ph) * Math.sin(th), n.z + r * Math.cos(ph)];
-      } else if (i < COUNT * 0.88) {
-        // нить связи
-        const [ia, ib] = edges[Math.floor(Math.random() * edges.length)];
-        const a = nodes[ia];
-        const b = nodes[ib];
-        const t = Math.random();
-        p = [a.x + (b.x - a.x) * t + rand(-0.03, 0.03), a.y + (b.y - a.y) * t + rand(-0.03, 0.03), a.z + (b.z - a.z) * t + rand(-0.03, 0.03)];
-      } else {
-        // редкая «пыль» вокруг
-        const x = rand(-1, 1);
-        const y = rand(-1, 1);
-        const z = rand(-1, 1);
-        p = [x * 6.5 + cx, y * 3.8 + 0.6, z * 4];
-      }
-      out.set(p, i * 3);
-    }
-    return out;
-  }
+  let ready = false;
+  let top = 1.4;
+  let bottom = -1.4;
+  let pulses = [];
+  let pulseGeometry = null;
+  let positions = null;
 
-  /* --- геометрия и шейдеры --- */
+  new THREE.GLTFLoader().load(
+    'assets/models/head.glb',
+    (gltf) => {
+      let mesh = null;
+      gltf.scene.updateMatrixWorld(true);
+      gltf.scene.traverse((o) => {
+        if (o.isMesh && !mesh) mesh = o;
+      });
+      if (!mesh) return;
 
-  const geometry = new THREE.BufferGeometry();
-  const from = brainShape();
-  const randoms = new Float32Array(COUNT * 3);
-  for (let i = 0; i < COUNT; i++) randoms.set([Math.random(), Math.random(), Math.random()], i * 3);
-  geometry.setAttribute('position', new THREE.BufferAttribute(from, 3));
-  geometry.setAttribute('aTo', new THREE.BufferAttribute(from.slice(), 3));
-  geometry.setAttribute('aRand', new THREE.BufferAttribute(randoms, 3));
+      const geometry = mesh.geometry.clone();
+      geometry.applyMatrix4(mesh.matrixWorld);
+      geometry.computeBoundingBox();
+      const box = geometry.boundingBox;
+      const center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+      const s = 2.5 / size.y;
+      geometry.translate(-center.x, -center.y, -center.z);
+      geometry.scale(s, s, s);
+      geometry.computeVertexNormals();
+      top = (size.y * s) / 2 + 0.05;
+      bottom = -top;
 
-  const material = new THREE.ShaderMaterial({
-    transparent: true,
-    depthWrite: false,
-    blending: THREE.AdditiveBlending,
-    uniforms: {
-      uTime: { value: 0 },
-      uMix: { value: 1 },
-      uSize: { value: small ? 48 : 50 },
-      uPixel: { value: dpr },
-      uMouse: { value: new THREE.Vector2(9, 9) },
-      uAspect: { value: 1 },
-      uColor: { value: new THREE.Color(0.86, 0.93, 0.97) },
-      uAlpha: { value: 1 },
+      head.add(new THREE.Mesh(geometry, skinMaterial));
+      // сетка чуть меньше поверхности, чтобы не мерцала на кромке
+      const wire = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), wireMaterial);
+      wire.scale.setScalar(0.995);
+      head.add(wire);
+
+      positions = geometry.attributes.position;
+      const nodePos = [];
+      for (let i = 0; i < positions.count; i += 4) nodePos.push(positions.getX(i), positions.getY(i), positions.getZ(i));
+      const nodeGeometry = new THREE.BufferGeometry();
+      nodeGeometry.setAttribute('position', new THREE.Float32BufferAttribute(nodePos, 3));
+      head.add(new THREE.Points(nodeGeometry, nodeMaterial));
+
+      const PULSES = small ? 50 : 90;
+      pulses = Array.from({ length: PULSES }, () => spawn({ t: Math.random() }));
+      pulseGeometry = new THREE.BufferGeometry();
+      pulseGeometry.setAttribute('position', new THREE.Float32BufferAttribute(new Float32Array(PULSES * 3), 3));
+      head.add(new THREE.Points(pulseGeometry, pulseMaterial));
+
+      ready = true;
+      document.documentElement.classList.add('head-ready');
     },
-    vertexShader: `
-      attribute vec3 aTo;
-      attribute vec3 aRand;
-      uniform float uTime, uMix, uSize, uPixel, uAspect;
-      uniform vec2 uMouse;
-      varying float vAlpha;
-      void main() {
-        float d = clamp(uMix * 1.6 - aRand.y * 0.6, 0.0, 1.0);
-        d = d * d * (3.0 - 2.0 * d);
-        vec3 p = mix(position, aTo, d);
-        p += normalize(p + 0.001) * sin(d * 3.14159) * 0.9 * aRand.z;
-        p.x += sin(uTime * 0.6 + aRand.y * 20.0) * 0.03;
-        p.y += cos(uTime * 0.5 + aRand.x * 15.0) * 0.03;
-        vec4 mv = modelViewMatrix * vec4(p, 1.0);
-        vec4 clip = projectionMatrix * mv;
-        vec2 diff = clip.xy / clip.w - uMouse;
-        float dist = length(diff * vec2(uAspect, 1.0));
-        clip.xy += normalize(diff + 1e-5) * smoothstep(0.28, 0.0, dist) * 0.1 * clip.w;
-        gl_Position = clip;
-        gl_PointSize = uSize * (0.35 + aRand.x * 0.9) * uPixel / -mv.z;
-        vAlpha = (0.45 + 0.55 * aRand.z) * smoothstep(30.0, 6.0, -mv.z) * smoothstep(2.5, 6.5, -mv.z);
+    undefined,
+    () => document.documentElement.classList.add('no-webgl')
+  );
+
+  // сигнал летит по прямой между двумя соседними узлами сетки — сквозь голову
+  function spawn(p) {
+    const n = positions.count;
+    const a = Math.floor(Math.random() * n);
+    let b = a;
+    for (let tries = 0; tries < 30; tries++) {
+      const c = Math.floor(Math.random() * n);
+      const d = Math.hypot(positions.getX(a) - positions.getX(c), positions.getY(a) - positions.getY(c), positions.getZ(a) - positions.getZ(c));
+      if (d > 0.25 && d < 0.75) {
+        b = c;
+        break;
       }
-    `,
-    fragmentShader: `
-      uniform vec3 uColor;
-      uniform float uAlpha;
-      varying float vAlpha;
-      void main() {
-        float r = length(gl_PointCoord - 0.5);
-        if (r > 0.5) discard;
-        gl_FragColor = vec4(uColor, smoothstep(0.5, 0.0, r) * vAlpha * uAlpha);
-      }
-    `,
-  });
-  group.add(new THREE.Points(geometry, material));
-
-  /* --- живая нейросеть первого экрана: связи, нейроны и бегущие сигналы --- */
-
-  const ICE = [0.86, 0.93, 0.97];
-  const WARM = [1, 0.45, 0.32];
-
-  const linePositions = new Float32Array(brain.edges.length * 6);
-  brain.edges.forEach(([a, b], k) => {
-    linePositions.set([...brain.nodes[a].toArray(), ...brain.nodes[b].toArray()], k * 6);
-  });
-  const lineGeometry = new THREE.BufferGeometry();
-  lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
-  const lineMaterial = new THREE.LineBasicMaterial({
-    color: 0x9fc3d4,
-    transparent: true,
-    opacity: 0,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false,
-  });
-  group.add(new THREE.LineSegments(lineGeometry, lineMaterial));
-
-  // светящиеся точки: и нейроны, и сигналы рисуются одним шейдером
-  const glowMaterial = new THREE.ShaderMaterial({
-    transparent: true,
-    depthWrite: false,
-    blending: THREE.AdditiveBlending,
-    uniforms: { uPixel: { value: dpr }, uLayer: { value: 0 } },
-    vertexShader: `
-      attribute float aSize;
-      attribute vec3 aColor;
-      uniform float uPixel;
-      varying vec3 vColor;
-      void main() {
-        vec4 mv = modelViewMatrix * vec4(position, 1.0);
-        gl_Position = projectionMatrix * mv;
-        gl_PointSize = aSize * uPixel * 26.0 / -mv.z;
-        vColor = aColor;
-      }
-    `,
-    fragmentShader: `
-      uniform float uLayer;
-      varying vec3 vColor;
-      void main() {
-        float r = length(gl_PointCoord - 0.5);
-        if (r > 0.5) discard;
-        float a = smoothstep(0.5, 0.0, r);
-        a *= a;
-        gl_FragColor = vec4(vColor * a * uLayer, a * uLayer);
-      }
-    `,
-  });
-
-  function glowLayer(count) {
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * 3), 3));
-    geo.setAttribute('aSize', new THREE.BufferAttribute(new Float32Array(count), 1));
-    geo.setAttribute('aColor', new THREE.BufferAttribute(new Float32Array(count * 3), 3));
-    group.add(new THREE.Points(geo, glowMaterial));
-    return geo;
-  }
-
-  const NODE_COUNT = brain.nodes.length;
-  const nodeGeometry = glowLayer(NODE_COUNT);
-  nodeGeometry.attributes.position.array.set(brain.nodes.flatMap((n) => n.toArray()));
-  const activation = new Float32Array(NODE_COUNT);
-  const cooldown = new Float32Array(NODE_COUNT);
-
-  const PULSES = small ? 60 : 120;
-  const TRAIL = 5;
-  const pulseGeometry = glowLayer(PULSES * TRAIL);
-  const pulses = Array.from({ length: PULSES }, () => spawnPulse({}));
-  const stats = { neurons: NODE_COUNT, links: brain.edges.length, fires: 0 };
-
-  function spawnPulse(p, from) {
-    const a = from ?? Math.floor(Math.random() * NODE_COUNT);
-    const next = brain.adj[a];
+    }
     p.a = a;
-    p.b = next.length ? next[Math.floor(Math.random() * next.length)] : a;
-    p.t = from == null ? Math.random() : 0;
-    p.speed = rand(0.45, 1.1);
-    p.warm = Math.random() < 0.35;
+    p.b = b;
+    p.t = p.t ?? 0;
+    p.speed = 0.5 + Math.random() * 0.9;
     return p;
   }
 
-  // нейрон срабатывает и отправляет сигналы соседям
-  function fireNode(i, count) {
-    activation[i] = 1;
-    cooldown[i] = 0.7;
-    stats.fires++;
-    for (let k = 0; k < count; k++) spawnPulse(pulses[Math.floor(Math.random() * PULSES)], i);
-  }
+  /* --- прокрутка: где голова и насколько её «просканировало» --- */
 
-  const projected = new THREE.Vector3();
-  function nodesNear(px, py, radius, limit) {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-    group.updateMatrixWorld();
-    return brain.nodes
-      .map((n, i) => {
-        projected.copy(n).applyMatrix4(group.matrixWorld).project(camera);
-        const sx = ((projected.x + 1) / 2) * w;
-        const sy = ((1 - projected.y) / 2) * h;
-        return [i, Math.hypot(sx - px, sy - py)];
-      })
-      .filter(([, d]) => d < radius)
-      .sort((m, n) => m[1] - n[1])
-      .slice(0, limit)
-      .map(([i]) => i);
+  const sections = $$('[data-scene]');
+  let tops = [];
+  const measure = () => {
+    tops = sections.map((el) => el.getBoundingClientRect().top + window.scrollY);
+  };
+  function progress() {
+    const y = window.scrollY;
+    let i = 0;
+    for (let k = 0; k < tops.length; k++) if (tops[k] <= y) i = k;
+    if (i >= tops.length - 1) return tops.length - 1;
+    return i + clamp((y - tops[i]) / (tops[i + 1] - tops[i]), 0, 1);
   }
+  const smooth = (a, b, x) => {
+    const t = clamp((x - a) / (b - a), 0, 1);
+    return t * t * (3 - 2 * t);
+  };
 
-  const pointer = { x: -9999, y: -9999 };
+  const mouse = { x: 0, y: 0 };
   window.addEventListener('pointermove', (e) => {
-    pointer.x = e.clientX;
-    pointer.y = e.clientY;
+    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = (e.clientY / window.innerHeight) * 2 - 1;
   });
-  // клик по первому экрану запускает волну сигналов от курсора
-  window.addEventListener('pointerdown', (e) => {
-    if (current !== 0 || !e.target.closest('#hero') || e.target.closest('a, button')) return;
-    nodesNear(e.clientX, e.clientY, 260, 8).forEach((i) => fireNode(i, 3));
-    aberration = Math.max(aberration, 0.7);
-    sound.tick();
-  });
-
-  function updateBrain(dt, layer) {
-    glowMaterial.uniforms.uLayer.value = layer;
-    lineMaterial.opacity = layer * 0.16;
-    if (layer < 0.01) return;
-
-    // наведение на нейрон
-    if (!isTouch) {
-      nodesNear(pointer.x, pointer.y, 46, 1).forEach((i) => {
-        if (cooldown[i] <= 0) fireNode(i, 2);
-      });
-    }
-
-    const nodeSize = nodeGeometry.attributes.aSize.array;
-    const nodeColor = nodeGeometry.attributes.aColor.array;
-    for (let i = 0; i < NODE_COUNT; i++) {
-      activation[i] = Math.max(0, activation[i] - dt * 1.4);
-      cooldown[i] -= dt;
-      const act = activation[i];
-      nodeSize[i] = 1.1 + act * 4.5;
-      const glow = 0.3 + act * 1.8;
-      nodeColor.set([ICE[0] * glow, ICE[1] * glow, ICE[2] * glow], i * 3);
-    }
-    nodeGeometry.attributes.aSize.needsUpdate = true;
-    nodeGeometry.attributes.aColor.needsUpdate = true;
-
-    const pos = pulseGeometry.attributes.position.array;
-    const size = pulseGeometry.attributes.aSize.array;
-    const color = pulseGeometry.attributes.aColor.array;
-    pulses.forEach((p, k) => {
-      p.t += p.speed * dt;
-      if (p.t >= 1) {
-        // сигнал дошёл: нейрон вспыхивает, сигнал идёт дальше по сети
-        activation[p.b] = Math.max(activation[p.b], 0.55);
-        stats.fires++;
-        if (Math.random() < 0.85) spawnPulse(p, p.b);
-        else spawnPulse(p);
-      }
-      const a = brain.nodes[p.a];
-      const b = brain.nodes[p.b];
-      const tint = p.warm ? WARM : ICE;
-      for (let j = 0; j < TRAIL; j++) {
-        const t = Math.max(0, p.t - j * 0.035);
-        const idx = k * TRAIL + j;
-        pos[idx * 3] = a.x + (b.x - a.x) * t;
-        pos[idx * 3 + 1] = a.y + (b.y - a.y) * t;
-        pos[idx * 3 + 2] = a.z + (b.z - a.z) * t;
-        const fade = 1 - j / TRAIL;
-        size[idx] = (j === 0 ? 4.5 : 3) * fade;
-        color.set([tint[0] * fade * 1.8, tint[1] * fade * 1.8, tint[2] * fade * 1.8], idx * 3);
-      }
-    });
-    pulseGeometry.attributes.position.needsUpdate = true;
-    pulseGeometry.attributes.aSize.needsUpdate = true;
-    pulseGeometry.attributes.aColor.needsUpdate = true;
-  }
-  let heroLayer = 0;
-
-  /* --- постобработка: хроматическая аберрация и свечение сверху --- */
-
-  const target = new THREE.WebGLRenderTarget(2, 2);
-  const postScene = new THREE.Scene();
-  const postCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-  const postMaterial = new THREE.ShaderMaterial({
-    uniforms: { tDiffuse: { value: target.texture }, uStrength: { value: 0 } },
-    vertexShader: `varying vec2 vUv; void main() { vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }`,
-    fragmentShader: `
-      uniform sampler2D tDiffuse;
-      uniform float uStrength;
-      varying vec2 vUv;
-      void main() {
-        vec2 dir = vUv - 0.5;
-        float s = 0.002 + uStrength * 0.018 * length(dir);
-        vec3 col = vec3(
-          texture2D(tDiffuse, vUv + dir * s).r,
-          texture2D(tDiffuse, vUv).g,
-          texture2D(tDiffuse, vUv - dir * s).b
-        );
-        col += vec3(0.045, 0.065, 0.08) * smoothstep(0.9, 0.0, length(vUv - vec2(0.5, 1.05)));
-        gl_FragColor = vec4(col, 1.0);
-      }
-    `,
-  });
-  postScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), postMaterial));
-
-  /* --- смена форм --- */
-
-  const SCENES = [
-    { shape: brainShape, spin: 0.035, alpha: 0.38, cam: [0, 0, 9], look: [0, 0.3, 0] },
-    { shape: orbit, spin: 0.1, alpha: 0.5, cam: [0, 0, 9], look: [0, 0, 0] },
-    { shape: terrain, spin: 0, alpha: 0.6, cam: [0, 0.4, 9], look: [0, -0.6, 0] },
-    { shape: galaxy, spin: 0.08, alpha: 0.45, cam: [0, 0, 9.5], look: [0, 0, 0] },
-    { shape: null, spin: 0, alpha: 0.9, cam: [0, 0, 9], look: [0, 0, 0] },
-  ];
-  let current = 0;
-  let morph = 1;
-  let aberration = 0;
-  let textKey = '';
-
-  function morphTo(positions) {
-    const pos = geometry.attributes.position.array;
-    const to = geometry.attributes.aTo.array;
-    // фиксируем текущее положение каждой частицы, чтобы переход начался без скачка
-    for (let i = 0; i < COUNT; i++) {
-      let d = Math.min(1, Math.max(0, morph * 1.6 - randoms[i * 3 + 1] * 0.6));
-      d = d * d * (3 - 2 * d);
-      for (let k = 0; k < 3; k++) pos[i * 3 + k] += (to[i * 3 + k] - pos[i * 3 + k]) * d;
-    }
-    to.set(positions);
-    geometry.attributes.position.needsUpdate = true;
-    geometry.attributes.aTo.needsUpdate = true;
-    morph = reducedMotion ? 1 : 0;
-    aberration = 1;
-  }
-
-  function setScene(index) {
-    if (index === current) return;
-    current = index;
-    textKey = '';
-    if (SCENES[index].shape) morphTo(SCENES[index].shape());
-    else morphText(t('hero.nameFirst'));
-    sound.whoosh();
-  }
-
-  function morphText(str) {
-    if (current !== 4) return;
-    const key = str.toUpperCase();
-    if (key === textKey) return;
-    textKey = key;
-    morphTo(textShape(key));
-  }
-
-  langListeners.push(() => {
-    if (current === 4) {
-      textKey = '';
-      morphText(t('hero.nameFirst'));
-    }
-  });
-
-  /* --- размеры, мышь, прокрутка --- */
 
   function resize() {
     const w = window.innerWidth;
     const h = window.innerHeight;
     renderer.setSize(w, h, false);
-    target.setSize(w * dpr, h * dpr);
     camera.aspect = w / h;
-    camera.fov = w < 760 ? 70 : 55;
+    camera.fov = w < 760 ? 40 : 30;
     camera.updateProjectionMatrix();
-    material.uniforms.uAspect.value = w / h;
+    measure();
   }
   window.addEventListener('resize', resize);
   resize();
-
-  const mouse = { x: 0, y: 0 };
-  window.addEventListener('pointermove', (e) => {
-    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-    material.uniforms.uMouse.value.set(mouse.x, mouse.y);
-  });
-
-  let lastScroll = window.scrollY;
-  let velocity = 0;
+  setInterval(measure, 1500);
 
   /* --- цикл отрисовки --- */
 
-  const look = new THREE.Vector3(0, 0.3, 0);
   let last = performance.now();
   let time = 0;
+  let scanY = 10;
+  let opacity = 1;
 
   function frame(now) {
     requestAnimationFrame(frame);
     if (document.hidden) return;
-    const rawDt = (now - last) / 1000;
-    const dt = Math.min(0.05, rawDt);
+    const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
     const motion = reducedMotion ? 0 : 1;
     time += dt * motion;
 
-    const delta = window.scrollY - lastScroll;
-    lastScroll = window.scrollY;
-    velocity += (Math.min(Math.abs(delta) / 60, 1) - velocity) * 0.1;
+    const g = progress();
+    const mobile = window.innerWidth < 760;
+    // насколько сдвинуть голову вбок, зависит от ширины видимой области
+    const halfWidth = Math.tan((camera.fov * Math.PI) / 360) * camera.position.z * camera.aspect;
+    const side = mobile ? 0 : halfWidth * 0.52;
+    const toStatement = smooth(0.55, 1.15, g);
+    const toContacts = smooth(4.55, 5, g);
 
-    if (morph < 1) morph = Math.min(1, morph + dt / 2.2);
-    aberration = Math.max(velocity * 0.6, aberration - dt * 0.7);
+    // в «Направлении» голова уходит вправо и сканируется сверху вниз,
+    // в контактах возвращается наполовину «раскрытой»
+    const scanT = Math.max(smooth(1.05, 1.85, g) * (1 - toContacts), toContacts * 0.5);
+    const targetScan = top + (bottom - top) * scanT;
+    scanY += (targetScan - scanY) * (reducedMotion ? 1 : 1 - Math.exp(-dt * 6));
 
-    const cfg = SCENES[current];
-    if (cfg.spin) group.rotation.y += cfg.spin * dt * motion;
-    else group.rotation.y += (Math.round(group.rotation.y / (Math.PI * 2)) * Math.PI * 2 - group.rotation.y) * 0.04;
+    const px = side * Math.max(toStatement, toContacts);
+    const py = mobile ? -0.75 * Math.max(toStatement, toContacts) : 0;
+    const baseYaw = -0.18 - 0.42 * Math.max(toStatement, toContacts);
+    const k = reducedMotion ? 1 : 1 - Math.exp(-dt * 4);
+    pivot.position.x += (px - pivot.position.x) * k;
+    pivot.position.y += (py + Math.sin(time * 0.8) * 0.04 - pivot.position.y) * k;
+    head.rotation.y += (baseYaw + mouse.x * 0.45 - head.rotation.y) * k;
+    head.rotation.x += (mouse.y * 0.22 - head.rotation.x) * k;
 
-    // в первой сцене камера «влетает» в нейросеть по мере прокрутки
-    const heroDolly = current === 0 ? Math.min(1, window.scrollY / window.innerHeight) * 2.2 : 0;
-    camera.position.x += (cfg.cam[0] + mouse.x * 0.7 * motion - camera.position.x) * 0.04;
-    camera.position.y += (cfg.cam[1] + mouse.y * 0.4 * motion - camera.position.y) * 0.04;
-    camera.position.z += (cfg.cam[2] - heroDolly - camera.position.z) * 0.05;
-    look.x += (cfg.look[0] - look.x) * 0.05;
-    look.y += (cfg.look[1] - look.y) * 0.05;
-    camera.lookAt(look);
+    // в разделах с контентом голова исчезает, в контактах возвращается
+    const targetOpacity = clamp(1 - smooth(1.85, 2.15, g) + toContacts, 0, 1);
+    opacity += (targetOpacity - opacity) * (reducedMotion ? 1 : 1 - Math.exp(-dt * 6));
+    canvas.style.opacity = opacity.toFixed(3);
+    if (opacity < 0.01 || !ready) return;
 
-    material.uniforms.uTime.value = time;
-    material.uniforms.uMix.value = morph;
-    material.uniforms.uAlpha.value += (cfg.alpha - material.uniforms.uAlpha.value) * 0.05;
-    postMaterial.uniforms.uStrength.value = aberration;
+    // линия сканирования задаётся в мировых координатах, а голова наклонена,
+    // поэтому плоскости отсечения ставим по высоте сцены
+    const worldScan = scanY + pivot.position.y;
+    uScan.value = worldScan;
+    skinPlane.constant = worldScan;
+    wirePlane.constant = -worldScan;
 
-    // связи, нейроны и сигналы видны только на первом экране
-    const layerTarget = current === 0 && morph > 0.6 ? 1 : 0;
-    heroLayer += (layerTarget - heroLayer) * (1 - Math.exp(-rawDt * (layerTarget ? 1.8 : 7)));
-    updateBrain(dt * motion, heroLayer);
+    if (pulseGeometry) {
+      const arr = pulseGeometry.attributes.position.array;
+      pulses.forEach((p, i) => {
+        p.t += p.speed * dt * motion;
+        if (p.t >= 1) {
+          p.t = 0;
+          spawn(p);
+        }
+        const { a, b } = p;
+        arr[i * 3] = positions.getX(a) + (positions.getX(b) - positions.getX(a)) * p.t;
+        arr[i * 3 + 1] = positions.getY(a) + (positions.getY(b) - positions.getY(a)) * p.t;
+        arr[i * 3 + 2] = positions.getZ(a) + (positions.getZ(b) - positions.getZ(a)) * p.t;
+      });
+      pulseGeometry.attributes.position.needsUpdate = true;
+    }
 
-    renderer.setRenderTarget(target);
     renderer.render(scene, camera);
-    renderer.setRenderTarget(null);
-    renderer.render(postScene, postCamera);
   }
   requestAnimationFrame(frame);
 
-  return { setScene, morphText, stats };
+  return {
+    setScene() {
+      sound.whoosh();
+    },
+  };
 }
 
 /* ---------- Нейро-аватар из частиц ---------- */
@@ -1360,8 +1047,8 @@ function initScene() {
 function initAvatar() {
   const canvas = $('#avatar');
   const ctx = canvas.getContext('2d');
-  const ICE = '233,242,246';
-  const WARM = '255,107,74';
+  const ICE = '30,42,90';
+  const WARM = '36,67,255';
 
   let W = 0;
   let H = 0;
@@ -1486,8 +1173,8 @@ function initAvatar() {
     // «ядро» в голове
     const pulse = 0.6 + Math.sin(time * 2.2) * 0.25;
     const core = ctx.createRadialGradient(W * 0.5, H * 0.38, 0, W * 0.5, H * 0.38, W * 0.2);
-    core.addColorStop(0, `rgba(${ICE},${0.16 * pulse})`);
-    core.addColorStop(1, `rgba(${ICE},0)`);
+    core.addColorStop(0, `rgba(${WARM},${0.14 * pulse})`);
+    core.addColorStop(1, `rgba(${WARM},0)`);
     ctx.fillStyle = core;
     ctx.fillRect(0, 0, W, H);
 
@@ -1517,7 +1204,7 @@ function initAvatar() {
         b += near * 0.9;
       }
       const offset = Math.min(1, Math.hypot(p.x - p.hx, p.y - p.hy) / 30);
-      ctx.fillStyle = offset > 0.35 ? `rgba(${WARM},${Math.min(1, b)})` : `rgba(${ICE},${Math.min(1, b)})`;
+      ctx.fillStyle = offset > 0.35 ? `rgba(${WARM},${Math.min(1, b)})` : `rgba(${ICE},${Math.min(1, b * 0.55)})`;
       const s = p.edge ? 1.8 : 1.4;
       ctx.fillRect(p.x, p.y, s, s);
     });
@@ -1563,10 +1250,10 @@ function initAvatar() {
     if (scan > -0.5) {
       const y = scan * H;
       const g = ctx.createLinearGradient(0, y - 22, 0, y + 6);
-      g.addColorStop(0, `rgba(${ICE},0)`);
-      g.addColorStop(0.8, `rgba(${ICE},0.16)`);
-      g.addColorStop(0.86, `rgba(${ICE},0.35)`);
-      g.addColorStop(1, `rgba(${ICE},0)`);
+      g.addColorStop(0, `rgba(${WARM},0)`);
+      g.addColorStop(0.8, `rgba(${WARM},0.1)`);
+      g.addColorStop(0.86, `rgba(${WARM},0.28)`);
+      g.addColorStop(1, `rgba(${WARM},0)`);
       ctx.fillStyle = g;
       ctx.fillRect(0, y - 22, W, 28);
     }
@@ -1613,24 +1300,6 @@ function initAvatar() {
   }
 }
 
-/* ---------- Показатели нейросети на первом экране ---------- */
-
-function initHud(scene3d) {
-  const hud = $('#hero-hud');
-  if (!scene3d.stats) {
-    hud.remove();
-    return;
-  }
-  const format = (n) => n.toLocaleString(lang === 'ru' ? 'ru-RU' : 'en-US');
-  const update = () => {
-    $('#hud-neurons').textContent = format(scene3d.stats.neurons);
-    $('#hud-links').textContent = format(scene3d.stats.links);
-    $('#hud-fires').textContent = format(scene3d.stats.fires);
-  };
-  update();
-  setInterval(update, 200);
-}
-
 /* ---------- Шапка, навигация и номер сцены ---------- */
 
 function initNav(scene3d) {
@@ -1651,6 +1320,11 @@ function initNav(scene3d) {
     $('.scene-index').classList.toggle('is-hidden', atBottom);
 
     const id = sections[index].id;
+    let atTop = sections[0];
+    sections.forEach((s) => {
+      if (s.offsetTop <= window.scrollY + 60) atTop = s;
+    });
+    document.body.classList.toggle('is-night', atTop.classList.contains('night'));
     links.forEach((link) => link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`));
 
     const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -1723,7 +1397,7 @@ function initCursor() {
   });
   document.addEventListener('pointerleave', () => cursor.classList.remove('is-visible'));
   document.addEventListener('pointerover', (e) => {
-    const hover = e.target.closest && e.target.closest('a, button, [data-morph], .range');
+    const hover = e.target.closest && e.target.closest('a, button, .range');
     cursor.classList.toggle('is-hover', !!hover);
   });
 
@@ -1748,94 +1422,6 @@ function initMagnetic() {
       el.style.transform = '';
     });
   });
-}
-
-/* ---------- Буквы имени разлетаются от курсора ---------- */
-
-function initLetters() {
-  if (isTouch || reducedMotion) return;
-  const hero = $('#hero');
-  const mouse = { x: -9999, y: -9999 };
-  const state = new WeakMap();
-  let visible = true;
-
-  hero.addEventListener('pointermove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
-  hero.addEventListener('pointerleave', () => {
-    mouse.x = mouse.y = -9999;
-  });
-  new IntersectionObserver(([entry]) => {
-    visible = entry.isIntersecting;
-  }).observe(hero);
-
-  (function loop() {
-    requestAnimationFrame(loop);
-    if (!visible) return;
-    $$('#hero-name .ch').forEach((ch) => {
-      const s = state.get(ch) || { x: 0, y: 0, r: 0 };
-      const rect = ch.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2 - s.x;
-      const cy = rect.top + rect.height / 2 - s.y;
-      const dx = cx - mouse.x;
-      const dy = cy - mouse.y;
-      const dist = Math.hypot(dx, dy);
-      const radius = Math.max(140, rect.height * 1.3);
-      const force = dist < radius ? Math.pow(1 - dist / radius, 2) : 0;
-      const tx = dist ? (dx / dist) * force * 60 : 0;
-      const ty = dist ? (dy / dist) * force * 60 : 0;
-      s.x += (tx - s.x) * 0.12;
-      s.y += (ty - s.y) * 0.12;
-      s.r += (force * (dx > 0 ? 14 : -14) - s.r) * 0.12;
-      state.set(ch, s);
-      const p = Math.min(1, Math.hypot(s.x, s.y) / 40);
-      ch.style.transform = `translate(${s.x.toFixed(2)}px, ${s.y.toFixed(2)}px) rotate(${s.r.toFixed(2)}deg)`;
-      ch.style.setProperty('--p', p.toFixed(3));
-    });
-  })();
-}
-
-/* ---------- Бегущая строка ---------- */
-
-function initMarquee() {
-  const track = $('#marquee-track');
-  let x = 0;
-  let half = 0;
-  let dir = -1;
-  let boost = 0;
-  let lastScroll = window.scrollY;
-
-  function build() {
-    const items = t('marquee')
-      .map((item) => `<span class="marquee__item">${escapeHtml(item)}</span>`)
-      .join('');
-    let html = items;
-    track.innerHTML = html;
-    while (track.scrollWidth < window.innerWidth * 1.2) {
-      html += items;
-      track.innerHTML = html;
-    }
-    track.innerHTML = html + html;
-    half = track.scrollWidth / 2;
-  }
-
-  langListeners.push(build);
-  window.addEventListener('resize', build);
-  build();
-
-  (function loop() {
-    requestAnimationFrame(loop);
-    const delta = window.scrollY - lastScroll;
-    lastScroll = window.scrollY;
-    if (delta) dir = delta > 0 ? -1 : 1;
-    boost += (Math.min(Math.abs(delta), 80) / 8 - boost) * 0.1;
-    if (reducedMotion) return;
-    x += dir * (0.6 + boost);
-    if (x <= -half) x += half;
-    if (x > 0) x -= half;
-    track.style.transform = `translateX(${x}px)`;
-  })();
 }
 
 /* ---------- Прелоадер ---------- */
@@ -1905,10 +1491,6 @@ function initContacts(scene3d) {
   $('.contact__value', li).textContent = pretty(CONTACTS.linkedin);
 
   // наведение на ссылку: частицы складываются в её название
-  $$('[data-morph]').forEach((el) => {
-    el.addEventListener('pointerenter', () => scene3d.morphText(el.dataset.morph));
-    el.addEventListener('pointerleave', () => scene3d.morphText(t('hero.nameFirst')));
-  });
 }
 
 /* ---------- Интерактив: как учится нейрон ---------- */
@@ -1918,7 +1500,7 @@ function initPlayground() {
   const ctx = canvas.getContext('2d');
   const emptyHint = $('#lab-empty');
   const trainBtn = $('#lab-train');
-  const COLORS = { 1: [233, 242, 246], 0: [255, 107, 74] };
+  const COLORS = { 1: [36, 67, 255], 0: [255, 90, 46] };
   const HIDDEN = 8;
   const sigmoid = (z) => 1 / (1 + Math.exp(-z));
   const rnd = (scale) => (Math.random() * 2 - 1) * scale;
@@ -2028,7 +1610,7 @@ function initPlayground() {
     }
 
     // сетка
-    ctx.strokeStyle = 'rgba(210,232,242,0.07)';
+    ctx.strokeStyle = 'rgba(13,17,23,0.06)';
     ctx.lineWidth = 1;
     for (let k = 1; k < 10; k++) {
       const v = (k / 10) * size;
@@ -2050,7 +1632,7 @@ function initPlayground() {
       ctx.arc(toPx(pt.x), toPx(pt.y), 6, 0, Math.PI * 2);
       ctx.fill();
       ctx.shadowBlur = 0;
-      ctx.strokeStyle = 'rgba(5,7,10,0.9)';
+      ctx.strokeStyle = 'rgba(255,255,255,0.95)';
       ctx.lineWidth = 1.5;
       ctx.stroke();
     });
@@ -2247,9 +1829,9 @@ function initGradientDescent() {
       // «террасы»: уровень квантуется, как на топографической карте
       const terrace = Math.floor(level * 12) / 12;
       const v = terrace * 0.75 + level * 0.25;
-      img.data[k * 4] = 6 + v * 120;
-      img.data[k * 4 + 1] = 9 + v * 145;
-      img.data[k * 4 + 2] = 13 + v * 160;
+      img.data[k * 4] = 30 + v * 222;
+      img.data[k * 4 + 1] = 52 + v * 200;
+      img.data[k * 4 + 2] = 190 + v * 63;
       img.data[k * 4 + 3] = 255;
     }
     octx.putImageData(img, 0, 0);
@@ -2276,16 +1858,16 @@ function initGradientDescent() {
     if (!path.length) return;
 
     // траектория
-    ctx.strokeStyle = 'rgba(233,242,246,0.9)';
+    ctx.strokeStyle = '#ff5a2e';
     ctx.lineWidth = 2;
-    ctx.shadowColor = 'rgba(233,242,246,0.6)';
+    ctx.shadowColor = 'rgba(255,90,46,0.5)';
     ctx.shadowBlur = 8;
     ctx.beginPath();
     path.forEach(([x, y], i) => (i ? ctx.lineTo(toPx(x), toPx(y)) : ctx.moveTo(toPx(x), toPx(y))));
     ctx.stroke();
     ctx.shadowBlur = 0;
 
-    ctx.fillStyle = 'rgba(232,251,255,0.8)';
+    ctx.fillStyle = 'rgba(255,90,46,0.85)';
     path.forEach(([x, y]) => {
       ctx.beginPath();
       ctx.arc(toPx(x), toPx(y), 2, 0, Math.PI * 2);
@@ -2294,7 +1876,7 @@ function initGradientDescent() {
 
     // старт
     const [sx, sy] = path[0];
-    ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+    ctx.strokeStyle = 'rgba(13,17,23,0.7)';
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.arc(toPx(sx), toPx(sy), 7, 0, Math.PI * 2);
@@ -2308,23 +1890,23 @@ function initGradientDescent() {
       if (len > 1e-6 && status !== 'statusConverged') {
         const ax = toPx(cx) - (gx / len) * 34;
         const ay = toPx(cy) - (gy / len) * 34;
-        ctx.strokeStyle = '#ff6b4a';
+        ctx.strokeStyle = '#ffffff';
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(toPx(cx), toPx(cy));
         ctx.lineTo(ax, ay);
         ctx.stroke();
         const ang = Math.atan2(ay - toPx(cy), ax - toPx(cx));
-        ctx.fillStyle = '#ff6b4a';
+        ctx.fillStyle = '#ffffff';
         ctx.beginPath();
         ctx.moveTo(ax, ay);
         ctx.lineTo(ax - 8 * Math.cos(ang - 0.45), ay - 8 * Math.sin(ang - 0.45));
         ctx.lineTo(ax - 8 * Math.cos(ang + 0.45), ay - 8 * Math.sin(ang + 0.45));
         ctx.fill();
       }
-      ctx.shadowColor = '#e9f2f6';
+      ctx.shadowColor = '#ff5a2e';
       ctx.shadowBlur = 16;
-      ctx.fillStyle = '#e9f2f6';
+      ctx.fillStyle = '#ff5a2e';
       ctx.beginPath();
       ctx.arc(toPx(cx), toPx(cy), 7, 0, Math.PI * 2);
       ctx.fill();
@@ -2587,15 +2169,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initPreloader();
   const scene3d = initScene();
   initNav(scene3d);
-  initHud(scene3d);
   initAvatar();
   initContacts(scene3d);
   initSmoothScroll();
   initSound();
   initCursor();
   initMagnetic();
-  initLetters();
-  initMarquee();
   initIceGlow();
 
   initPlayground();
