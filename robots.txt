@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /model-review/
+Sitemap: https://ernestmuzafarov.tech/sitemap.xml
