@@ -1,0 +1,23 @@
+Tesla optimus
+Author: Mechamaner.V (@jjeendral36)
+Author profile: https://sketchfab.com/jjeendral36
+Source: https://sketchfab.com/3d-models/tesla-optimus-2fab5d31927f43729a99a6e8eaf1c7f5
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License URL: https://creativecommons.org/licenses/by/4.0/
+
+Changes for Ernest Personal Lab:
+Selected the original Head, Lights and Face material groups, including the neck and its base.
+Removed unused body material groups and unused binary buffers.
+Original vertex positions, normals, UVs and triangle indices are preserved byte for byte.
+Studio lighting, environment intensity, camera framing and cursor animation are applied at runtime.
+The static poster is rendered from this same asset.
+
+This independent artist's model is not an official Tesla CAD model and is not represented as verified Optimus Gen 3 geometry.
+No endorsement by the artist, Tesla or Sketchfab is implied.
+
+Close-up rendering update:
+The render derivative optimus-head-smooth-v2.glb refines curved patches with Phong interpolation.
+All original control positions and axis bounds are retained; intermediate surface points are added.
+MSAA/SMAA and studio material roughness improve the displayed contour.
+The derivative is compressed with EXT_meshopt_compression; runtime decoding is losslessly verified.
+The original extracted optimus-head.glb remains available separately.

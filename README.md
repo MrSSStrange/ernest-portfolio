@@ -1,114 +1,76 @@
-<h1 align="center">ernest.os — portfolio</h1>
+# Ernest Lab
 
-<p align="center">
-  A personal portfolio built as a tiny operating system: a desktop with files and windows,<br />
-  an AI assistant you can talk to and a holographic 3D head on the wallpaper.
-</p>
+Личное портфолио Эрнеста Музафарова об AI, машинном обучении и робототехнике.
 
-<p align="center">
-  <a href="https://ernestmuzafarov.tech"><img src="https://img.shields.io/badge/Live-ernestmuzafarov.tech-07090F?style=for-the-badge&logo=googlechrome&logoColor=7D93FF" alt="Live site" /></a>
-  <img src="https://img.shields.io/badge/three.js-r128-07090F?style=for-the-badge&logo=threedotjs&logoColor=white" alt="three.js r128" />
-  <img src="https://img.shields.io/badge/Vanilla-JavaScript-07090F?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="Vanilla JavaScript" />
-  <img src="https://img.shields.io/badge/No%20build-step-07090F?style=for-the-badge" alt="No build step" />
-</p>
+[Сайт — ernestmuzafarov.tech](https://ernestmuzafarov.tech) · [GitHub](https://github.com/MrSSStrange) · [Telegram](https://t.me/ErnestKzn)
 
-<p align="center">
-  <a href="https://ernestmuzafarov.tech"><img src="docs/preview.jpg" alt="ernest.os desktop: file icons, a holographic head and the assistant window" width="900" /></a>
-</p>
+![Главный экран Ernest Lab](docs/qa/film-hero-desktop.jpg)
 
-<p align="center">
-  <a href="#english">English</a> · <a href="#русский">Русский</a>
-</p>
+## Что внутри
 
----
+- Видеопервый экран по композиционному референсу Tesla Careers: видео на весь экран, прозрачная навигация, имя и короткая подпись. Автозапуск без звука, пауза, остановка вне кадра.
+- Настоящий лицензированный 3D-ассет Optimus в отдельной интерактивной сцене: плавное слежение за курсором, инерция, студийный свет и камера, связанная с прокруткой.
+- Собственные фото и логотип Эрнеста, светлая и тёмная темы с сохранением выбора.
+- Два действующих учебных проекта с реальными скриншотами, демо и кодом: [SupportDesk](https://github.com/MrSSStrange/ernest-supportdesk) и [расписание приёмов](https://github.com/MrSSStrange/clinic-appointments-dashboard). Они используют тестовые данные, клиентскую логику и localStorage.
+- Три статьи с отдельными адресами, оглавлением, источниками и интерактивными объяснениями. История Optimus содержит закреплённый плеер и переключение глав.
+- Адаптивная композиция, клавиатурное управление, `prefers-reduced-motion`, статичный постер без WebGL и ручной запуск видео при блокировке autoplay.
 
-## English
+## Запуск
 
-### How it works
+Node.js 22.12+; проверено на Node.js 24.
 
-- **Boot screen.** A short system log, skippable with a click.
-- **Desktop.** Files on the left (`assistant.sh`, `about.md`, `lab/`, `ideas.md`, `contacts.sh`), a dock at the bottom and a top bar with RU / EN, sound and a clock.
-- **Windows.** Open from an icon or the dock, drag by the title bar, close with the red button or Esc. On phones they open full screen, like apps.
-- **Assistant.** Opens right after boot. Pick a suggested question or type your own: it matches keywords, types out the answer and opens the matching window. The answers are pre-written from the site's own texts, and the assistant says so when asked whether it is a real AI.
-- **Holographic head.** A dark silhouette with a glowing blue rim, a wireframe mesh, a scan line running top to bottom and signals flying through the mesh. It follows the cursor and "talks" while the assistant is typing: the scan and the signals speed up.
-
-### Windows
-
-| File | What is inside |
-| --- | --- |
-| `assistant.sh` | Chat with the assistant |
-| `about.md` | About, strengths and learning progress drawn as terminal bars |
-| `~/lab` | Three demos computed in the browser: a neuron and a hidden-layer network learning with gradient descent, gradient descent on a loss surface, next-token sampling with temperature |
-| `ideas.md` | Problems I want to learn to solve with AI — directions to explore, not finished projects |
-| `contacts.sh` | Telegram, GitHub, LinkedIn |
-
-### Tech stack
-
-| Part | Technology |
-| --- | --- |
-| Markup and styles | HTML, CSS |
-| 3D head | three.js r128, custom GLSL shaders, GLTFLoader |
-| Window manager, assistant, demos | Plain JavaScript, Canvas 2D |
-| Sound | Web Audio API, synthesised, off by default |
-| Hosting | GitHub Pages with a custom domain |
-
-### Project structure
-
-```text
-index.html                 desktop, windows and dock; texts come from data-i18n keys
-style.css                  styles
-script.js                  settings and texts at the top, then all the code
-assets/models/head.glb     3D head model
-assets/vendor/             GLTFLoader from the three.js r128 examples
-docs/                      README images
-CNAME                      custom domain for GitHub Pages
+```sh
+git clone https://github.com/MrSSStrange/ernest-portfolio.git
+cd ernest-portfolio
+npm ci
+npm run dev
 ```
 
-### Editing content
+```sh
+npm test          # геометрия ассета, ограничения и инерция движения
+npm run build    # TypeScript, Vite, статические страницы и проверка релиза
+npm run preview  # production-сборка локально
+```
 
-Everything you are likely to change sits at the top of `script.js`:
+Стек: React 19, TypeScript, Vite, Three.js. Серверная часть для портфолио не требуется.
 
-- `CONTACTS` — Telegram, GitHub, LinkedIn;
-- `LEARNING` — learning progress. Each step has `status: 'done' | 'current' | 'todo'`; the bars and the assistant's "What are you learning?" answer update from it;
-- `I18N` — all texts in Russian and English, including the boot log (`os`) and the assistant's questions and answers (`assistant`).
+## Где редактировать
 
-Keywords for free-text questions are in `KEYWORDS` right after the settings.
+- `src/data.ts` — имя, описание, фото, логотип, контакты, проекты, статьи и источники.
+- `src/FilmHero.tsx`, `src/film-hero.css` — видеопервый экран.
+- `src/Hero.tsx`, `src/scene.ts` — интерактивная сцена Optimus.
+- `src/Home.tsx`, `src/shell.tsx` — разделы, навигация и футер.
+- `src/Video.tsx` — содержательные видео YouTube и управление видимостью.
+- `src/style.css`, `src/details.css` — единые токены тем, сетка и страницы чтения.
+- `design-system/ernest-lab/MASTER.md` — дизайн-система и конкретные референсы.
 
-### Credits
+GitHub, Telegram и LinkedIn перенесены из предыдущего опубликованного портфолио. Email пока пуст и скрыт. Опыт, профессиональные достижения и метрики без подтверждения не добавляются.
 
-- Head model: Lee Perry-Smith, licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/), taken from the [three.js examples](https://threejs.org/examples/#webgl_decals).
-- [three.js](https://threejs.org/) and its GLTFLoader, MIT license.
+## Материалы
 
----
+**Optimus:** [Tesla optimus](https://sketchfab.com/3d-models/tesla-optimus-2fab5d31927f43729a99a6e8eaf1c7f5) — Mechamaner.V, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Независимая авторская модель; точное соответствие официальному Gen 3 не заявляется. Процедурного робота в сцене нет.
 
-## Русский
+Активный файл `public/models/optimus-head-smooth-v2.glb`: 1 759 760 байт, 122 508 треугольников, три материала. Все исходные контрольные точки и размеры сохранены, поверхность между ними сглажена, meshopt-декодирование проверено. Исходный выделенный экспорт сохранён отдельно. Автор, лицензия и изменения указаны в интерфейсе, GLB и `public/models/ATTRIBUTION.txt`.
 
-Сайт-портфолио в виде маленькой операционной системы.
+**Фоновый фильм:** [Automated Car Factory](https://www.pexels.com/video/automated-car-factory-6450803/) — Engin Altundağ, [Pexels License](https://www.pexels.com/license/). Локальный MP4 1920 × 1080, около 8,4 секунды, 5,23 MB. Видео — визуальная тема робототехники, оно не показывает проекты Эрнеста и не обозначается как материал Tesla. Источник, SHA-256 и лицензия сохранены в `docs/film-source.json`.
 
-**Что на сайте:**
+**Другие видео:** официальные ролики Tesla встроены через YouTube IFrame API; файлы роликов Tesla не переиздаются.
 
-- **Загрузка системы**, её можно пропустить кликом.
-- **Рабочий стол:** файлы `assistant.sh`, `about.md`, `lab/`, `ideas.md`, `contacts.sh`, док и верхняя панель с RU / EN, звуком и часами.
-- **Окна** открываются из иконок и дока, их можно таскать и закрывать (кнопкой или Esc). На телефоне окна открываются на весь экран.
-- **ИИ-ассистент** открыт сразу после загрузки. Он отвечает на готовые вопросы и на свободный текст по ключевым словам и сам открывает нужное окно. Ответы написаны заранее из текстов сайта, и на вопрос «Ты настоящий ИИ?» ассистент честно об этом говорит.
-- **Голова-голограмма на обоях:** светящаяся сетка, линия сканирования и сигналы. Она следит за курсором и «говорит», пока ассистент печатает ответ.
-- **Лаборатория** с тремя демками, всё считается в браузере.
+**Дизайн:** UI UX Pro Max и референсы 21st.dev; для нового первого экрана — [Tesla Careers](https://www.tesla.com/careers). **Шрифт:** Manrope, Mikhail Sharanda, SIL Open Font License.
 
-**Где менять:** всё в начале `script.js`:
+Полная атрибуция доступна на `/credits/`; технические отчёты и контрольные снимки находятся в `docs/`.
 
-- `CONTACTS` — контакты;
-- `LEARNING` — прогресс обучения;
-- `I18N` — тексты на двух языках, включая загрузку и ответы ассистента.
+## Публикация
 
-**Хостинг:** GitHub Pages, домен [ernestmuzafarov.tech](https://ernestmuzafarov.tech).
+Исходники находятся в `main`, готовый статический релиз — в `gh-pages`. Домен `ernestmuzafarov.tech`, CNAME и HTTPS сохраняются.
 
-**Модель головы:** Lee Perry-Smith, CC BY 3.0, из примеров three.js.
+После коммита исходников:
 
----
+```sh
+git push origin main
+npm run deploy:github
+```
 
-<p align="center">
-  <a href="https://ernestmuzafarov.tech">ernestmuzafarov.tech</a> ·
-  <a href="https://t.me/ErnestKzn">Telegram</a> ·
-  <a href="https://www.linkedin.com/in/ernest-muzafarov-919a323a2/">LinkedIn</a> ·
-  <a href="https://github.com/MrSSStrange">GitHub</a>
-</p>
+Команда проверяет рабочее дерево, запускает тесты и сборку, затем обычным push обновляет ветку `gh-pages`. GitHub Pages публикует её корень. Потребуются Git и настроенная авторизация GitHub. Force-push не используется.
+
+Предыдущий сайт сохранён в истории и резервной ветке `backup/pre-ai-lab-2026-11-01`. Для возврата можно восстановить его дерево новым коммитом, сохранив историю.

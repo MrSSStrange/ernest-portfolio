@@ -1,0 +1,28 @@
+{
+  "assets/identity/ernest-logo-original.png": {
+    "bytes": 485024,
+    "sha256": "a822d72243705ff275d33b263c2db8563dc76208cef201a995a9b13ed3469764"
+  },
+  "assets/identity/ernest-portrait-original.png": {
+    "bytes": 1817459,
+    "sha256": "b6a564ed40e7ffea0e5e0d09d5db16518706b974511dfe9b299113fe37ee5405"
+  },
+  "public/images/ernest-logo.png": {
+    "width": 256,
+    "height": 256,
+    "bytes": 27583,
+    "rgba": true
+  },
+  "public/images/ernest-portrait-large.png": {
+    "width": 948,
+    "height": 1000,
+    "bytes": 1090780,
+    "rgba": true
+  },
+  "public/images/ernest-portrait-small.png": {
+    "width": 606,
+    "height": 640,
+    "bytes": 430540,
+    "rgba": true
+  }
+}

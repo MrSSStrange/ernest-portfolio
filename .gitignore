@@ -1,2 +1,9 @@
+node_modules/
+dist/
+.sites-runtime/
+outputs/
+assets/source/*
+!assets/source/.gitkeep
+*.tgz
+*.log
 .DS_Store
-.claude/

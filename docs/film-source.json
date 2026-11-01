@@ -1,0 +1,27 @@
+{
+  "title": "Automated Car Factory",
+  "author": "Engin Altundağ",
+  "source": "https://www.pexels.com/video/automated-car-factory-6450803/",
+  "license": "Pexels License",
+  "licenseUrl": "https://www.pexels.com/license/",
+  "reference": "https://www.tesla.com/careers",
+  "downloadUrl": "https://videos.pexels.com/video-files/6450803/6450803-hd_1920_1080_25fps.mp4",
+  "downloadedAt": "2026-11-01",
+  "output": "public/video/robotics-loop.mp4",
+  "bytes": 5226677,
+  "sha256": "773cba4e18d9bda0bdcb64175b732085e4ef2b7808adf40981566b887e58db0e",
+  "containerAtoms": [
+    [
+      "ftyp",
+      32
+    ],
+    [
+      "moov",
+      5677
+    ],
+    [
+      "mdat",
+      5220968
+    ]
+  ]
+}
