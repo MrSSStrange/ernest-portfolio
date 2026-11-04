@@ -4,7 +4,7 @@
 
 An English portfolio with a dark GSAP interface, interactive canvas visuals, automation case studies, a nine-post AI journal, verified course certificates and a downloadable two-page CV.
 
-The animated AI toolkit includes Claude, ChatGPT, Qwen, DeepSeek, Kimi and GLM. It has responsive connection paths, scroll reveals, pointer tilt, an animation pause control and reduced-motion support. Assets and the CV are embedded in the portable HTML.
+The animated AI toolkit includes Claude, ChatGPT, Qwen, DeepSeek, Kimi and GLM. Each tool mark has its own idle animation, and signals run continuously along the connection paths (they pause only off-screen or in a hidden tab). Reduced-motion keeps the signals but turns off the decorative icon motion and tilt. Assets and the CV are embedded in the portable HTML.
 
 ## Build and preview
 

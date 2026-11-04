@@ -90,7 +90,7 @@
   "projects": [
     {
       "name": "Price list import",
-      "description": "Transforms an Excel price list into categories, services and prices with matched IDs.",
+      "description": "Transforms an Excel price list into categories, services and prices with matched IDs. Demo rebuild: github.com/MrSSStrange/price-list-importer",
       "result": "Approximately 2 hours reduced to 10–15 minutes."
     },
     {
@@ -133,6 +133,12 @@
       "skills": [
         "HTML",
         "Git"
+      ]
+    },
+    {
+      "level": "In progress",
+      "skills": [
+        "AI and machine learning courses"
       ]
     }
   ],

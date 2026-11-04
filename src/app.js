@@ -28,8 +28,13 @@ gsap.from('#pt canvas',{scale:1.5,yPercent:12,ease:'none',scrollTrigger:{trigger
 gsap.from('.about h2,.c2',{y:70,opacity:0,duration:1.1,stagger:.15,ease:'power3.out',scrollTrigger:{trigger:'.about',start:'top 70%'}});
 // hover rows with floating image (Skiper-style)
 const pv=$('#pv'),qx=gsap.quickTo(pv,'x',{duration:.5,ease:'power3'}),qy=gsap.quickTo(pv,'y',{duration:.5,ease:'power3'}),qr=gsap.quickTo(pv,'rotation',{duration:.4});let px=0;
-$$('.row[data-p]').forEach(r=>{r.addEventListener('pointerenter',()=>{pv._t=TY[r.dataset.p];gsap.to(pv,{opacity:1,scale:1,duration:.4,ease:'back.out(1.5)'})});r.addEventListener('pointerleave',()=>gsap.to(pv,{opacity:0,scale:.6,duration:.3}));
- r.addEventListener('pointermove',e=>{qx(e.clientX+30);qy(e.clientY-120);qr(Math.max(-12,Math.min(12,(e.clientX-px)*.4)));px=e.clientX})});
+let pvRow=null;const pvHide=()=>{pvRow=null;gsap.to(pv,{opacity:0,scale:.6,duration:.3,overwrite:'auto'})};
+document.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;const r=e.target.closest&&e.target.closest('.row[data-p]');
+ if(!r){if(pvRow)pvHide();return}
+ if(r!==pvRow){if(!pvRow)gsap.set(pv,{x:e.clientX+30,y:e.clientY-120});pvRow=r;pv._t=TY[r.dataset.p];gsap.to(pv,{opacity:1,scale:1,duration:.4,ease:'back.out(1.5)',overwrite:'auto'})}
+ qx(e.clientX+30);qy(e.clientY-120);qr(Math.max(-12,Math.min(12,(e.clientX-px)*.4)));px=e.clientX});
+['scroll','blur','pointerdown'].forEach(n=>addEventListener(n,()=>{if(pvRow)pvHide()},{passive:true}));
+document.documentElement.addEventListener('pointerleave',()=>{if(pvRow)pvHide()});document.addEventListener('visibilitychange',()=>{if(pvRow)pvHide()});
 gsap.from('.row',{y:60,opacity:0,stagger:.12,duration:1,ease:'power3.out',scrollTrigger:{trigger:'#focus .row',start:'top 85%'}});
 // pinned horizontal approach
 gsap.matchMedia().add('(min-width:861px)',()=>{const t=$('#trk'),d=()=>t.scrollWidth-innerWidth+innerWidth*.04;

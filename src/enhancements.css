@@ -90,3 +90,5 @@ html{scroll-padding-top:82px}
 .motion-disabled .sg{width:100%;height:auto}
 .motion-disabled .bar{display:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+
+.pr-link{display:inline-flex;gap:8px;align-items:center;margin-top:6px;padding:11px 20px;border:1px solid #0ae44888;border-radius:99px;color:var(--g);font-size:14px;transition:background .25s,color .25s}.pr-link:hover{background:var(--g);color:#0e100f}.pr-note{margin:10px 0 0;color:#8d9290;font-size:12px}
