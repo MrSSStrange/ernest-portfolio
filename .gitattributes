@@ -1,1 +1,3 @@
 *.pdf binary
+vendor/*.js -whitespace
+/index.html -whitespace
