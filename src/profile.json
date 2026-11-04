@@ -1,0 +1,155 @@
+{
+  "name": "Ernest Muzafarov",
+  "headline": "AI Engineering & Automation",
+  "summary": "Early-career AI engineer and technical support lead working with medical information systems. I use LLM assistants to build internal automation and combine workflow analysis with hands-on troubleshooting of logs, SQL, APIs, and JSON.",
+  "contacts": {
+    "email": "mega.ernest13@gmail.com",
+    "telegram": "https://t.me/ErnestKzn",
+    "github": "https://github.com/MrSSStrange",
+    "linkedin": "https://www.linkedin.com/in/ernest-muzafarov-919a323a2/"
+  },
+  "experience": [
+    {
+      "role": "Head of Technical Support",
+      "company": "Giasoft LLC",
+      "period": "January 2025 - present",
+      "details": [
+        "Lead the medical information system support team, prioritize tasks, coordinate responsibilities, and review fixes in Jira.",
+        "Implement the system in clinics, configure modules and integrations, gather requirements, and train users.",
+        "Investigate incidents using logs, PostgreSQL queries, Postman, APIs, and JSON.",
+        "Introduced Claude and ChatGPT into department workflows and built AI-assisted tools for HTML print forms and JSON medical protocols."
+      ]
+    },
+    {
+      "role": "Technical Support & Implementation Specialist",
+      "company": "Giasoft LLC",
+      "period": "December 2024 - December 2025",
+      "details": [
+        "Supported clinic staff, analyzed logs and database issues, and reported defects to developers.",
+        "Helped implement the system and train users; appointed Head of Technical Support in January 2025."
+      ]
+    },
+    {
+      "role": "Content Moderator",
+      "company": "KazanExpress",
+      "period": "July 2024 - October 2024",
+      "details": [
+        "Moderated marketplace content, worked with Microsoft Office, and prepared reports."
+      ]
+    },
+    {
+      "role": "Sales Specialist",
+      "company": "Sovcombank",
+      "period": "July 2023 - July 2024",
+      "details": [
+        "Advised customers by phone, processed applications, maintained CRM records, and prepared reports.",
+        "Mentored new employees during onboarding and day-to-day work."
+      ]
+    },
+    {
+      "role": "Insurance Consultant",
+      "company": "Ingosstrakh",
+      "period": "March 2022 - August 2022",
+      "details": [
+        "Issued insurance policies and acquired customers."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "qualification": "Bachelor’s degree in Information Systems and Technologies",
+      "institution": "KNRTU-KAI, Kazan",
+      "period": "2024"
+    }
+  ],
+  "skills": [
+    "Jira",
+    "Log analysis",
+    "Information system implementation",
+    "Requirements gathering and analysis",
+    "Development task specification",
+    "User training",
+    "Working with large volumes of information",
+    "Quality control",
+    "Analytical thinking",
+    "SQL",
+    "PostgreSQL",
+    "REST API",
+    "Postman",
+    "JSON",
+    "LLMs",
+    "AI assistants",
+    "Team management",
+    "Process automation",
+    "HTML",
+    "Git",
+    "Python",
+    "Excel automation",
+    "Word document processing"
+  ],
+  "projects": [
+    {
+      "name": "Price list import",
+      "description": "Transforms an Excel price list into categories, services and prices with matched IDs.",
+      "result": "Approximately 2 hours reduced to 10–15 minutes."
+    },
+    {
+      "name": "Document import",
+      "description": "Converts a completed Word document into importable JSON.",
+      "result": "Approximately 40–50 minutes reduced to about 10 minutes."
+    }
+  ],
+  "skill_groups": [
+    {
+      "level": "Advanced",
+      "skills": [
+        "Jira",
+        "Log analysis",
+        "Information system implementation",
+        "Requirements gathering and analysis",
+        "Development task specification",
+        "User training"
+      ]
+    },
+    {
+      "level": "Intermediate",
+      "skills": [
+        "Working with large volumes of information",
+        "Quality control",
+        "Analytical thinking",
+        "SQL",
+        "PostgreSQL",
+        "REST API",
+        "Postman",
+        "JSON",
+        "LLMs",
+        "AI assistants",
+        "Team management",
+        "Process automation"
+      ]
+    },
+    {
+      "level": "Basic",
+      "skills": [
+        "HTML",
+        "Git"
+      ]
+    }
+  ],
+  "additional_skills": [
+    "Python",
+    "Excel automation",
+    "Word document processing"
+  ],
+  "ai_tools": [
+    "Claude",
+    "ChatGPT",
+    "Qwen",
+    "DeepSeek",
+    "Kimi",
+    "GLM"
+  ],
+  "languages": [
+    "English - B1"
+  ]
+}

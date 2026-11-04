@@ -1,9 +1,0 @@
-{
-  "input": "outputs/optimus-head-surface.glb",
-  "output": "public/models/optimus-head-smooth-v2.glb",
-  "uncompressedBytes": 2760104,
-  "bytes": 1759760,
-  "reductionPercent": 36.2,
-  "losslessDecodeVerified": true,
-  "sha256": "fbee47c569aa1dce81a9ada7501720d42ef0ab9c1c5017664b73a31f66d61164"
-}

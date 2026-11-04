@@ -1,0 +1,29 @@
+[
+  {
+    "id": "webdev",
+    "asset": "webdevCertificate",
+    "title": "The Complete Full-Stack Web Development Bootcamp",
+    "instructor": "Dr. Angela Yu",
+    "recipient": "Ernest Muzafarov",
+    "date": "4 November 2026",
+    "iso_date": "2026-11-04",
+    "hours": 62,
+    "number": "UC-91b143b5-cbee-4a9f-ba1b-765ce1c23801",
+    "verify": "https://www.udemy.com/certificate/UC-91b143b5-cbee-4a9f-ba1b-765ce1c23801/",
+    "translation": false
+  },
+  {
+    "id": "javascript",
+    "asset": "javascriptCertificate",
+    "title": "The Complete JavaScript Course — From Zero to Results!",
+    "original_title": "Полный курс по JavaScript - С нуля до результата!",
+    "instructor": "Dmitrii Fokeev",
+    "recipient": "Ernest Muzafarov",
+    "date": "30 June 2026",
+    "iso_date": "2026-06-30",
+    "hours": 31,
+    "number": "UC-af80fc1b-ea59-424d-af7f-3d32b27a0284",
+    "verify": "https://www.udemy.com/certificate/UC-af80fc1b-ea59-424d-af7f-3d32b27a0284/",
+    "translation": true
+  }
+]

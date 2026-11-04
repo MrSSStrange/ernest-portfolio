@@ -1,9 +1,9 @@
-node_modules/
 dist/
-.sites-runtime/
-outputs/
-assets/source/*
-!assets/source/.gitkeep
-*.tgz
-*.log
+review/
+tmp/
+output/
+__pycache__/
+*.pyc
 .DS_Store
+node_modules/
+.env*

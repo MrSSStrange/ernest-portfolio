@@ -1,0 +1,46 @@
+{
+  "logo": {
+    "file": "logo.png",
+    "mime": "image/png"
+  },
+  "portrait": {
+    "file": "portrait.png",
+    "mime": "image/png"
+  },
+  "webdevCertificate": {
+    "file": "webdevCertificate.jpg",
+    "mime": "image/jpeg"
+  },
+  "javascriptCertificate": {
+    "file": "javascriptCertificate.jpg",
+    "mime": "image/jpeg"
+  },
+  "cvPdf": {
+    "file": "Ernest-Muzafarov-CV.pdf",
+    "mime": "application/pdf"
+  },
+  "aiClaude": {
+    "file": "ai/claude.png",
+    "mime": "image/png"
+  },
+  "aiChatgpt": {
+    "file": "ai/chatgpt.svg",
+    "mime": "image/svg+xml"
+  },
+  "aiQwen": {
+    "file": "ai/qwen.png",
+    "mime": "image/png"
+  },
+  "aiDeepseek": {
+    "file": "ai/deepseek.png",
+    "mime": "image/png"
+  },
+  "aiKimi": {
+    "file": "ai/kimi.png",
+    "mime": "image/png"
+  },
+  "aiGlm": {
+    "file": "ai/glm.svg",
+    "mime": "image/svg+xml"
+  }
+}

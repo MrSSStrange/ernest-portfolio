@@ -1,0 +1,209 @@
+[
+  {
+    "id": "process",
+    "category": "automation",
+    "label": "Automation",
+    "image": "engineeringCode",
+    "word": "WORKFLOW",
+    "title": "Automation starts before the AI model",
+    "excerpt": "Understand the process first: what repeats, what the outcome should be, and where AI can actually help.",
+    "body": [
+      "A new tool makes it tempting to look for somewhere to use it immediately. I find it more useful to start by watching the work: which action keeps repeating, who performs it, and why it takes their attention. That makes the problem much easier to describe.",
+      "A task might involve collecting material, bringing records into a consistent format, and preparing a draft. Those are separate steps. Writing them down in plain language helps before choosing a tool for each one.",
+      {
+        "h": "Map the path from input to outcome"
+      },
+      "I try to identify where a process begins, what a useful result looks like, and which decisions happen in between. What arrives at the start? What should exist at the end? Which situations need a person to make a call? These questions expose both repetition and missing rules.",
+      "Some steps can be handled with an ordinary rule; others are worth exploring with a model. I like thinking about automation as a connected workflow, where each tool has a clear role and a person can understand what is happening.",
+      {
+        "h": "Start with a small, testable workflow"
+      },
+      "At this stage of my learning, I want to focus on processes that are small enough to examine carefully. They are easier to try with different examples, discuss, and improve. My experience automating many processes is what led me toward this broader view of AI engineering."
+    ]
+  },
+  {
+    "id": "context",
+    "category": "data",
+    "label": "Data & context",
+    "image": "engineeringData",
+    "word": "CONTEXT",
+    "title": "Context is part of the engineering",
+    "excerpt": "Goals, source material, constraints, and output format: turning a broad request into a task that makes sense.",
+    "body": [
+      "A short request often carries a much longer story in a person's head: previous decisions, documents, terminology, and expectations. I am interested in learning how to make that hidden context clear enough for a tool to work with.",
+      "I separate the goal, the data, and the instructions. The goal explains why the work matters. The data provides the material. The instructions define the boundaries and the expected way of working. Keeping these roles distinct makes contradictions easier to spot.",
+      {
+        "h": "Aim for clarity, not just more text"
+      },
+      "I would start with a few questions. Who will use the result? Which materials should count as the source? What must be taken into account? What should the finished response look like? A useful example of the desired format can make expectations clearer too.",
+      "That does not mean including every available document. I prefer an approach in which each piece of information has a purpose. If a detail does not affect the task, it is worth asking whether it belongs in the context.",
+      {
+        "h": "Connect context to the workflow"
+      },
+      "CodeRabbit provides a development example of this principle: its code review is connected to history, documentation, and information about the task. The engineering idea I take from it is simple: the environment around a request deserves attention alongside the request itself.",
+      "In my own practice, I want to better understand which information helps solve a problem, and keep that connection visible when checking the result."
+    ],
+    "source": "https://www.coderabbit.ai/"
+  },
+  {
+    "id": "agents",
+    "category": "ai",
+    "label": "Artificial intelligence",
+    "image": "engineeringNetwork",
+    "word": "AI AGENTS",
+    "title": "AI agents: beyond a single chat response",
+    "excerpt": "Why I am interested in the move from one answer to a sequence of actions with a clear goal and boundaries.",
+    "body": [
+      "I am interested in the idea that working with AI can continue beyond the first answer. A workflow might involve receiving a task, consulting available material, suggesting a next step, and helping someone move through several stages of work.",
+      "Before focusing on the label 'agent', I would look at its goal and boundaries. What may happen automatically? What counts as completion? When should the workflow stop and ask a person to decide? Those questions give the idea a practical shape.",
+      {
+        "h": "Actions need understandable rules"
+      },
+      "Imagine an assistant helping prepare a document. Researching material, creating a draft, and approving the final version are distinct activities. Separating them makes it easier to discuss responsibility at each stage.",
+      "CodeRabbit shows examples of development workflows involving a proposed change, feedback, and verification. I find the underlying sequence interesting: the output of one step becomes material for the next.",
+      {
+        "h": "Make the process observable"
+      },
+      "As I explore these approaches, I want to pay attention to how well a person can understand the state of the work. What has already happened? What still needs a decision? What information supports the result? Clear answers make further automation easier to reason about."
+    ],
+    "source": "https://www.coderabbit.ai/"
+  },
+  {
+    "id": "quality",
+    "category": "ai",
+    "label": "Artificial intelligence",
+    "image": "engineeringFormula",
+    "word": "EVALUATE",
+    "title": "From a convincing answer to a checked result",
+    "excerpt": "Define what a good outcome means before generation, then return to that definition when reviewing the answer.",
+    "body": [
+      "A confident, well-written response can feel like finished work. I want to build a different habit: return to the original task and ask what actually needs to be checked.",
+      "For me, verification begins before a workflow runs. Without a clear idea of success, it is difficult to discuss quality afterwards. It helps to describe the expected format, the constraints, and the signs that the task is complete.",
+      {
+        "h": "Choose concrete examples"
+      },
+      "I would try an ordinary case, an incomplete input, and a situation that needs clarification from a person. These examples make a discussion specific: what did we expect, and what did we receive?",
+      "For a written response, I might compare its claims with the source material. For an automated action, I would check whether it follows the workflow's rules. These are different kinds of review, and I want to keep that distinction clear.",
+      {
+        "h": "Leave room for improvement"
+      },
+      "An error provides information too. Is the issue in the input material, the way the task was framed, or the structure of the process? Understanding that helps choose the next small improvement.",
+      "This is a skill I want to develop as an early-career AI engineer: connect the impression an answer creates with clear criteria and careful checking."
+    ]
+  },
+  {
+    "id": "daily",
+    "category": "automation",
+    "label": "Automation",
+    "image": "engineeringData",
+    "word": "LESS ROUTINE",
+    "title": "Where to look for automation opportunities",
+    "excerpt": "Repeated work around documents, records, and information is a useful reason to examine a process more closely.",
+    "body": [
+      "An automation idea often starts with a simple observation: I am doing something similar again. It does not have to begin with a huge problem. A small repeated part of the work can be an interesting place to investigate.",
+      "Preparing drafts, organizing records, combining material, or moving information between stages are possible examples. I would examine what each activity involves before deciding which parts to automate.",
+      {
+        "h": "Understand the exceptions"
+      },
+      "I find it useful to write down more than the normal sequence. What happens when information is missing? When formats differ? When someone needs to approve the result?",
+      "These questions reveal how well a process is defined. If its rules are unclear to the people doing the work, understanding those rules is a useful first step in its own right.",
+      {
+        "h": "Keep the overall benefit in view"
+      },
+      "My experience automating many processes gave me a direction I want to develop further: connecting individual actions into understandable workflows. I care about whether the whole process becomes more useful for a person.",
+      "A concrete repeated task, a clear outcome, and a way to review the result form a practical starting point for the next experiment."
+    ]
+  },
+  {
+    "id": "prompt",
+    "category": "ai",
+    "label": "Artificial intelligence",
+    "image": "engineeringCode",
+    "word": "CLEAR TASK",
+    "title": "A prompt is a small project brief",
+    "excerpt": "Describe the goal, source material, and desired output in a way that also improves your own understanding of the task.",
+    "body": [
+      "I like thinking of a model request as a short project brief. It is a way to work out what needs to happen, which material should be used, and what a useful result would look like.",
+      "I would begin with the action: compare, organize, draft, or identify questions. Then I would explain the source material and who will use the answer. The format and constraints become easier to discuss from there.",
+      {
+        "h": "Make expectations visible"
+      },
+      "I try to turn a broad instruction such as 'make it good' into specific requirements. How much detail is needed? Which points must be included? What should become a separate list? An example can help explain a useful format.",
+      "A clear structure matters more to me than a long collection of rules. The goal, the material, and the requirements should work together rather than contradict one another.",
+      {
+        "h": "Treat clarification as part of the work"
+      },
+      "A first response can reveal what was still implicit. I would use that as an opportunity to clarify the task. What was understood differently? Which information was missing? Why was a particular format inconvenient?",
+      "I see this as a communication skill to develop alongside technical skills. A well-framed problem helps both my work with AI and my own thinking."
+    ]
+  },
+  {
+    "id": "data",
+    "category": "data",
+    "label": "Data & context",
+    "image": "engineeringNetwork",
+    "word": "DATA FIRST",
+    "title": "Understand the data before choosing a model",
+    "excerpt": "Look at meaning, formats, and sources before building the next stage of a workflow.",
+    "body": [
+      "The word 'data' can sound abstract. In a real task, it often means specific documents, messages, records, and tables. I want to begin by understanding what they mean and where they came from.",
+      "I would look at which materials belong to the task, whether labels are consistent, and where information is missing. Sometimes the same term turns out to mean different things in different records.",
+      {
+        "h": "Keep a connection to the source"
+      },
+      "When information goes through several transformations, I want a way to return to the original material. Which detail came from a document, and which appeared during processing? Where does the original record end and interpretation begin?",
+      "For me, this is part of an understandable workflow. It makes errors easier to discuss and results easier to check without guessing the origin of every detail.",
+      {
+        "h": "Simplify with a purpose"
+      },
+      "Preparing data should involve understanding its meaning. An unusual record might matter to the problem, so I want to examine it before deciding how to make the material consistent.",
+      "This connection between stages is part of what attracts me to AI engineering: prepare the information, use an appropriate tool, and compare the result with what was supplied."
+    ]
+  },
+  {
+    "id": "human",
+    "category": "automation",
+    "label": "Automation",
+    "image": "hero",
+    "word": "HUMAN × AI",
+    "title": "Where the human belongs in an automated workflow",
+    "excerpt": "Purpose, judgment, and review are three points I want to preserve as more of the process becomes automated.",
+    "body": [
+      "I see AI as an extension of the tools available to people. It offers ways to work with information and explore possibilities, while the purpose of that work still needs thought.",
+      "When considering automation, I want to identify where a person should decide. Which actions can follow a rule? Which need discussion? Which outcomes should be approved before the process continues?",
+      {
+        "h": "Keep the purpose in view"
+      },
+      "Every workflow starts with a need. Who will use the result? What should become clearer or easier? These questions keep the technical work connected to a real situation.",
+      "Review is meaningful work too. I want to preserve the chance to compare an output with the task, notice a limitation, and decide what should happen next.",
+      {
+        "h": "Make the workflow understandable"
+      },
+      "A useful process should be explainable to the person using it. What stage has it reached? What happened automatically? What still needs attention? These are qualities I want to work toward in my practice.",
+      "My interest in AI engineering comes from that combination: a human problem, technical possibilities, and care for how the result is actually used."
+    ]
+  },
+  {
+    "id": "learning",
+    "category": "ai",
+    "label": "Artificial intelligence",
+    "image": "engineeringFormula",
+    "word": "KEEP BUILDING",
+    "title": "My path into AI engineering: learning by building",
+    "excerpt": "Starting out, exploring automation, and learning to understand the full path from a problem to a useful result.",
+    "body": [
+      "I am at the beginning of my professional path in AI engineering. I am drawn to making useful things and understanding how individual tools can become a working process.",
+      "I have already built automation solutions and automated many processes. That experience encouraged me to explore artificial intelligence more deeply and keep learning how to apply it.",
+      {
+        "h": "Understand the whole process"
+      },
+      "I want to understand more than an individual command or model response. How was the task framed? Which information is needed? Why were the steps arranged this way? How can the result be checked against expectations?",
+      "These questions help me connect learning with a practical purpose. They also make it easier to notice which subjects I need to investigate more carefully.",
+      {
+        "h": "Stay curious"
+      },
+      "I want this journal to collect observations, approaches, and questions that come up as I explore AI and automation. Writing is a way to make a thought clearer and return to it later.",
+      "My next step is to keep practicing, discuss ideas, and gradually deepen my understanding. If you are interested in how technology can help real work, I would be glad to connect."
+    ]
+  }
+]
